@@ -27,10 +27,10 @@
 <div class="wrapper">
 
     <!-- Navbar -->
-        @include('admin.partials.nav')
+        @includeIf('admin.partials.nav')
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
-    @include('admin.partials.aside')
+@includeIf('admin.partials.aside')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -45,9 +45,9 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
         <!-- Main content -->
         <div class="content">
+            @includeIf('admin.partials.form-status')
             @yield('content')
         </div>
         <!-- /.content -->

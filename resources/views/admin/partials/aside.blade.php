@@ -4,7 +4,7 @@
         <img src="{{ asset('admin/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -16,7 +16,8 @@
                      alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#"
+                   class="d-block">{{ Auth::guard('admin')->user()->first_name }} {{ Auth::guard('admin')->user()->last_name }}</a>
             </div>
         </div>
 
@@ -91,6 +92,19 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="event.preventDefault();
+                                                document.querySelector('#admin-logout-form').submit();">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Logout
+                        </p>
+                        <form id="admin-logout-form" action="{{ route('admin.logout') }}"
+                              method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </a>
                 </li>
             </ul>
         </nav>

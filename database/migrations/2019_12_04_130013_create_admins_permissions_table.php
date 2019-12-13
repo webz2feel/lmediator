@@ -13,13 +13,18 @@ class CreateAdminsPermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admins_permissions', function (Blueprint $table) {
-            $table->unsignedBigInteger('admin_id')->unsigned();
-            $table->unsignedBigInteger('permission_id')->unsigned();
-            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
-            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
-            $table->primary(['admin_id','permission_id']);
-        });
+        Schema::create(
+            'admins_permissions',
+            function (Blueprint $table) {
+                $table->unsignedBigInteger('admin_id')->unsigned();
+                $table->unsignedBigInteger('permission_id')->unsigned();
+                $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
+                $table->foreign('permission_id')->references('id')->on('permissions')->onDelete(
+                    'cascade'
+                );
+                $table->primary(['admin_id', 'permission_id']);
+            }
+        );
     }
 
     /**

@@ -14,10 +14,10 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-        $dev_role = Role::where('slug','developer')->first();
+        $dev_role = Role::where('slug', 'developer')->first();
         $manager_role = Role::where('slug', 'manager')->first();
-        $dev_perm = Permission::where('slug','create-tasks')->first();
-        $manager_perm = Permission::where('slug','edit-tasks')->first();
+        $dev_perm = Permission::where('slug', 'create-tasks')->first();
+        $manager_perm = Permission::where('slug', 'edit-tasks')->first();
         $developer = new Admin();
         $developer->first_name = 'Imran';
         $developer->last_name = 'Ali';
