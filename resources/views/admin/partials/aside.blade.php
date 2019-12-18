@@ -1,114 +1,61 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="{{ asset('admin/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-             class="brand-image img-circle elevation-3"
-             style="opacity: .8">
-        <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ asset('admin/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
-                     alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#"
-                   class="d-block">{{ Auth::guard('admin')->user()->first_name }} {{ Auth::guard('admin')->user()->last_name }}</a>
-            </div>
-        </div>
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Dashboard
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-thumbtack"></i>
-                        <p>
-                           Posts
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All Posts</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add New</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Categories</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Tags</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Pages
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>All Pages</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add New</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="event.preventDefault();
-                                                document.querySelector('#admin-logout-form').submit();">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Logout
-                        </p>
-                        <form id="admin-logout-form" action="{{ route('admin.logout') }}"
-                              method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </a>
-                </li>
+<aside id="aside" class="ui-aside">
+    <ul class="nav" ui-nav>
+        <li class="nav-head">
+            <h5 class="nav-title text-uppercase light-txt">Navigation</h5>
+        </li>
+        <li class="active">
+            <a href="mailbox.html"><i class="fa fa-home"></i><span> Dashboard </span></a>
+            <ul class="nav nav-sub">
+                <li class="nav-sub-header"><a href="mailbox.html"><span>Dashboard</span></a></li>
             </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
+        </li>
+        <li class="active">
+            <a href=""><i class="fa fa-home"></i><span>Dashboard</span><i class="fa fa-angle-right pull-right"></i></a>
+            <ul class="nav nav-sub nav-sub--open">
+                <li class="nav-sub-header"><a href=""><span>Dashboard</span></a></li>
+                <li class="active"><a href="index.html"><span>Dashboard 1</span></a></li>
+                <li><a href="dashboard-horizontal-nav.html"><span>Dashboard 2 <small class="label label-danger">TopNav</small></span></a></li>
+                <li><a href="dashboard-compact.html"><span>Dashboard 3 <small class="label label-success">Sm Nav</small></span></a></li>
+                <li><a href="dashboard-mega-dropdown.html"><span>Dashboard 4 <small class="label label-primary">eCom..</small></span></a></li>
+                <li><a href="dashboard-lightsidebar.html"><span>Dashboard 5 <small class="label label-info">Light</small></span></a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href=""><i class="fa fa-thumb-tack"></i><span>Posts</span><i class="fa fa-angle-right pull-right"></i></a>
+            <ul class="nav nav-sub">
+                <li><a href=""><span>All Posts</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Add New</span></a></li>
+                <li><a href="ecommerce-orders.html"><span>Categories</span></a></li>
+                <li><a href="ecommerce-orders-view.html"><span>Tags</span></a></li>
+            </ul>
+        </li>
+        <li>
+            <a href=""><i class="fa fa-files-o"></i><span>Pages</span><i class="fa fa-angle-right pull-right"></i></a>
+            <ul class="nav nav-sub">
+                <li><a href=""><span>All Pages</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Add New</span></a></li>
+            </ul>
+        </li>
+        <li>
+            <a href=""><i class="fa fa-users"></i><span>Users</span><i class="fa fa-angle-right pull-right"></i></a>
+            <ul class="nav nav-sub">
+                <li><a href=""><span>All Users</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Add New</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Your Profile</span></a></li>
+            </ul>
+        </li>
+        <li>
+            <a href=""><i class="fa fa-sliders"></i><span>Settings</span><i class="fa fa-angle-right pull-right"></i></a>
+            <ul class="nav nav-sub">
+                <li><a href=""><span>General</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Writing</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Reading</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Discussion</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Media</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Permalink</span></a></li>
+                <li><a href="ecommerce-dashboard.html"><span>Privacy</span></a></li>
+            </ul>
+        </li>
+    </ul>
 </aside>

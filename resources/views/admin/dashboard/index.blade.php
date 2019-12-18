@@ -1,98 +1,96 @@
 @extends('admin.app')
 @section('template_title', 'Dashboard')
 @section('content')
-    <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>150</h3>
-
-                        <p>New Orders</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-bag"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                        <p>Bounce Rate</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>44</h3>
-
-                        <p>User Registrations</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>65</h3>
-
-                        <p>Unique Visitors</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i
-                            class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="page-title"> Admin Dashboard
+                <small>data, statistics, charts, recent reports and many more</small>
+            </h1>
         </div>
-        <!-- /.row -->
-    </div><!-- /.container-fluid -->
+        <div class="col-md-4">
+            <ul class="breadcrumb pull-right">
+                <li>Home</li>
+                <li><a href="#" class="active">Dashboard</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="panel short-states bg-danger">
+                <div class="pull-right state-icon">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
+                <div class="panel-body">
+                    <h1 class="light-txt">1,3012</h1>
+                    <div class=" pull-right">53% <i class="fa fa-bolt"></i></div>
+                    <strong class="text-uppercase">NEW ORDERS</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="panel short-states bg-info">
+                <div class="pull-right state-icon">
+                    <i class="fa fa-users"></i>
+                </div>
+                <div class="panel-body">
+                    <h1 class="light-txt">5,534</h1>
+                    <div class=" pull-right">65% <i class="fa fa-level-up"></i></div>
+                    <strong class="text-uppercase">new users</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="panel short-states bg-warning">
+                <div class="pull-right state-icon">
+                    <i class="fa fa-laptop"></i>
+                </div>
+                <div class="panel-body">
+                    <h1 class="light-txt">$22,329</h1>
+                    <div class=" pull-right">77% <i class="fa fa-level-down"></i></div>
+                    <strong class="text-uppercase">Online Revenue</strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="panel short-states bg-primary">
+                <div class="pull-right state-icon">
+                    <i class="fa fa-pie-chart"></i>
+                </div>
+                <div class="panel-body">
+                    <h1 class="light-txt">$268,188</h1>
+                    <div class=" pull-right">88% <i class="fa fa-level-up"></i></div>
+                    <strong class="text-uppercase">Total Profit</strong>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('template_linked_css')
-    <link rel="stylesheet"
-          href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/components/toastr/toastr.min.css') }}">
 @endsection
 @if(session()->has('status'))
-@section('footer_scripts')
-    <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+@section('scripts')
+    <script src="{{ asset('admin/components/toastr/toastr.min.js') }}"></script>
     <script>
         $(function () {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-            });
-
-            Toast.fire({
-                type: 'success',
-                title: 'Signed in successfully'
-            });
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.success('Your are logged in successfully','Logged In!');
         });
     </script>
 @endsection

@@ -2,19 +2,25 @@
 <html lang="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@if (trim($__env->yieldContent('template_title')))@yield('template_title')
         | @endif {{ config('app.name', Lang::get('titles.app')) }}</title>
-<!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
-          rel="stylesheet">
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('admin/components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/components/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/components/simple-line-icons/css/simple-line-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/components/weather-icons/css/weather-icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/components/themify-icons/css/themify-icons.css') }}">
+    <!-- endinject -->
+    <!-- Main Style  -->
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/main.css') }}">
+    <!--horizontal-timeline-->
+    <link rel="stylesheet" href="{{ asset('admin/assets/js/horizontal-timeline/css/style.css') }}">
+    <script src="{{ asset('admin/assets/js/modernizr-custom.js') }}"></script>
     @yield('template_linked_css')
     {{-- Scripts --}}
     <script>
@@ -24,54 +30,47 @@
     </script>
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<div id="ui" class="ui">
 
     <!-- Navbar -->
-        @includeIf('admin.partials.nav')
+        @includeIf('admin.partials.header')
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
-@includeIf('admin.partials.aside')
+    @includeIf('admin.partials.aside')
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">@yield('page_header', 'Dashboard')</h1>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
+    <div id="content" class="ui-content ui-content-aside-overlay">
         <!-- Main content -->
-        <div class="content">
-            @includeIf('admin.partials.form-status')
-            @yield('content')
+        <div class="ui-content-body">
+            <div class="ui-container">
+                @includeIf('admin.partials.form-status')
+                @yield('content')
+            </div>
         </div>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
     <!-- Main Footer -->
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="float-right d-none d-sm-inline">
-            Anything you want
-        </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-        All rights reserved.
-    </footer>
+    <div id="footer" class="ui-footer">
+        2017 &copy; MegaDin by ThemeBucket.
+    </div>
 </div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('admin/js/adminlte.min.js') }}"></script>
-@yield('footer_scripts')
+<!-- inject:js -->
+<script src="{{ asset('admin/components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin/components/jquery.nicescroll/dist/jquery.nicescroll.min.js') }}"></script>
+<script src="{{ asset('admin/components/autosize/dist/autosize.min.js') }}"></script>
+<!-- endinject -->
+<!--horizontal-timeline-->
+<script src="{{ asset('admin/assets/js/horizontal-timeline/js/jquery.mobile.custom.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/horizontal-timeline/js/main.js') }}"></script>
+@yield('scripts')
+<!-- Common Script   -->
+<script src="{{ asset('admin/dist/js/main.js') }}"></script>
 </body>
 </html>
+

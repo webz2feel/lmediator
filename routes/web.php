@@ -14,7 +14,6 @@
 Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(
     function () {
         //All the admin routes will be defined here...
-        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
         Route::namespace('Auth')->group(
             function () {
                 //Login Routes
@@ -38,6 +37,10 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(
                 );
             }
         );
+        // admin routes with middlewre
+        Route::middleware('auth:admin')->group(function(){
+            Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+        });
     }
 );
 //Route::get('/', function () {
@@ -45,3 +48,6 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(
 //});
 
 Auth::routes();
+// front routes
+
+Route::get('/', 'HomeController@index');
