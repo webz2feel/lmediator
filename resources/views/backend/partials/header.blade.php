@@ -2,9 +2,9 @@
 
     <div class="navbar-header">
         <!--logo start-->
-        <a href="index.html" class="navbar-brand">
-            <span class="logo"><img src="imgs/logo-dark.png" alt=""/></span>
-            <span class="logo-compact"><img src="imgs/logo-icon-dark.png" alt=""/></span>
+        <a href="{{route('admin.dashboard')}}" class="navbar-brand">
+            <span class="logo"><img src="{{ asset('admin/imgs/logo-dark.png') }}" alt=""/></span>
+            <span class="logo-compact"><img src="{{ asset('admin/imgs/logo-icon-dark.png') }}" alt=""/></span>
         </a>
         <!--logo end-->
     </div>
@@ -78,7 +78,7 @@
                             <button class="Notification__status Notification__status--read" type="button" name="button"></button>
                             <a href="">
                                 <div class="Notification__avatar pull-left" href="">
-                                    <img src="imgs/a0.jpg" alt="...">
+                                    <img src="{{ asset('admin/imgs/a0.jpg') }}" alt="...">
                                 </div>
                                 <div class="Notification__highlight">
                                     <p class="Notification__highlight-excerpt"><b>Tomas Edison</b> and 4 other people like your post “keep clam and watch the fizz”.</p>
@@ -91,7 +91,7 @@
                             <button class="Notification__status Notification__status--unread" type="button" name="button"></button>
                             <a href="">
                                 <div class="Notification__avatar pull-left" href="">
-                                    <img src="imgs/a0.jpg" alt="...">
+                                    <img src="{{ asset('admin/imgs/a0.jpg') }}" alt="...">
                                 </div>
                                 <div class="Notification__highlight">
                                     <p class="Notification__highlight-excerpt"><b>Luciad Extic</b> can join conference.</p>
@@ -154,7 +154,7 @@
                             <button class="Message__status Message__status--read" type="button" name="button"></button>
                             <a href="">
                                 <div class="Message__avatar Message__avatar--danger pull-left" href="">
-                                    <img src="imgs/a2.jpg" alt="...">
+                                    <img src="{{asset('admin/imgs/a2.jpg') }}" alt="...">
                                 </div>
                                 <div class="Message__highlight">
                                     <span class="Message__highlight-name">Lubida Teresa</span>
@@ -167,7 +167,7 @@
                             <button class="Message__status Message__status--unread" type="button" name="button"></button>
                             <a href="">
                                 <div class="Message__avatar Message__avatar--danger pull-left" href="">
-                                    <img src="imgs/a1.jpg" alt="...">
+                                    <img src="{{asset('admin/imgs/a1.jpg') }}" alt="...">
                                 </div>
                                 <div class="Message__highlight">
                                     <span class="Message__highlight-name">Sara Souaidan</span>
@@ -180,7 +180,7 @@
                             <button class="Message__status Message__status--read" type="button" name="button"></button>
                             <a href="">
                                 <div class="Message__avatar Message__avatar--danger pull-left" href="">
-                                    <img src="imgs/a0.jpg" alt="...">
+                                    <img src="{{asset('admin/imgs/a0.jpg') }}" alt="...">
                                 </div>
                                 <div class="Message__highlight">
                                     <span class="Message__highlight-name">Addy Osmany</span>
@@ -223,7 +223,7 @@
 
             <li class="dropdown dropdown-usermenu">
                 <a href="#" class=" dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                    <div class="user-avatar"><img src="imgs/a0.jpg" alt="..."></div>
+                    <div class="user-avatar"><img src="{{asset('admin/imgs/a0.jpg') }}" alt="..."></div>
                     <span class="hidden-sm hidden-xs">{{ Auth::guard('admin')->user()->full_name }}</span>
                     <!--<i class="fa fa-angle-down"></i>-->
                     <span class="caret hidden-sm hidden-xs"></span>

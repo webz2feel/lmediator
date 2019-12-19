@@ -16,7 +16,6 @@
                     <div class="text-right">
                         @include('backend.permission.partials.permissions-header-buttons')
                     </div>
-                     br
                     <table class="table responsive-data-table table-striped" id="permissions-table">
                         <thead>
                         <tr>
@@ -42,20 +41,26 @@
     </div>
 @endsection
 @section('template_linked_css')
-    <link href="{{ asset('admin/components/datatables/media/css/jquery.dataTables.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/components/datatables-tabletools/css/dataTables.tableTools.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/components/datatables-colvis/css/dataTables.colVis.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/components/datatables-responsive/css/responsive.dataTables.scss') }}" rel="stylesheet">
-    <link href="{{ asset('admin/components/datatables-scroller/css/scroller.dataTables.scss') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/components/datatables/datatables.min.css') }}"/>
+{{--    <link href="{{ asset('admin/components/datatables/media/css/jquery.dataTables.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('admin/components/datatables-tabletools/css/dataTables.tableTools.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('admin/components/datatables-colvis/css/dataTables.colVis.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('admin/components/datatables-responsive/css/responsive.dataTables.scss') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('admin/components/datatables-scroller/css/scroller.dataTables.scss') }}" rel="stylesheet">--}}
 @endsection
 @section('scripts')
-    <script src="{{ asset('admin/components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
-    <script src="{{ asset('admin/components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin/components/datatables-colvis/js/dataTables.colVis.js') }}"></script>
-    <script src="{{ asset('admin/components/datatables-responsive/js/dataTables.responsive.js') }}"></script>
-    <script src="{{ asset('admin/components/datatables-scroller/js/dataTables.scroller.js') }}"></script>
-{{--    <script src="{{ asset('admin/dist/js/datatable-custom.js') }}"></script>--}}
+
+    <script type="text/javascript" src="{{ asset('admin/components/datatables/pdfmake.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin/components/datatables/vfs_fonts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin/components/datatables/datatables.min.js') }}"></script>
+
+    {{--    <script src="{{ asset('admin/components/datatables.net/js/jquery.dataTables.min.js') }}"></script>--}}
+{{--    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>--}}
+{{--    <script src="{{ asset('admin/components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>--}}
+{{--    <script src="{{ asset('admin/components/datatables-colvis/js/dataTables.colVis.js') }}"></script>--}}
+{{--    <script src="{{ asset('admin/components/datatables-responsive/js/dataTables.responsive.js') }}"></script>--}}
+{{--    <script src="{{ asset('admin/components/datatables-scroller/js/dataTables.scroller.js') }}"></script>--}}
+    <script src="{{ asset('admin/dist/js/datatable-custom.js') }}"></script>
     <script>
         $(function() {
             $.ajaxSetup({
@@ -77,7 +82,7 @@
                     // {data: 'sort', name: 'permissions.sort'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
-                order: [[1, "asc"]],
+                order: [[2, "asc"]],
                 searchDelay: 500,
                 dom: 'lBfrtip',
                 buttons: {
@@ -86,14 +91,14 @@
                         { extend: 'csv', className: 'csvButton',  exportOptions: {columns: [ 0, 1, 2 ]  }},
                         { extend: 'excel', className: 'excelButton',  exportOptions: {columns: [ 0, 1, 2 ]  }},
                         { extend: 'pdf', className: 'pdfButton',  exportOptions: {columns: [ 0, 1, 2 ]  }},
-                        // { extend: 'print', className: 'printButton',  exportOptions: {columns: [ 0, 1, 2 ]  }}
+                        { extend: 'print', className: 'printButton',  exportOptions: {columns: [ 0, 1, 2 ]  }}
                     ]
                 },
                 language: {
 {{--                    @lang('datatable.strings')--}}
                 }
             });
-            // Backend.DataTableSearch.init(dataTable);
+            Backend.DataTableSearch.init(dataTable);
         });
     </script>
 @endsection

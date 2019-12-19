@@ -8,7 +8,7 @@
                     <div class="card-header">{{ $title }}</div>
 
                     <div class="card-body">
-                        @include('admin.partials.form-status')
+                        @include('backend.partials.form-status')
                         <form method="POST" action="{{ route($loginRoute) }}">
                             @csrf
 

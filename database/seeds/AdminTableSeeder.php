@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Admin\Admin;
-use App\Models\Permission;
+use App\Models\Permission\Permission;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 

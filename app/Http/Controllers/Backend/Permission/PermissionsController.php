@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Permission;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Permission\CreatePermissionRequest;
 use App\Repository\Backend\Permission\PermissionRepository;
 use Illuminate\Http\Request;
 
@@ -38,11 +39,11 @@ class PermissionsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view('backend.permission.create');
     }
 
     /**
@@ -51,7 +52,7 @@ class PermissionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePermissionRequest $request)
     {
         //
     }
