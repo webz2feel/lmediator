@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Admin;
+use App\Models\Admin\Admin;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Database\Seeder;

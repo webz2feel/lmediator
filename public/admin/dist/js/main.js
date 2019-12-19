@@ -322,6 +322,6 @@ $(function() {
             $noteAside.removeClass(leftAsideClass);
             bindNoteListEvents('remove');
         }
-    }); 
+    });
 });
 })(jQuery);

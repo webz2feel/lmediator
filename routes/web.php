@@ -11,7 +11,11 @@
 |
 */
 
-Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(
+Auth::routes();
+// front routes
+Route::get('/', 'HomeController@index');
+
+Route::prefix('/admin')->name('admin.')->namespace('Backend')->group(
     function () {
         //All the admin routes will be defined here...
         Route::namespace('Auth')->group(
@@ -37,17 +41,9 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(
                 );
             }
         );
-        // admin routes with middlewre
+        // admin routes with middleware
         Route::middleware('auth:admin')->group(function(){
-            Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+            includeRouteFiles(__DIR__.'/backend/');
         });
     }
 );
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
-Auth::routes();
-// front routes
-
-Route::get('/', 'HomeController@index');
