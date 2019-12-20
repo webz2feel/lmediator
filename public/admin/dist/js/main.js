@@ -323,5 +323,98 @@ $(function() {
             bindNoteListEvents('remove');
         }
     });
+    function addDeleteForms() {
+        $('[data-method]').append(function () {
+            if (! $(this).find('form').length > 0)
+                return "\n" +
+                    "<form action='" + $(this).attr('href') + "' method='POST' name='delete_item' style='display:none'>\n" +
+                    "   <input type='hidden' name='_method' value='" + $(this).attr('data-method') + "'>\n" +
+                    "   <input type='hidden' name='_token' value='" + $('meta[name="csrf-token"]').attr('content') + "'>\n" +
+                    "</form>\n";
+            else
+                return "";
+        })
+            .removeAttr('href')
+            .attr('style', 'cursor:pointer;')
+            .attr('onclick', '$(this).find("form").submit();');
+    }
+    addDeleteForms();
+    /**
+     * This is for delete buttons that are loaded via AJAX in datatables, they will not work right
+     * without this block of code
+     */
+    $(document).ajaxComplete(function(){
+        addDeleteForms();
+    });
+    /**
+     * Generic confirm form delete using Sweet Alert
+     */
+    $('body').on('submit', 'form[name=delete_item]', function(e){
+        e.preventDefault();
+        var form = this;
+        var link = $('a[data-method="delete"]');
+        var cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel";
+        var confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Yes, delete";
+        var title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Warning";
+        var text = (link.attr('data-trans-text')) ? link.attr('data-trans-text') : "Are you sure you want to delete this item?";
+
+        swal.fire({
+            title: title,
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: cancel,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: confirm,
+            // closeOnConfirm: true
+        }, function(confirmed) {
+            if (confirmed)
+                form.submit();
+        });
+    });
+
+    /**
+     * Generic 'are you sure' confirm box
+     */
+    $('body').on('click', 'a[name=confirm_item]', function(e){
+        e.preventDefault();
+        var link = $(this);
+        var title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Are you sure you want to do this?";
+        var cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel";
+        var confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Continue";
+
+        swal.fire({
+            title: title,
+            icon: "info",
+            showCancelButton: true,
+            cancelButtonText: cancel,
+            confirmButtonColor: "#3C8DBC",
+            confirmButtonText: confirm,
+            // closeOnConfirm: true
+        }, function(confirmed) {
+            if (confirmed)
+                window.location = link.attr('href');
+        });
+    });
+
+    /**
+     * Bind all bootstrap tooltips
+     */
+    $("[data-toggle=\"tooltip\"]").tooltip();
+
+    /**
+     * Bind all bootstrap popovers
+     */
+    $("[data-toggle=\"popover\"]").popover();
+
+    /**
+     * This closes the popover when its clicked away from
+     */
+    $('body').on('click', function (e) {
+        $('[data-toggle="popover"]').each(function () {
+            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                $(this).popover('hide');
+            }
+        });
+    });
 });
 })(jQuery);

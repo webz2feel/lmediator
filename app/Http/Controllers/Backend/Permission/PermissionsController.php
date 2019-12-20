@@ -50,11 +50,16 @@ class PermissionsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \App\Exceptions\GeneralException
      */
     public function store(CreatePermissionRequest $request)
     {
-        //
+        if(!$this->permissionRepository->storePermission($request->all())){
+            return redirect()->route('admin.permission.create')->with('error','Slug has already taken');
+        }
+        return redirect()->route('admin.permission.index')->with('success','Permission created successfully');
     }
 
     /**

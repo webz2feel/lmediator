@@ -4249,3 +4249,5 @@ landing page
     margin-bottom: 15px; }
   .land-body .f-social-links {
     margin: 15px 0; } }
+.dt-buttons{display: none !important;}
+.swal2-popup{font-size: inherit !important;}

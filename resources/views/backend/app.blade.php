@@ -68,6 +68,7 @@
 <!--horizontal-timeline-->
 <script src="{{ asset('admin/assets/js/horizontal-timeline/js/jquery.mobile.custom.min.js') }}"></script>
 <script src="{{ asset('admin/assets/js/horizontal-timeline/js/main.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @yield('scripts')
 <!-- Common Script   -->
 <script src="{{ asset('admin/dist/js/main.js') }}"></script>

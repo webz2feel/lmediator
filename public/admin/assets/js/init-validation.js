@@ -1,12 +1,27 @@
 var Script = function () {
 
     $.validator.setDefaults({
-        submitHandler: function() { alert("submitted!"); }
+        // submitHandler: function() { alert("submitted!"); }
     });
+    $.validator.addMethod("lettersonly", function(value, element)
+    {
+        return this.optional(element) || /^[a-z\s-]+$/i.test(value);
+    }, "Letters and spaces only please");
 
-    $().ready(function() {
+    $(document).ready(function() {
         // validate the comment form when it is submitted
-        $("#commentForm").validate();
+        $("#commentForm").validate({
+            rules: {
+                name: {
+                    required: true,
+                    lettersonly: true
+                },
+                slug: {
+                    required: true,
+                    lettersonly: true
+                }
+            }
+        });
 
         // validate signup form on keyup and submit
         $("#signupForm").validate({

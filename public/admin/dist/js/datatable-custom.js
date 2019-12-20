@@ -45,7 +45,7 @@ var Backend = {}; // common variable used in all the files of the backend
                 // get the datatable search input and on its key press check if we hit enter then search with datatable
                 this.cloneElement(this.selector.searchInput, function (element) { //cloning done to remove any binding of the events
                     element.onkeypress = function (event) {
-                        if (event.keyCode == 13) {
+                        if (event.keyCode === 13) {
                             dataTable.fnFilter(this.value);
                         }
                     };

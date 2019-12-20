@@ -16,21 +16,39 @@
                     <div class="text-right">
                         @include('backend.permission.partials.permissions-header-buttons')
                     </div>
+                    <br>
                     <table class="table responsive-data-table table-striped" id="permissions-table">
                         <thead>
                         <tr>
                             <th>
+                                Display Name
+                            </th>
+                            <th>
                                 Permission
                             </th>
                             <th>
-                                Display Name
+                                Created At
                             </th>
-{{--                            <th>--}}
-{{--                                Sort--}}
-{{--                            </th>--}}
                             <th>
                                 Actions
                             </th>
+                        </tr>
+                        </thead>
+                        <thead class="transparent-bg">
+                        <tr>
+                            <th>
+                                <input type="text" class="search-input-text form-control" data-column="0">
+                                <a class="reset-data" href="javascript:void(0)"><i class="fa fa-times"></i></a>
+                            </th>
+                            <th>
+                                <input type="text" class="search-input-text form-control" data-column="1">
+                                <a class="reset-data" href="javascript:void(0)"><i class="fa fa-times"></i></a>
+                            </th>
+                            <th>
+                                <input type="text" class="search-input-text form-control" data-column="2">
+                                <a class="reset-data" href="javascript:void(0)"><i class="fa fa-times"></i></a>
+                            </th>
+                            <th></th>
                         </tr>
                         </thead>
                     </table>
@@ -41,25 +59,30 @@
     </div>
 @endsection
 @section('template_linked_css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/components/datatables/datatables.min.css') }}"/>
-{{--    <link href="{{ asset('admin/components/datatables/media/css/jquery.dataTables.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('admin/components/datatables-tabletools/css/dataTables.tableTools.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('admin/components/datatables-colvis/css/dataTables.colVis.css') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('admin/components/datatables-responsive/css/responsive.dataTables.scss') }}" rel="stylesheet">--}}
-{{--    <link href="{{ asset('admin/components/datatables-scroller/css/scroller.dataTables.scss') }}" rel="stylesheet">--}}
+    <link href="{{ asset('admin/components/datatables/media/css/jquery.dataTables.css') }}" rel="stylesheet">
+    <style>
+        div.dataTables_wrapper div.dataTables_processing {
+            background: rgba(0, 0, 0, 0.75) none repeat scroll 0 0;
+            border: 1px solid rgba(255, 255, 255, 1);
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 5px 0;
+            z-index: 10;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            margin-left: -100px;
+            margin-top: -26px;
+            text-align: center;
+        }
+    </style>
 @endsection
 @section('scripts')
 
     <script type="text/javascript" src="{{ asset('admin/components/datatables/pdfmake.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin/components/datatables/vfs_fonts.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin/components/datatables/datatables.min.js') }}"></script>
-
-    {{--    <script src="{{ asset('admin/components/datatables.net/js/jquery.dataTables.min.js') }}"></script>--}}
-{{--    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>--}}
-{{--    <script src="{{ asset('admin/components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('admin/components/datatables-colvis/js/dataTables.colVis.js') }}"></script>--}}
-{{--    <script src="{{ asset('admin/components/datatables-responsive/js/dataTables.responsive.js') }}"></script>--}}
-{{--    <script src="{{ asset('admin/components/datatables-scroller/js/dataTables.scroller.js') }}"></script>--}}
     <script src="{{ asset('admin/dist/js/datatable-custom.js') }}"></script>
     <script>
         $(function() {
@@ -79,10 +102,10 @@
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'slug', name: 'slug'},
-                    // {data: 'sort', name: 'permissions.sort'},
+                    {data: 'created_at', name: 'created_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
-                order: [[2, "asc"]],
+                // order: [[3, "asc"]],
                 searchDelay: 500,
                 dom: 'lBfrtip',
                 buttons: {
