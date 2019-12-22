@@ -1,254 +1,316 @@
-<header id="header" class="ui-header">
-
-    <div class="navbar-header">
-        <!--logo start-->
-        <a href="{{route('admin.dashboard')}}" class="navbar-brand">
-            <span class="logo"><img src="{{ asset('admin/imgs/logo-dark.png') }}" alt=""/></span>
-            <span class="logo-compact"><img src="{{ asset('admin/imgs/logo-icon-dark.png') }}" alt=""/></span>
+<div class="navbar navbar-expand-md navbar-light navbar-static">
+    <div class="navbar-brand">
+        <a href="index.html" class="d-inline-block">
+            <img src="{{ asset('admin/plugins/images/logo_light.png') }}" alt="">
         </a>
-        <!--logo end-->
     </div>
 
-    <div class="search-dropdown dropdown pull-right visible-xs">
-        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-search"></i></button>
-        <div class="dropdown-menu">
-            <form >
-                <input class="form-control" placeholder="Search here..." type="text">
-            </form>
-        </div>
+    <div class="d-md-none">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+            <i class="icon-tree5"></i>
+        </button>
+        <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+            <i class="icon-paragraph-justify3"></i>
+        </button>
     </div>
 
-    <div class="navbar-collapse nav-responsive-disabled">
-
-        <!--toggle buttons start-->
-        <ul class="nav navbar-nav">
-            <li>
-                <a class="toggle-btn" data-toggle="ui-nav" href="">
-                    <i class="fa fa-bars"></i>
+    <div class="collapse navbar-collapse" id="navbar-mobile">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="index.html#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+                    <i class="icon-paragraph-justify3"></i>
                 </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="index.html#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
+                    <i class="icon-git-compare"></i>
+                    <span class="d-md-none ml-2">Git updates</span>
+                    <span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">9</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-content wmin-md-350">
+                    <div class="dropdown-content-header">
+                        <span class="font-weight-semibold">Git updates</span>
+                        <a href="index.html#" class="text-default"><i class="icon-sync"></i></a>
+                    </div>
+
+                    <div class="dropdown-content-body dropdown-scrollable">
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="mr-3">
+                                    <a href="index.html#" class="btn bg-transparent border-blue-300 text-blue-300 rounded-round border-2 btn-icon"><i class="icon-git-pull-request"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    Drop the IE <a href="index.html#">specific hacks</a> for temporal inputs
+                                    <div class="text-muted font-size-sm">4 minutes ago</div>
+                                </div>
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <a href="index.html#" class="btn bg-transparent border-orange-300 text-orange-300 rounded-round border-2 btn-icon"><i class="icon-git-commit"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    Add full font overrides for popovers and tooltips
+                                    <div class="text-muted font-size-sm">36 minutes ago</div>
+                                </div>
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <a href="index.html#" class="btn bg-transparent border-green text-green rounded-round border-2 btn-icon"><i class="icon-git-branch"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    <a href="index.html#">Chris Arney</a> created a new <span class="font-weight-semibold">Design</span> branch
+                                    <div class="text-muted font-size-sm">2 hours ago</div>
+                                </div>
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <a href="index.html#" class="btn bg-transparent border-pink-300 text-pink-300 rounded-round border-2 btn-icon"><i class="icon-git-merge"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    <a href="index.html#">Eugene Kopyov</a> merged <span class="font-weight-semibold">Master</span> and <span class="font-weight-semibold">Dev</span> branches
+                                    <div class="text-muted font-size-sm">Dec 18, 18:36</div>
+                                </div>
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <a href="index.html#" class="btn bg-transparent border-blue-300 text-blue-300 rounded-round border-2 btn-icon"><i class="icon-git-pull-request"></i></a>
+                                </div>
+
+                                <div class="media-body">
+                                    Have Carousel ignore keyboard events
+                                    <div class="text-muted font-size-sm">Dec 12, 05:46</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown-content-footer">
+                        <a href="index.html#" class="text-white mr-auto">All updates</a>
+                        <div>
+                            <a href="index.html#" class="text-white" data-popup="tooltip" title="Mark all as read"><i class="icon-radio-unchecked"></i></a>
+                            <a href="index.html#" class="text-white ml-2" data-popup="tooltip" title="Bug tracker"><i class="icon-bug2"></i></a>
+                        </div>
+                    </div>
+                </div>
             </li>
         </ul>
-        <!-- toggle buttons end -->
 
-        <!--search start-->
-        <form class="search-content hidden-xs" >
-            <button type="submit" name="search" class="btn srch-btn">
-                <i class="fa fa-search"></i>
-            </button>
-            <input type="text" class="form-control" name="keyword" placeholder="Search here...">
-        </form>
-        <!--search end-->
+        <span class="badge bg-success my-3 my-md-0 ml-md-3 mr-md-auto">Online</span>
 
-        <!--notification start-->
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-bell-o"></i>
-                    <span class="badge">5</span>
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a href="index.html#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
+                    <i class="icon-people"></i>
+                    <span class="d-md-none ml-2">Users</span>
                 </a>
-                <!--dropdown -->
-                <ul class="dropdown-menu dropdown-menu--responsive">
-                    <div class="dropdown-header">Notifications (12)</div>
-                    <ul class="Notification-list Notification-list--small niceScroll list-group">
-                        <li class="Notification list-group-item">
-                            <button class="Notification__status Notification__status--read" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Notification__avatar Notification__avatar--danger pull-left" href="">
-                                    <i class="Notification__avatar-icon fa fa-bolt"></i>
-                                </div>
-                                <div class="Notification__highlight">
-                                    <p class="Notification__highlight-excerpt"><b>Server Error Report</b></p>
-                                    <p class="Notification__highlight-time">1.2 hours ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="Notification list-group-item">
-                            <button class="Notification__status Notification__status--read" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Notification__avatar Notification__avatar--success pull-left" href="">
-                                    <i class="Notification__avatar-icon fa fa-user-plus"></i>
-                                </div>
-                                <div class="Notification__highlight">
-                                    <p class="Notification__highlight-excerpt"><b>New Member Registration</b></p>
-                                    <p class="Notification__highlight-time">2 hours ago</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="Notification list-group-item">
-                            <button class="Notification__status Notification__status--read" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Notification__avatar pull-left" href="">
-                                    <img src="{{ asset('admin/imgs/a0.jpg') }}" alt="...">
-                                </div>
-                                <div class="Notification__highlight">
-                                    <p class="Notification__highlight-excerpt"><b>Tomas Edison</b> and 4 other people like your post “keep clam and watch the fizz”.</p>
-                                    <p class="Notification__highlight-time">1 day ago</p>
-                                </div>
-                            </a>
-                        </li>
 
-                        <li class="Notification list-group-item">
-                            <button class="Notification__status Notification__status--unread" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Notification__avatar pull-left" href="">
-                                    <img src="{{ asset('admin/imgs/a0.jpg') }}" alt="...">
+                <div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-300">
+                    <div class="dropdown-content-header">
+                        <span class="font-weight-semibold">Users online</span>
+                        <a href="index.html#" class="text-default"><i class="icon-search4 font-size-base"></i></a>
+                    </div>
+
+                    <div class="dropdown-content-body dropdown-scrollable">
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="mr-3">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face18.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
-                                <div class="Notification__highlight">
-                                    <p class="Notification__highlight-excerpt"><b>Luciad Extic</b> can join conference.</p>
-                                    <p class="Notification__highlight-time">1 hour ago</p>
+                                <div class="media-body">
+                                    <a href="index.html#" class="media-title text-white font-weight-semibold">Jordana Ansley</a>
+                                    <span class="d-block text-muted font-size-sm">Lead web developer</span>
                                 </div>
-                            </a>
-                        </li>
-                        <li class="Notification list-group-item">
-                            <button class="Notification__status Notification__status--unread" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Notification__avatar Notification__avatar--info pull-left" href="">
-                                    <i class="Notification__avatar-icon fa fa-database"></i>
+                                <div class="ml-3 align-self-center"><span class="badge badge-mark border-success"></span></div>
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face24.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
-                                <div class="Notification__highlight">
-                                    <p class="Notification__highlight-excerpt"><b>Database Error</b></p>
-                                    <p class="Notification__highlight-time">2 days ago</p>
+                                <div class="media-body">
+                                    <a href="index.html#" class="media-title text-white font-weight-semibold">Will Brason</a>
+                                    <span class="d-block text-muted font-size-sm">Marketing manager</span>
                                 </div>
-                            </a>
-                        </li>
-                        <li class="Notification list-group-item">
-                            <button class="Notification__status Notification__status--read" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Notification__avatar Notification__avatar--danger pull-left" href="">
-                                    <i class="Notification__avatar-icon fa fa-bolt"></i>
+                                <div class="ml-3 align-self-center"><span class="badge badge-mark border-danger"></span></div>
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face17.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
-                                <div class="Notification__highlight">
-                                    <p class="Notification__highlight-excerpt"><b>Server Error Report</b></p>
-                                    <p class="Notification__highlight-time">1.2 hours ago</p>
+                                <div class="media-body">
+                                    <a href="index.html#" class="media-title text-white font-weight-semibold">Hanna Walden</a>
+                                    <span class="d-block text-muted font-size-sm">Project manager</span>
                                 </div>
-                            </a>
-                        </li>
-                        <li class="Notification list-group-item">
-                            <button class="Notification__status Notification__status--read" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Notification__avatar Notification__avatar--success pull-left" href="">
-                                    <i class="Notification__avatar-icon fa fa-user-plus"></i>
+                                <div class="ml-3 align-self-center"><span class="badge badge-mark border-success"></span></div>
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face19.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
-                                <div class="Notification__highlight">
-                                    <p class="Notification__highlight-excerpt"><b>New Member Registration</b></p>
-                                    <p class="Notification__highlight-time">2 hours ago</p>
+                                <div class="media-body">
+                                    <a href="index.html#" class="media-title text-white font-weight-semibold">Dori Laperriere</a>
+                                    <span class="d-block text-muted font-size-sm">Business developer</span>
                                 </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="dropdown-footer"><a href="">View more</a></div>
-                </ul>
-                <!--/ dropdown -->
+                                <div class="ml-3 align-self-center"><span class="badge badge-mark border-warning-300"></span></div>
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face16.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <a href="index.html#" class="media-title text-white font-weight-semibold">Vanessa Aurelius</a>
+                                    <span class="d-block text-muted font-size-sm">UX expert</span>
+                                </div>
+                                <div class="ml-3 align-self-center"><span class="badge badge-mark border-grey-400"></span></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown-content-footer">
+                        <a href="index.html#" class="text-white mr-auto">All users</a>
+                        <a href="index.html#" class="text-white"><i class="icon-gear"></i></a>
+                    </div>
+                </div>
             </li>
 
-            <li class="dropdown">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge">5</span>
+            <li class="nav-item dropdown">
+                <a href="index.html#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
+                    <i class="icon-bubbles4"></i>
+                    <span class="d-md-none ml-2">Messages</span>
+                    <span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">2</span>
                 </a>
-                <!--dropdown -->
-                <ul class="dropdown-menu dropdown-menu--responsive">
-                    <div class="dropdown-header">Messages (12)</div>
-                    <ul class="Message-list niceScroll list-group">
-                        <li class="Message list-group-item">
-                            <button class="Message__status Message__status--read" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Message__avatar Message__avatar--danger pull-left" href="">
-                                    <img src="{{asset('admin/imgs/a2.jpg') }}" alt="...">
+
+                <div class="dropdown-menu dropdown-menu-right dropdown-content wmin-md-350">
+                    <div class="dropdown-content-header">
+                        <span class="font-weight-semibold">Messages</span>
+                        <a href="index.html#" class="text-default"><i class="icon-compose"></i></a>
+                    </div>
+
+                    <div class="dropdown-content-body dropdown-scrollable">
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="mr-3 position-relative">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face10.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
-                                <div class="Message__highlight">
-                                    <span class="Message__highlight-name">Lubida Teresa</span>
-                                    <p class="Message__highlight-excerpt">Hello there! Can you send me a photo please?</p>
-                                    <p class="Message__highlight-time">1 hour ago</p>
+
+                                <div class="media-body">
+                                    <div class="media-title">
+                                        <a href="index.html#">
+                                            <span class="font-weight-semibold text-white">James Alexander</span>
+                                            <span class="text-muted float-right font-size-sm">04:58</span>
+                                        </a>
+                                    </div>
+
+                                    <span class="text-muted">who knows, maybe that would be the best thing for me...</span>
                                 </div>
-                            </a>
-                        </li>
-                        <li class="Message list-group-item">
-                            <button class="Message__status Message__status--unread" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Message__avatar Message__avatar--danger pull-left" href="">
-                                    <img src="{{asset('admin/imgs/a1.jpg') }}" alt="...">
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3 position-relative">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face3.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
-                                <div class="Message__highlight">
-                                    <span class="Message__highlight-name">Sara Souaidan</span>
-                                    <p class="Message__highlight-excerpt">Hello there!</p>
-                                    <p class="Message__highlight-time">1 hour ago</p>
+
+                                <div class="media-body">
+                                    <div class="media-title">
+                                        <a href="index.html#">
+                                            <span class="font-weight-semibold text-white">Margo Baker</span>
+                                            <span class="text-muted float-right font-size-sm">12:16</span>
+                                        </a>
+                                    </div>
+
+                                    <span class="text-muted">That was something he was unable to do because...</span>
                                 </div>
-                            </a>
-                        </li>
-                        <li class="Message list-group-item">
-                            <button class="Message__status Message__status--read" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Message__avatar Message__avatar--danger pull-left" href="">
-                                    <img src="{{asset('admin/imgs/a0.jpg') }}" alt="...">
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face24.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
-                                <div class="Message__highlight">
-                                    <span class="Message__highlight-name">Addy Osmany</span>
-                                    <p class="Message__highlight-excerpt">Blah Blah Blah</p>
-                                    <p class="Message__highlight-time">1 hour ago</p>
+                                <div class="media-body">
+                                    <div class="media-title">
+                                        <a href="index.html#">
+                                            <span class="font-weight-semibold text-white">Jeremy Victorino</span>
+                                            <span class="text-muted float-right font-size-sm">22:48</span>
+                                        </a>
+                                    </div>
+
+                                    <span class="text-muted">But that would be extremely strained and suspicious...</span>
                                 </div>
-                            </a>
-                        </li>
-                        <li class="Message list-group-item">
-                            <button class="Message__status Message__status--read" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Message__avatar Message__avatar--danger pull-left" href="">
-                                    <img src="imgs/a0.jpg" alt="...">
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face4.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
-                                <div class="Message__highlight">
-                                    <span class="Message__highlight-name">Picaso Patel</span>
-                                    <p class="Message__highlight-excerpt">Bhai, are you there?</p>
-                                    <p class="Message__highlight-time">2 years ago</p>
+                                <div class="media-body">
+                                    <div class="media-title">
+                                        <a href="index.html#">
+                                            <span class="font-weight-semibold text-white">Beatrix Diaz</span>
+                                            <span class="text-muted float-right font-size-sm">Tue</span>
+                                        </a>
+                                    </div>
+
+                                    <span class="text-muted">What a strenuous career it is that I've chosen...</span>
                                 </div>
-                            </a>
-                        </li>
-                        <li class="Message list-group-item">
-                            <button class="Message__status Message__status--read" type="button" name="button"></button>
-                            <a href="">
-                                <div class="Message__avatar Message__avatar--danger pull-left" href="">
-                                    <img src="imgs/a0.jpg" alt="...">
+                            </li>
+
+                            <li class="media">
+                                <div class="mr-3">
+                                    <img src="{{ asset('admin/plugins/images/demo/users/face25.jpg') }}" width="36" height="36" class="rounded-circle" alt="">
                                 </div>
-                                <div class="Message__highlight">
-                                    <span class="Message__highlight-name">Bengali Tiger</span>
-                                    <p class="Message__highlight-excerpt">Mu ha ha</p>
-                                    <p class="Message__highlight-time">10 years ago</p>
+                                <div class="media-body">
+                                    <div class="media-title">
+                                        <a href="index.html#">
+                                            <span class="font-weight-semibold text-white">Richard Vango</span>
+                                            <span class="text-muted float-right font-size-sm">Mon</span>
+                                        </a>
+                                    </div>
+
+                                    <span class="text-muted">Other travelling salesmen live a life of luxury...</span>
                                 </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="dropdown-footer"><a href="">View more</a></div>
-                </ul>
-                <!--/ dropdown -->
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown-content-footer justify-content-center p-0">
+                        <a href="index.html#" class="text-muted w-100 py-2" data-popup="tooltip" title="Load more"><i class="icon-menu7 d-block top-0"></i></a>
+                    </div>
+                </div>
             </li>
 
-            <li class="dropdown dropdown-usermenu">
-                <a href="#" class=" dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                    <div class="user-avatar"><img src="{{asset('admin/imgs/a0.jpg') }}" alt="..."></div>
-                    <span class="hidden-sm hidden-xs">{{ Auth::guard('admin')->user()->full_name }}</span>
-                    <!--<i class="fa fa-angle-down"></i>-->
-                    <span class="caret hidden-sm hidden-xs"></span>
+            <li class="nav-item dropdown dropdown-user">
+                <a href="index.html#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{ asset('admin/plugins/images/demo/users/face11.jpg') }}" class="rounded-circle mr-2" height="34" alt="">
+                    <span>{{ auth()->user()->full_name }}</span>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                    <li><a href="#"><i class="fa fa-cogs"></i>  Settings</a></li>
-                    <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
-                    <li><a href="#"><i class="fa fa-commenting-o"></i>  Feedback</a></li>
-                    <li><a href="#"><i class="fa fa-life-ring"></i>  Help</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" onclick="event.preventDefault();
-                                                document.querySelector('#admin-logout-form').submit();"><i class="fa fa-sign-out"></i> Log Out</a></li>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="index.html#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
+                    <a href="index.html#" class="dropdown-item"><i class="icon-coins"></i> My balance</a>
+                    <a href="index.html#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-blue ml-auto">58</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a href="index.html#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
+                    <a href="#" class="dropdown-item" onclick="event.preventDefault();
+                                                document.querySelector('#admin-logout-form').submit();"><i class="icon-switch2"></i> Logout</a>
                     <form id="admin-logout-form" action="{{ route('admin.logout') }}"
                           method="POST" style="display: none;">
                         @csrf
                     </form>
-                </ul>
-            </li>
-
-            <li>
-                <a data-toggle="ui-aside-right" href=""><i class="glyphicon glyphicon-option-vertical"></i></a>
+                </div>
             </li>
         </ul>
-        <!--notification end-->
-
     </div>
-
-</header>
+</div>

@@ -1,79 +1,85 @@
-<aside id="aside" class="ui-aside">
-    <ul class="nav" ui-nav>
-        <li class="nav-head">
-            <h5 class="nav-title text-uppercase light-txt">Navigation</h5>
-        </li>
-        <li class="active">
-            <a href="{{route('admin.dashboard')}}"><i class="fa fa-home"></i><span> Dashboard </span></a>
-            <ul class="nav nav-sub">
-                <li class="nav-sub-header"><a href="{{route('admin.dashboard')}}"><span>Dashboard</span></a></li>
-            </ul>
-        </li>
-        <li class="active">
-            <a href=""><i class="fa fa-home"></i><span>Dashboard</span><i class="fa fa-angle-right pull-right"></i></a>
-            <ul class="nav nav-sub nav-sub--open">
-                <li class="nav-sub-header"><a href=""><span>Dashboard</span></a></li>
-                <li class="active"><a href="index.html"><span>Dashboard 1</span></a></li>
-                <li><a href="dashboard-horizontal-nav.html"><span>Dashboard 2 <small class="label label-danger">TopNav</small></span></a></li>
-                <li><a href="dashboard-compact.html"><span>Dashboard 3 <small class="label label-success">Sm Nav</small></span></a></li>
-                <li><a href="dashboard-mega-dropdown.html"><span>Dashboard 4 <small class="label label-primary">eCom..</small></span></a></li>
-                <li><a href="dashboard-lightsidebar.html"><span>Dashboard 5 <small class="label label-info">Light</small></span></a></li>
-            </ul>
-        </li>
+<div class="sidebar sidebar-light sidebar-main sidebar-expand-md">
 
-        <li>
-            <a href=""><i class="fa fa-thumb-tack"></i><span>Posts</span><i class="fa fa-angle-right pull-right"></i></a>
-            <ul class="nav nav-sub">
-                <li><a href=""><span>All Posts</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Add New</span></a></li>
-                <li><a href="ecommerce-orders.html"><span>Categories</span></a></li>
-                <li><a href="ecommerce-orders-view.html"><span>Tags</span></a></li>
+    <!-- Sidebar mobile toggler -->
+    <div class="sidebar-mobile-toggler text-center">
+        <a href="index.html#" class="sidebar-mobile-main-toggle">
+            <i class="icon-arrow-left8"></i>
+        </a>
+        Navigation
+        <a href="index.html#" class="sidebar-mobile-expand">
+            <i class="icon-screen-full"></i>
+            <i class="icon-screen-normal"></i>
+        </a>
+    </div>
+    <!-- /sidebar mobile toggler -->
+
+
+    <!-- Sidebar content -->
+    <div class="sidebar-content">
+        <!-- Main navigation -->
+        <div class="card card-sidebar-mobile">
+            <ul class="nav nav-sidebar" data-nav-type="accordion">
+
+                <!-- Main -->
+                <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
+                <li class="nav-item">
+                    <a href="{{route('admin.dashboard')}}" class="nav-link active">
+                        <i class="icon-home4"></i>
+                        <span>
+									Dashboard
+								</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Posts</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Posts">
+                        <li class="nav-item"><a href="" class="nav-link active">All Posts</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Add New</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Categories</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Tags</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="index.html#" class="nav-link"><i class="icon-color-sampler"></i> <span>Pages</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Pages">
+                        <li class="nav-item"><a href="" class="nav-link">All Pages</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Add New</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">
+                        <i class="icon-comments"></i>
+                        <span> Comments </span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="index.html#" class="nav-link"><i class="icon-color-sampler"></i> <span>Access</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Access">
+                        <li class="nav-item"><a href="{{route('admin.permission.index')}}" class="nav-link">View Permissions</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">View Roles</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="index.html#" class="nav-link"><i class="icon-color-sampler"></i> <span>Users</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Users">
+                        <li class="nav-item"><a href="" class="nav-link">All Users</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Add New</a></li>
+                        <li class="nav-item"><a href="" class="nav-link">Your Profile</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="changelog.html" class="nav-link">
+                        <i class="icon-list-unordered"></i>
+                        <span>logs</span>
+                    </a>
+                </li>
             </ul>
-        </li>
-        <li>
-            <a href=""><i class="fa fa-files-o"></i><span>Pages</span><i class="fa fa-angle-right pull-right"></i></a>
-            <ul class="nav nav-sub">
-                <li><a href=""><span>All Pages</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Add New</span></a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="mailbox.html"><i class="fa fa-comments"></i><span> Comments </span></a>
-            <ul class="nav nav-sub">
-                <li class="nav-sub-header"><a href="mailbox.html"><span>Comments</span></a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="{{route('admin.permission.index')}}"><i class="fa fa-lock"></i><span> Permissions </span></a>
-            <ul class="nav nav-sub">
-                <li class="nav-sub-header"><a href="{{route('admin.permission.index')}}"><span>Permissions</span></a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="mailbox.html"><i class="fa fa-briefcase"></i><span> Roles </span></a>
-            <ul class="nav nav-sub">
-                <li class="nav-sub-header"><a href="mailbox.html"><span>Roles</span></a></li>
-            </ul>
-        </li>
-        <li>
-            <a href=""><i class="fa fa-users"></i><span>Users</span><i class="fa fa-angle-right pull-right"></i></a>
-            <ul class="nav nav-sub">
-                <li><a href=""><span>All Users</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Add New</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Your Profile</span></a></li>
-            </ul>
-        </li>
-        <li>
-            <a href=""><i class="fa fa-sliders"></i><span>Settings</span><i class="fa fa-angle-right pull-right"></i></a>
-            <ul class="nav nav-sub">
-                <li><a href=""><span>General</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Writing</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Reading</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Discussion</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Media</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Permalink</span></a></li>
-                <li><a href="ecommerce-dashboard.html"><span>Privacy</span></a></li>
-            </ul>
-        </li>
-    </ul>
-</aside>
+        </div>
+        <!-- /main navigation -->
+    </div>
+    <!-- /sidebar content -->
+</div>

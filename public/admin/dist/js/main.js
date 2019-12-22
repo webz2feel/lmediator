@@ -357,18 +357,20 @@ $(function() {
         var confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Yes, delete";
         var title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Warning";
         var text = (link.attr('data-trans-text')) ? link.attr('data-trans-text') : "Are you sure you want to delete this item?";
-
         swal.fire({
             title: title,
-            icon: "warning",
+            type: 'warning',
             showCancelButton: true,
-            cancelButtonText: cancel,
-            confirmButtonColor: "#DD6B55",
             confirmButtonText: confirm,
-            // closeOnConfirm: true
-        }, function(confirmed) {
-            if (confirmed)
+            cancelButtonText: cancel,
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false
+        }).then(function(result) {
+            console.log(result);
+            if(result.value) {
                 form.submit();
+            }
         });
     });
 

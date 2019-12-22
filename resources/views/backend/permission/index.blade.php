@@ -1,89 +1,62 @@
 @extends('backend.app')
 @section('template_title', 'Permissions')
 @section('content')
-    <div class="row">
-        <div class="col-sm-12">
-            <section class="panel">
-                <header class="panel-heading panel-border">
-                    Permissions
-                    <span class="tools pull-right">
-                                            <a class="refresh-box fa fa-repeat" href="javascript:;"></a>
-                                            <a class="collapse-box fa fa-chevron-down" href="javascript:;"></a>
-                                            <a class="close-box fa fa-times" href="javascript:;"></a>
-                                        </span>
-                </header>
-                <div class="panel-body">
-                    <div class="text-right">
-                        @include('backend.permission.partials.permissions-header-buttons')
+    @section('header', 'Permissions')
+    <div class="content pt-0">
+        <div class="card">
+            <div class="card-header header-elements-inline">
+                <h5 class="card-title">All Permissions </h5>
+                <div class="header-elements">
+                    <div class="list-icons">
+                        <a class="list-icons-item" data-action="collapse"></a>
+                        <a class="list-icons-item" data-action="reload"></a>
+                        <a class="list-icons-item" data-action="remove"></a>
                     </div>
-                    <br>
-                    <table class="table responsive-data-table table-striped" id="permissions-table">
-                        <thead>
-                        <tr>
-                            <th>
-                                Display Name
-                            </th>
-                            <th>
-                                Permission
-                            </th>
-                            <th>
-                                Created At
-                            </th>
-                            <th>
-                                Actions
-                            </th>
-                        </tr>
-                        </thead>
-                        <thead class="transparent-bg">
-                        <tr>
-                            <th>
-                                <input type="text" class="search-input-text form-control" data-column="0">
-                                <a class="reset-data" href="javascript:void(0)"><i class="fa fa-times"></i></a>
-                            </th>
-                            <th>
-                                <input type="text" class="search-input-text form-control" data-column="1">
-                                <a class="reset-data" href="javascript:void(0)"><i class="fa fa-times"></i></a>
-                            </th>
-                            <th>
-                                <input type="text" class="search-input-text form-control" data-column="2">
-                                <a class="reset-data" href="javascript:void(0)"><i class="fa fa-times"></i></a>
-                            </th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                    </table>
                 </div>
-            </section>
+            </div>
+            <div class="card-body">
+                @include('backend.permission.partials.permissions-header-buttons')
+            </div>
+            <table class="table datatable-responsive" id="permissions-table">
+                <thead>
+                <tr>
+                    <th>Display Name</th>
+                    <th>Permission</th>
+                    <th>Created AT</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+                </thead>
+                <thead class="transparent-bg">
+                <tr>
+                    <th>
+                        <input type="text" class="search-input-text form-control" data-column="0">
+                        <a class="reset-data" href="javascript:void(0)"><i class="icon icon-cross3"></i></a>
+                    </th>
+                    <th>
+                        <input type="text" class="search-input-text form-control" data-column="1">
+                        <a class="reset-data" href="javascript:void(0)"><i class="icon icon-cross3"></i></a>
+                    </th>
+                    <th>
+                        <input type="text" class="search-input-text form-control" data-column="2">
+                        <a class="reset-data" href="javascript:void(0)"><i class="icon icon-cross3"></i></a>
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+            </table>
         </div>
-
     </div>
 @endsection
 @section('template_linked_css')
-    <link href="{{ asset('admin/components/datatables/media/css/jquery.dataTables.css') }}" rel="stylesheet">
-    <style>
-        div.dataTables_wrapper div.dataTables_processing {
-            background: rgba(0, 0, 0, 0.75) none repeat scroll 0 0;
-            border: 1px solid rgba(255, 255, 255, 1);
-            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-            color: #fff;
-            padding: 5px 0;
-            z-index: 10;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            margin-left: -100px;
-            margin-top: -26px;
-            text-align: center;
-        }
-    </style>
+
 @endsection
 @section('scripts')
-
-    <script type="text/javascript" src="{{ asset('admin/components/datatables/pdfmake.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/components/datatables/vfs_fonts.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/components/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/js/plugins/tables/datatables/extensions/responsive.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/js/plugins/forms/selects/select2.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/js/demo_pages/datatables_responsive.js') }}"></script>
     <script src="{{ asset('admin/dist/js/datatable-custom.js') }}"></script>
+    <script src="{{ asset('admin/plugins/js/plugins/notifications/sweet_alert.min.js') }}"></script>
     <script>
         $(function() {
             $.ajaxSetup({
@@ -106,8 +79,8 @@
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 // order: [[3, "asc"]],
-                searchDelay: 500,
-                dom: 'lBfrtip',
+                // searchDelay: 500,
+                // dom: 'lBfrtip',
                 buttons: {
                     buttons: [
                         { extend: 'copy', className: 'copyButton',  exportOptions: {columns: [ 0, 1, 2 ]  }},
@@ -117,9 +90,9 @@
                         { extend: 'print', className: 'printButton',  exportOptions: {columns: [ 0, 1, 2 ]  }}
                     ]
                 },
-                language: {
-{{--                    @lang('datatable.strings')--}}
-                }
+                {{--language: {--}}
+                {{--    @lang('datatable.strings')--}}
+                {{--}--}}
             });
             Backend.DataTableSearch.init(dataTable);
         });

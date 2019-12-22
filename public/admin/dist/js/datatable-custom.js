@@ -134,14 +134,13 @@ var Backend = {}; // common variable used in all the files of the backend
                 this.selectors.removeLogo.onclick = function (event) {
                     var data = event.target.getAttribute("data-id");
 
-                    swal({
+                    swal.fire({
                         title: "Warning",
                         text: "Are you sure you want to remove?",
                         type: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: "Yes",
-                        closeOnConfirm: true
                     }, function (confirmed) {
                         if (confirmed) {
                             if (data == 'logo') {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend\Permission;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Permission\CreatePermissionRequest;
+use App\Http\Requests\Permission\UpdatePermissionRequest;
+use App\Models\Permission\Permission;
 use App\Repository\Backend\Permission\PermissionRepository;
 use Illuminate\Http\Request;
 
@@ -27,7 +29,6 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-//        dd($this->permissionRepository->getForDataTable());
         return view('backend.permission.index');
     }
 
@@ -81,29 +82,36 @@ class PermissionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        return view('backend.permission.edit')->withPermission($permission);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Permission\UpdatePermissionRequest  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePermissionRequest $request, $id)
     {
-        //
+        if(!$this->permissionRepository->updatePermission($request->all(), $id)){
+            return redirect()->route('admin.permission.edit', $id)->with('error','Slug has already taken');
+        }
+        return redirect()->route('admin.permission.index')->with('success','Permission updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        Permission::destroy($id);
+        return redirect()->back()->with('success', 'Permission deleted successfully');
     }
 }
