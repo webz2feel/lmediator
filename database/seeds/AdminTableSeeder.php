@@ -2,7 +2,7 @@
 
 use App\Models\Admin\Admin;
 use App\Models\Permission\Permission;
-use App\Models\Role;
+use App\Models\Role\Role;
 use Illuminate\Database\Seeder;
 
 class AdminTableSeeder extends Seeder

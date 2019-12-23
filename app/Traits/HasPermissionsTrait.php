@@ -5,7 +5,7 @@ namespace App\Traits;
 
 
 use App\Models\Permission\Permission;
-use App\Models\Role;
+use App\Models\Role\Role;
 
 trait HasPermissionsTrait
 {

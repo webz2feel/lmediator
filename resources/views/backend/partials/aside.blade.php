@@ -59,7 +59,7 @@
 
                     <ul class="nav nav-group-sub" data-submenu-title="Access">
                         <li class="nav-item"><a href="{{route('admin.permission.index')}}" class="nav-link">View Permissions</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">View Roles</a></li>
+                        <li class="nav-item"><a href="{{route('admin.role.index')}}" class="nav-link">View Roles</a></li>
                     </ul>
                 </li>
                 <li class="nav-item nav-item-submenu">
