@@ -1,11 +1,11 @@
 @extends('backend.app')
-@section('template_title', 'Permissions')
+@section('template_title', 'Users')
+@section('header', 'Users')
 @section('content')
-    @section('header', 'Permissions')
     <div class="content pt-0">
         <div class="card">
             <div class="card-header header-elements-inline">
-                <h5 class="card-title">All Permissions </h5>
+                <h5 class="card-title">All Users </h5>
                 <div class="header-elements">
                     <div class="list-icons">
                         <a class="list-icons-item" data-action="collapse"></a>
@@ -15,21 +15,27 @@
                 </div>
             </div>
             <div class="card-body">
-                @include('backend.permission.partials.permissions-header-buttons')
+                @include('backend.role.partials.roles-header-buttons')
             </div>
             <table class="table datatable-responsive" id="data-table">
                 <thead>
                 <tr>
-                    <th>Display Name</th>
-                    <th>Permission</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Roles</th>
                     <th>Created AT</th>
                     <th class="text-center">Actions</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr>
-                    <td>Display Name</td>
-                    <td>Permission</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                    <td>Status</td>
+                    <td>Roles</td>
                     <td>Created AT</td>
                     <td></td>
                 </tr>
@@ -50,19 +56,22 @@
     <script src="{{ asset('admin/plugins/js/plugins/notifications/sweet_alert.min.js') }}"></script>
     @includeIf('backend.scripts.datatable-config')
     <script>
-        $(function() {
-            $('#data-table').DataTable({
-                ajax: {
-                    url: '{{ route("admin.permission.get") }}',
-                    type: 'post'
-                },
-                columns: [
-                    {data: 'name', name: 'name'},
-                    {data: 'slug', name: 'slug'},
-                    {data: 'created_at', name: 'created_at'},
-                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
-                ],
-            });
-        });
+       $(function() {
+           $('#data-table').DataTable({
+               ajax: {
+                   url: '{{ route("admin.user.get") }}',
+                   type: 'post'
+               },
+               columns: [
+                   {data: 'first_name', name: 'first_name'},
+                   {data: 'last_name', name: 'last_name'},
+                   {data: 'email', name: 'email'},
+                   {data: 'status', name: 'status'},
+                   {data: 'roles', name: 'roles'},
+                   {data: 'created_at', name: 'created_at'},
+                   {data: 'actions', name: 'actions', searchable: false, sortable: false}
+               ],
+           });
+       });
     </script>
 @endsection

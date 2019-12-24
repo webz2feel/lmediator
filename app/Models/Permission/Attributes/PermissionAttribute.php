@@ -8,7 +8,7 @@ trait PermissionAttribute
 {
     public function getActionButtonsAttribute()
     {
-        return '<div class="btn-group action-btn">
+        return '<div class="list-icons">
                     '.$this->getEditButtonAttribute('edit-permission', 'admin.permission.edit').'
                     '.$this->getDeleteButtonAttribute('delete-permission', 'admin.permission.destroy').'
                 </div>';

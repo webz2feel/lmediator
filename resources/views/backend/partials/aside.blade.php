@@ -66,8 +66,8 @@
                     <a href="index.html#" class="nav-link"><i class="icon-color-sampler"></i> <span>Users</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Users">
-                        <li class="nav-item"><a href="" class="nav-link">All Users</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Add New</a></li>
+                        <li class="nav-item"><a href="{{route('admin.user.index')}}" class="nav-link">All Users</a></li>
+                        <li class="nav-item"><a href="{{route('admin.user.create')}}" class="nav-link">Add New</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Your Profile</a></li>
                     </ul>
                 </li>

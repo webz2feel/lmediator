@@ -33,10 +33,11 @@ class RoleRepository
             return false;
         }
 
-        $permission = new Role();
-        $permission->name = $request['name'];
-        $permission->slug = $slug;
-        if($permission->save()){
+        $role = new Role();
+        $role->name = $request['name'];
+        $role->slug = $slug;
+        if($role->save()){
+            $role->permissions()->sync($request['permissions']);
             return true;
         }
     }
@@ -49,10 +50,12 @@ class RoleRepository
             return false;
         }
 
-        $permission = Role::findOrFail($request['id']);
-        $permission->name = $request['name'];
-        $permission->slug = $slug;
-        if($permission->save()){
+        $role = Role::findOrFail($request['id']);
+        $role->name = $request['name'];
+        $role->slug = $slug;
+        if($role->save()){
+//            $role->permissions()->sync([]);
+            $role->permissions()->sync($request['permissions']);
             return true;
         }
     }

@@ -3,6 +3,7 @@
 namespace App\Models\Admin;
 
 use App\Models\Admin\Attributes\AccessAttribute;
+use App\Models\ModelTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\HasPermissionsTrait;
 use Illuminate\Notifications\Notifiable;
@@ -11,6 +12,7 @@ class Admin extends Authenticatable
 {
     use HasPermissionsTrait;
     use Notifiable;
+    use ModelTrait;
     use AccessAttribute;
     /**
      * The attributes that are mass assignable.

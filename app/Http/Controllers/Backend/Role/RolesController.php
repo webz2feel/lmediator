@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Role;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Role\CreateRoleRequest;
 use App\Http\Requests\Role\UpdateRoleRequest;
+use App\Models\Permission\Permission;
 use App\Models\Role\Role;
 use App\Repository\Backend\Role\RoleRepository;
 use Illuminate\Http\Request;
@@ -43,7 +44,9 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('backend.role.create');
+        $role = new Role();
+        $permissions = Permission::all();
+        return view('backend.role.create')->withRole($role)->withPermissions($permissions);
     }
 
     /**
@@ -55,6 +58,7 @@ class RolesController extends Controller
      */
     public function store(CreateRoleRequest $request)
     {
+//        dd($request->all());
         if(!$this->repository->storeRole($request->all())){
             return redirect()->route('admin.role.create')->with('error','Slug has already taken');
         }
@@ -81,7 +85,11 @@ class RolesController extends Controller
     public function edit($id)
     {
         $role = Role::findOrFail($id);
-        return view('backend.role.edit')->withRole($role);
+        $permissions = Permission::all();
+        return view('backend.role.edit')
+            ->withRole($role)
+            ->withRolePermissions($role->permissions->pluck('id')->all())
+            ->withPermissions($permissions);
     }
 
     /**

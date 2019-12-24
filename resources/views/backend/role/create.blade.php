@@ -20,17 +20,7 @@
 
                 <div class="card-body">
                     <form action="{{route('admin.role.store')}}" method="POST" class="form-validate-jquery">
-                        @csrf
-                        <div class="form-group">
-                            <label>Name:</label>
-                            <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Role name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Role Slug:</label>
-                            <input type="text" class="form-control" placeholder="Role slug here" name="slug" value="{{old('slug')}}" required>
-                        </div>
-
+                        @includeIf('backend.role.partials.form', ['role' => $role, 'permissions' => $permissions, 'rolePermissions' => []])
                         <div class="text-right">
                             <a href="{{route('admin.role.index')}}" class="btn btn-default">Back</a>
                             <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
@@ -45,4 +35,12 @@
 @section('scripts')
     <script src="{{ asset('admin/plugins/js/plugins/forms/validation/validate.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/demo_pages/form_validation.js') }}"></script>
+    <script src="{{ asset('admin/plugins/js/plugins/forms/selects/select2.min.js') }}"></script>
+    <script>
+        $(function() {
+            $('.form-control-select2').select2({
+                minimumResultsForSearch: Infinity
+            });
+        });
+    </script>
 @endsection
