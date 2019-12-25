@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\Admin\Admin;
 use App\Models\Permission\Permission;
 use App\Models\Role\Role;
@@ -59,13 +60,13 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\User\CreateUserRequest  $request
      *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateUserRequest $request)
     {
-        if(!$this->userRepository->createUser($request->all())){
+        if(!$this->userRepository->createUser($request)){
             return redirect()->route('admin.user.create')->with('error','There is an error creating user');
         }
         return redirect()->route('admin.user.index')->with('success','User created successfully');
@@ -104,23 +105,29 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\User\UpdateUserRequest  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        if(!$this->userRepository->updateUser($request, $id)){
+            return redirect()->route('admin.user.edit', $id)->with('error','There is an error updating user');
+        }
+        return redirect()->route('admin.user.index')->with('success','User updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        Admin::destroy($id);
+        return redirect()->back()->with('success', 'User deleted successfully');
     }
 }
