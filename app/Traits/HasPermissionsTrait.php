@@ -4,6 +4,7 @@
 namespace App\Traits;
 
 
+use App\Models\Blog\Post;
 use App\Models\Permission\Permission;
 use App\Models\Role\Role;
 
@@ -65,6 +66,11 @@ trait HasPermissionsTrait
     public function permissions()
     {
         return $this->belongsToMany(Permission::class, 'admins_permissions');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 
     protected function hasPermission($permission)

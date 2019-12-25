@@ -36,7 +36,7 @@
                     <ul class="nav nav-group-sub" data-submenu-title="Posts">
                         <li class="nav-item"><a href="" class="nav-link active">All Posts</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Add New</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Categories</a></li>
+                        <li class="nav-item"><a href="{{ route('admin.category.index') }}" class="nav-link">Categories</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Tags</a></li>
                     </ul>
                 </li>
@@ -69,6 +69,21 @@
                         <li class="nav-item"><a href="{{route('admin.user.index')}}" class="nav-link">All Users</a></li>
                         <li class="nav-item"><a href="{{route('admin.user.create')}}" class="nav-link">Add New</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Your Profile</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Settings</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Users">
+{{--                        <li class="nav-item"><a href="{{route('admin.settings.favicon')}}" class="nav-link">Favicon</a></li>--}}
+{{--                        <li class="nav-item"><a href="{{route('admin.settings.logo')}}" class="nav-link">Logo</a></li>--}}
+{{--                        <li class="nav-item"><a href="{{ route('admin.settings.basic-info') }}" class="nav-link">Basic Information</a></li>--}}
+{{--                        <li class="nav-item"><a href="{{ route('admin.settings.support-info') }}" class="nav-link">Support Information</a></li>--}}
+{{--                        <li class="nav-item"><a href="{{ route('admin.settings.social-links') }}" class="nav-link">Social Links</a></li>--}}
+{{--                        <li class="nav-item"><a href="{{ route('admin.settings.scripts') }}" class="nav-link">Scripts</a></li>--}}
+{{--                        <li class="nav-item"><a href="{{ route('admin.settings.seo') }}" class="nav-link">SEO Information</a></li>--}}
+{{--                        <li class="nav-item"><a href="{{ route('admin.settings.maintenance-mode') }}" class="nav-link">Maintenance Mode</a></li>--}}
+{{--                        <li class="nav-item"><a href="{{ route('admin.settings.announcement') }}" class="nav-link">Announcement Popup</a></li>--}}
+{{--                        <li class="nav-item"><a href="{{ route('admin.settings.cookie-alert') }}" class="nav-link">Cookie Alert</a></li>--}}
                     </ul>
                 </li>
                 <li class="nav-item">
