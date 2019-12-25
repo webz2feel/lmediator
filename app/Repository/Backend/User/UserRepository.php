@@ -5,6 +5,9 @@ namespace App\Repository\Backend\User;
 
 
 use App\Models\Admin\Admin;
+use App\Models\Role\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 class UserRepository
@@ -33,5 +36,22 @@ class UserRepository
                 return $user->action_buttons;
             })
             ->make(true);
+    }
+
+    public function createUser($request)
+    {
+        $user = new Admin();
+        $user->first_name = $request['first_name'];
+        $user->last_name = $request['last_name'];
+        $user->email = $request['email'];
+        $user->password = Hash::make($request['password']);
+        $user->is_active = $request['is_active'];
+        $user->created_by = Auth::user()->id;
+
+        if($user->save()){
+            $user->roles()->sync($request['roles']);
+            $user->permissions()->sync($request['permissions']);
+            return true;
+        }
     }
 }

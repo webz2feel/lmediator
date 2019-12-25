@@ -19,7 +19,7 @@
     <link href="{{ asset('admin/assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('admin/assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
-    @yield('template_linked_css')
+    @yield('css')
     <style>
         input.search-input-text.form-control {
             display: inline;

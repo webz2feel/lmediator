@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="card-body">
-                @include('backend.role.partials.roles-header-buttons')
+                @include('backend.user.partials.user-header-buttons')
             </div>
             <table class="table datatable-responsive" id="data-table">
                 <thead>

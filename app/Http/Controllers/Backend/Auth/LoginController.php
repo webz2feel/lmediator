@@ -32,7 +32,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view(
-            'auth.login',
+            'backend.auth.login',
             [
                 'title' => 'Admin Login',
                 'loginRoute' => 'admin.login',
