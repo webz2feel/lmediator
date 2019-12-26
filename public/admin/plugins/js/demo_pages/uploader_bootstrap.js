@@ -221,14 +221,6 @@ var FileUpload = function() {
                 icon: '<i class="icon-file-check"></i>',
                 modal: modalTemplate
             },
-            initialPreview: [
-                '../../images/demo/images/1.png',
-                '../../images/demo/images/2.png'
-            ],
-            initialPreviewConfig: [
-                {caption: 'Jane.jpg', size: 930321, key: 1, url: '{$url}'},
-                {caption: 'Anna.jpg', size: 1218822, key: 2, url: '{$url}'}
-            ],
             initialPreviewAsData: true,
             overwriteInitial: true,
             previewZoomButtonClasses: previewZoomButtonClasses,

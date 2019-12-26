@@ -34,8 +34,8 @@
                     <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Posts</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Posts">
-                        <li class="nav-item"><a href="" class="nav-link active">All Posts</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Add New</a></li>
+                        <li class="nav-item"><a href="{{ route('admin.post.index') }}" class="nav-link active">All Posts</a></li>
+                        <li class="nav-item"><a href="{{ route('admin.post.create') }}" class="nav-link">Add New</a></li>
                         <li class="nav-item"><a href="{{ route('admin.category.index') }}" class="nav-link">Categories</a></li>
                         <li class="nav-item"><a href="{{ route('admin.tag.index') }}" class="nav-link">Tags</a></li>
                     </ul>
