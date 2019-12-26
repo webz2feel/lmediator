@@ -2,7 +2,7 @@
     $(function () {
         $('#create-modal').on('click', function (e) {
             e.preventDefault();
-            $('.modal-title').text('Add Category');
+            $('.modal-title').text('Add Tag');
             $('#action').val('add');
             $('#options_modal').modal('show');
         });
@@ -11,7 +11,7 @@
             let id = $(this).attr('id');
             $('#form_result').html('');
             $.ajax({
-                url: "/admin/category/" + id + "/edit",
+                url: "/admin/tag/" + id + "/edit",
                 dataType: "json",
                 success: function (html) {
                     $('#name').val(html.data.name);
@@ -24,7 +24,7 @@
                         $('#status').prop('checked', false);
                     }
                     $('#hidden_id').val(html.data.id);
-                    $('.modal-title').text("Edit Category");
+                    $('.modal-title').text("Edit Tag");
                     $('#action_button').val("edit");
                     $('#action').val("edit");
                     $('#options_modal').modal('show');
@@ -46,14 +46,14 @@
             }).then(function(result) {
                 if(result.value) {
                     $.ajax({
-                        url:"category/destroy/"+cat_id,
+                        url:"tag/destroy/"+cat_id,
                         success:function(data)
                         {
                             $('#confirmModal').modal('hide');
                             $('#data-table').DataTable().ajax.reload();
                             swal.fire({
                                 title:'Deleted!',
-                                text:'Category has been deleted.',
+                                text:'Tag has been deleted.',
                                 type:'success',
                                 confirmButtonClass: 'btn btn-success',
                             });
@@ -67,7 +67,7 @@
             let action = $('#action').val();
             if (action === 'add') {
                 $.ajax({
-                    url: "{{ route('admin.category.store') }}",
+                    url: "{{ route('admin.tag.store') }}",
                     method: 'POST',
                     data: new FormData(this),
                     contentType: false,
@@ -101,7 +101,7 @@
                 })
             } else if (action === "edit") {
                 $.ajax({
-                    url: "{{ route('admin.category.update') }}",
+                    url: "{{ route('admin.tag.update') }}",
                     method: "POST",
                     data: new FormData(this),
                     contentType: false,

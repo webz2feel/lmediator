@@ -26,7 +26,7 @@ class CategoriesController extends Controller
     {
         if(request()->ajax()) {
             return Datatables::of(Category::latest()->get())
-                ->escapeColumns(['name', 'slug', 'description'])
+                ->escapeColumns(['name', 'slug', 'descriptions'])
                 ->addColumn('status', function ($category) {
                     return $category->status ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-secondary">Inactive</span>';
                 })
@@ -36,8 +36,11 @@ class CategoriesController extends Controller
                     }
                 })
                 ->addColumn('actions', function ($category) {
-                    return 'test';
-//                    return $category->action_buttons;
+                    return '<div class="list-icons">
+                        <a href="#" class="list-icons-item edit" id="'.$category->id.'">
+                        <i class="icon-pencil7"></i></a>
+                        <a href="#" id="'.$category->id.'" class="delete list-icons-item"><i class="icon-trash"></i></a>
+                    </div>';
                 })
                 ->make(true);
         }
@@ -76,7 +79,7 @@ class CategoriesController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->slug = Str::slug($request->slug);
-        $category->description = $request->description;
+        $category->descriptions = $request->description;
         $category->status = false;
         if($request->has('status')){
             $category->status = true;
@@ -103,11 +106,16 @@ class CategoriesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function edit($id)
     {
-        //
+        if(request()->ajax())
+        {
+            $data = Category::findOrFail($id);
+            return response()->json(['data' => $data]);
+        }
     }
 
     /**
@@ -115,21 +123,46 @@ class CategoriesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $category = Category::findOrFail($request->hidden_id);
+        $rules = array(
+            'name'    =>  'required|min:2|max:100',
+            'slug'    =>  $category->slug != $request->slug ? 'required|unique:categories,slug' : 'required',
+        );
+        $error = Validator::make($request->all(), $rules);
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        $form_data = array(
+            'name'          =>  $request->name,
+            'slug'          =>  Str::slug($request->slug),
+            'descriptions'  =>  $request->description,
+        );
+        $form_data['status'] = false;
+        if($request->has('status')){
+            $form_data['status'] = true;
+        }
+        Category::whereId($request->hidden_id)->update($form_data);
+
+        return response()->json(['success' => 'Category is successfully updated']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return void
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
     }
 }

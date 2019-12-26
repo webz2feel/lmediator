@@ -37,7 +37,7 @@
                         <li class="nav-item"><a href="" class="nav-link active">All Posts</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Add New</a></li>
                         <li class="nav-item"><a href="{{ route('admin.category.index') }}" class="nav-link">Categories</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Tags</a></li>
+                        <li class="nav-item"><a href="{{ route('admin.tag.index') }}" class="nav-link">Tags</a></li>
                     </ul>
                 </li>
                 <li class="nav-item nav-item-submenu">

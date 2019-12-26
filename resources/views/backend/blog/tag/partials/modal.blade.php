@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Category</h5>
+                <h5 class="modal-title">Add Tag</h5>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <form action="#" method="post" id="crud-form">
@@ -11,12 +11,12 @@
                     @csrf
                     <div class="form-group">
                         <label>Name:</label>
-                        <input type="text" class="form-control" placeholder="Category name" name="name" id="name">
+                        <input type="text" class="form-control" placeholder="Tag name" name="name" id="name">
                     </div>
 
                     <div class="form-group">
                         <label>Slug:</label>
-                        <input type="text" class="form-control" placeholder="Category slug" name="slug" id="slug">
+                        <input type="text" class="form-control" placeholder="Tag slug" name="slug" id="slug">
                     </div>
                     <div class="form-group">
                         <label>Short Description:</label>
