@@ -23,20 +23,22 @@
                     <table class="table datatable-responsive" id="data-table">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Slug</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th>Created At</th>
+                            <th>Preview</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Categories</th>
+                            <th>Tags</th>
+                            <th>Date</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <td>Name</td>
-                            <td>Slug</td>
-                            <td>Description</td>
-                            <td>Status</td>
+                            <td></td>
+                            <td>Title</td>
+                            <td>Author</td>
+                            <td></td>
+                            <td></td>
                             <td>Created At</td>
                             <td></td>
                         </tr>
@@ -71,10 +73,11 @@
                     type: 'post'
                 },
                 columns: [
-                    {data: 'name', name: 'name'},
-                    {data: 'slug', name: 'slug'},
-                    {data: 'description', name: 'description'},
-                    {data: 'status', name: 'status'},
+                    {data: 'preview', preview: 'name'},
+                    {data: 'title', name: 'title'},
+                    {data: 'author', name: 'author'},
+                    {data: 'categories', name: 'categories'},
+                    {data: 'tags', name: 'tags'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],

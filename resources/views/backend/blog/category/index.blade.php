@@ -27,6 +27,7 @@
                             <th>Slug</th>
                             <th>Description</th>
                             <th>Status</th>
+                            <th>Posts</th>
                             <th>Created At</th>
                             <th>Actions</th>
                         </tr>
@@ -37,6 +38,7 @@
                             <td>Slug</td>
                             <td>Description</td>
                             <td>Status</td>
+                            <td></td>
                             <td>Created At</td>
                             <td></td>
                         </tr>
@@ -77,6 +79,7 @@
                     {data: 'slug', name: 'slug'},
                     {data: 'descriptions', name: 'descriptions'},
                     {data: 'status', name: 'status'},
+                    {data: 'posts', name: 'posts'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],

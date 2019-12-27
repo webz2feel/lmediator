@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use PostTrait;
+    protected $guarded = [];
+    protected $dates = ['created_at', 'updated_at'];
 }

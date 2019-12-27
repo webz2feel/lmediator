@@ -25,7 +25,7 @@ class CategoriesController extends Controller
     public function getDataTable()
     {
         if(request()->ajax()) {
-            return Datatables::of(Category::latest()->get())
+            return Datatables::of(Category::countPosts('posts')->latest()->get())
                 ->escapeColumns(['name', 'slug', 'descriptions'])
                 ->addColumn('status', function ($category) {
                     return $category->status ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-secondary">Inactive</span>';
@@ -34,6 +34,9 @@ class CategoriesController extends Controller
                     if ($category->created_at) {
                         return $category->created_at->format('j F Y h:i');
                     }
+                })
+                ->addColumn('posts', function($category){
+                    return $category->posts_count;
                 })
                 ->addColumn('actions', function ($category) {
                     return '<div class="list-icons">

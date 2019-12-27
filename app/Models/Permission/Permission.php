@@ -4,7 +4,7 @@ namespace App\Models\Permission;
 
 use App\Models\ModelTrait;
 use App\Models\Permission\Attributes\PermissionAttribute;
-use App\Models\Role;
+use App\Models\Role\Role;
 use Illuminate\Database\Eloquent\Model;
 
 class Permission extends Model

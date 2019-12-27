@@ -16,8 +16,8 @@ class RoleTableSeeder extends Seeder
         $dev_permission = Permission::where('slug','create-tasks')->first();
         $manager_permission = Permission::where('slug', 'edit-users')->first();
         $dev_role = new Role();
-        $dev_role->slug = 'developer';
-        $dev_role->name = 'Front-end Developer';
+        $dev_role->slug = 'super';
+        $dev_role->name = 'Super Admin';
         $dev_role->save();
         $dev_role->permissions()->attach($dev_permission);
         $manager_role = new Role();

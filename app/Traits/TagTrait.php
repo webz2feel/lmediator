@@ -12,4 +12,9 @@ trait TagTrait
     {
         return $this->belongsToMany(Post::class)->withTimestamps();
     }
+
+    public function scopeActive($query, $arg)
+    {
+        return $query->where('status', $arg);
+    }
 }
