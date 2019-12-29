@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Models\Blog;
+namespace App\Models\Page;
 
 use App\Models\ModelTrait;
-use App\Traits\PostTrait;
+use App\Traits\PageTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Page extends Model
 {
-    use PostTrait;
     use ModelTrait;
+    use PageTrait;
 
     protected $guarded = [];
     protected $dates = ['created_at', 'updated_at'];
+
 }

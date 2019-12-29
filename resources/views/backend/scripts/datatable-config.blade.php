@@ -20,7 +20,8 @@
                 this.api().columns().every(function() {
                     var column = this;
                     var select = $('<select class="form-control filter-select" data-placeholder="Filter"><option value=""></option></select>')
-                        .appendTo($(column.footer()).not(':last-child').empty())
+                        // .appendTo($(column.footer()).not(':last-child').empty())
+                        .appendTo($(column.footer()).not(":empty"))
                         .on('change', function() {
                             var val = $.fn.dataTable.util.escapeRegex(
                                 $(this).val()
@@ -32,7 +33,9 @@
                         });
 
                     column.data().unique().sort().each(function (d, j) {
-                        select.append('<option value="'+d.replace(/<(?:.|\n)*?>/gm, '')+'">'+d.replace(/<(?:.|\n)*?>/gm, '')+'</option>')
+                        if(select.length) {
+                            select.append('<option value="' + d.replace(/<(?:.|\n)*?>/gm, '') + '">' + d.replace(/<(?:.|\n)*?>/gm, '') + '</option>')
+                        }
                     });
                 });
                 $('.dataTables_length select').select2({

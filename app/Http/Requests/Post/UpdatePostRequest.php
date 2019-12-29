@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Role;
+namespace App\Http\Requests\Post;
 
-use App\Models\Role\Role;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRoleRequest extends FormRequest
+class UpdatePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +23,11 @@ class UpdateRoleRequest extends FormRequest
      */
     public function rules()
     {
-        $roleId = $this->route()->parameter('role');
+        $postId = $this->route()->parameter('post');
         return [
-            'name' => 'required|max:100',
-            'slug' => "required|unique:roles,slug,{$roleId}|max:100",
+            'title' => "required|unique:posts,title,{$postId}|min:2|max:250",
+            'body' => 'required',
+            'file' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 }

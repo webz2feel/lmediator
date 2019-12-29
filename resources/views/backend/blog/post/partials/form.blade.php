@@ -15,12 +15,12 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Title:</label>
-                <input type="text" class="form-control" name="title" value="{{old('title')}}" placeholder="Post title" required>
+                <input type="text" class="form-control" name="title" value="{{old('title', $post->title)}}" placeholder="Post title" required>
             </div>
 
             <div class="form-group">
                 <label>Contents:</label>
-                <textarea id="summernote" name="body" class="form-control">{{old('body')}}</textarea>
+                <textarea id="summernote" name="body" class="form-control">{{old('body', $post->body)}}</textarea>
             </div>
 
             <div class="text-right">
@@ -48,9 +48,9 @@
             <div class="form-group">
                 <label>Status:</label>
                 <select class="form-control select" data-fouc name="status">
-                    <option value="published">Published</option>
-                    <option value="pending">Pending</option>
-                    <option value="draft">Draft</option>
+                    <option value="published" @if($post->status == 'published') selected @endif>Published</option>
+                    <option value="pending" @if($post->status == 'pending') selected @endif>Pending</option>
+                    <option value="draft" @if($post->status == 'draft') selected @endif>Draft</option>
                 </select>
             </div>
         </div>
@@ -73,7 +73,7 @@
                 <select multiple name="categories[]" id="categories" class="form-control select" data-fouc>
                     @if($categories->count())
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{$category->name}}</option>
+                            <option value="{{ $category->id }}" {{ is_array(old('categories')) ? (in_array($category->id, old('categories')) ? 'selected' : '') : (in_array($category->id, $postCategories) ? 'selected' : '') }}>{{$category->name}}</option>
                         @endforeach
                     @endif
                 </select>
@@ -98,7 +98,7 @@
                 <select multiple name="tags[]" id="tags" class="form-control select" data-fouc>
                     @if($tags->count())
                         @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}">{{$tag->name}}</option>
+                            <option value="{{ $tag->id }}" {{ is_array(old('tags')) ? (in_array($tag->id, old('tags')) ? 'selected' : '') : (in_array($tag->id, $postTags) ? 'selected' : '') }}>{{$tag->name}}</option>
                         @endforeach
                     @endif
                 </select>
@@ -158,7 +158,7 @@
             <div class="form-group">
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="checkbox" name="allow_comments" id="allow_comments" class="form-check-input-styled" checked data-fouc>
+                        <input type="checkbox" name="allow_comments" id="allow_comments" class="form-check-input-styled" {{old('allow_comments') == 'on' || $post->allow_comments ? 'checked' : ''}} data-fouc>
                         Allow Comments
                     </label>
                 </div>

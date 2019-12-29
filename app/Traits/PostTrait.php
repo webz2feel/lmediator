@@ -24,4 +24,12 @@ trait PostTrait
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
+
+    public function getActionButtonsAttribute()
+    {
+        return '<div class="list-icons">
+            '.$this->getEditButtonAttribute('edit-post', 'admin.post.edit').'
+            '.$this->getDeleteButtonAttribute('delete-post', 'admin.post.destroy').'
+        </div>';
+    }
 }

@@ -35,7 +35,7 @@ class CategoriesController extends Controller
                         return $category->created_at->format('j F Y h:i');
                     }
                 })
-                ->addColumn('posts', function($category){
+                ->addColumn('posts_count', function($category){
                     return $category->posts_count;
                 })
                 ->addColumn('actions', function ($category) {

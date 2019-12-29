@@ -24,11 +24,10 @@ class UpdatePermissionRequest extends FormRequest
      */
     public function rules()
     {
-        $request = $this->request->all();
-        $permission = Permission::findOrFail($request['id']);
+        $permissionId = $this->route()->parameter('permission');
         return [
             'name' => 'required|max:100',
-            'slug' => ($request['slug'] != $permission->slug) ? 'required|unique:permissions,slug|max:100' : ''
+            'slug' => "required|unique:permissions,slug,{$permissionId}|max:100",
         ];
     }
 }

@@ -18,9 +18,10 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('contents');
-            $table->enum('is_active', ['y', 'n'])->default('y');
+            $table->boolean('status')->default(true);
+            $table->boolean('crawlable')->default(true);
             $table->string('meta_title')->nullable();
-            $table->integer('meta_keywords')->nullable();
+            $table->string('meta_keywords')->nullable();
             $table->string('meta_description')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();

@@ -44,8 +44,8 @@
                     <a href="index.html#" class="nav-link"><i class="icon-color-sampler"></i> <span>Pages</span></a>
 
                     <ul class="nav nav-group-sub" data-submenu-title="Pages">
-                        <li class="nav-item"><a href="" class="nav-link">All Pages</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Add New</a></li>
+                        <li class="nav-item"><a href="{{route('admin.page.index')}}" class="nav-link">All Pages</a></li>
+                        <li class="nav-item"><a href="{{route('admin.page.create')}}" class="nav-link">Add New</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -71,9 +71,8 @@
                         <li class="nav-item"><a href="" class="nav-link">Your Profile</a></li>
                     </ul>
                 </li>
-                <li class="nav-item nav-item-submenu">
-                    <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Settings</span></a>
-                    <ul class="nav nav-group-sub" data-submenu-title="Users">
+                <li class="nav-item">
+                    <a href="{{route('admin.settings')}}" class="nav-link"><i class="icon-cog2"></i> <span>Settings</span></a>
 {{--                        <li class="nav-item"><a href="{{route('admin.settings.favicon')}}" class="nav-link">Favicon</a></li>--}}
 {{--                        <li class="nav-item"><a href="{{route('admin.settings.logo')}}" class="nav-link">Logo</a></li>--}}
 {{--                        <li class="nav-item"><a href="{{ route('admin.settings.basic-info') }}" class="nav-link">Basic Information</a></li>--}}
@@ -84,7 +83,7 @@
 {{--                        <li class="nav-item"><a href="{{ route('admin.settings.maintenance-mode') }}" class="nav-link">Maintenance Mode</a></li>--}}
 {{--                        <li class="nav-item"><a href="{{ route('admin.settings.announcement') }}" class="nav-link">Announcement Popup</a></li>--}}
 {{--                        <li class="nav-item"><a href="{{ route('admin.settings.cookie-alert') }}" class="nav-link">Cookie Alert</a></li>--}}
-                    </ul>
+
                 </li>
                 <li class="nav-item">
                     <a href="changelog.html" class="nav-link">
