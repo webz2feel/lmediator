@@ -50,7 +50,7 @@
         </div>
     </div>
 @endsection
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('admin/plugins/js/plugins/tables/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/plugins/tables/datatables/extensions/responsive.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/demo_pages/datatables_responsive.js') }}"></script>
@@ -85,4 +85,4 @@
             });
         });
     </script>
-@endsection
+@endpush

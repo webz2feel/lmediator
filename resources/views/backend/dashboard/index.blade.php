@@ -56,7 +56,7 @@
     <link rel="stylesheet" href="{{ asset('admin/components/toastr/toastr.min.css') }}">
 @endsection
 @if(session()->has('status'))
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('admin/components/toastr/toastr.min.js') }}"></script>
     <script>
         $(function () {
@@ -80,5 +80,5 @@
             toastr.success('Your are logged in successfully','Logged In!');
         });
     </script>
-@endsection
+@endpush
 @endif

@@ -118,7 +118,7 @@
 {{--<script src="{{ asset('admin/plugins/js/demo_charts/pages/dashboard/dark/pies.js') }}"></script>--}}
 {{--<script src="{{ asset('admin/plugins/js/demo_charts/pages/dashboard/dark/bullets.js') }}"></script>--}}
 <!-- /theme JS files -->
-@yield('scripts')
+@stack('scripts')
 <script src="{{ asset('admin/assets/js/app.js') }}"></script>
 </body>
 </html>

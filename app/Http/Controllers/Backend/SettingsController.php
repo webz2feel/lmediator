@@ -52,4 +52,27 @@ class SettingsController extends Controller
 
         return redirect()->route('admin.settings')->with('success', 'SMTP setting updated successfully');
     }
+
+    public function updateSEO(Request $request, Setting $setting)
+    {
+        $setting->meta_keyword = $request->meta_keyword;
+        $setting->meta_description = $request->meta_description;
+        $setting->analytics_code = $request->analytics_code;
+        $setting->save();
+
+        return redirect()->route('admin.settings')->with('success', 'SEO setting updated successfully');
+    }
+
+    public function updateCookieSetting(Request $request, Setting $setting)
+    {
+        $setting->cookie_alert_btn_text = $request->cookie_alert_btn_text;
+        $setting->cookie_alert_text = $request->cookie_alert_text;
+        $setting->cookie_alert = 0;
+        if($request->has('cookie_alert')) {
+            $setting->cookie_alert = 1;
+        }
+        $setting->save();
+
+        return redirect()->route('admin.settings')->with('success', 'Cookie setting updated successfully');
+    }
 }

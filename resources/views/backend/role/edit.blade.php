@@ -34,7 +34,7 @@
         </div>
     </div>
 @endsection
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('admin/plugins/js/plugins/forms/validation/validate.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/demo_pages/form_validation.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/plugins/forms/selects/select2.min.js') }}"></script>
@@ -45,4 +45,4 @@
             });
         });
     </script>
-@endsection
+@endpush

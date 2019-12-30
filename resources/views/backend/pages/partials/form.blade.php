@@ -94,7 +94,7 @@
         </div>
     </div>
 </div>
-@section('scripts')
+@push('scripts')
     <script src="{{ asset('admin/plugins/js/plugins/forms/validation/validate.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/demo_pages/form_validation.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/plugins/forms/styling/uniform.min.js') }}"></script>
@@ -115,4 +115,4 @@
             });
         });
     </script>
-@endsection
+@endpush

@@ -21,11 +21,15 @@
                         <ul class="nav nav-tabs nav-tabs-highlight">
                             <li class="nav-item"><a href="#basic" class="nav-link active" data-toggle="tab">Basic</a></li>
                             <li class="nav-item"><a href="#email" class="nav-link" data-toggle="tab">Email</a></li>
+                            <li class="nav-item"><a href="#seo" class="nav-link" data-toggle="tab">SEO</a></li>
+                            <li class="nav-item"><a href="#cookie" class="nav-link" data-toggle="tab">Cookie</a></li>
                         </ul>
 
                         <div class="tab-content">
                             @includeIf('backend.settings.partials.tab-basic')
                             @includeIf('backend.settings.partials.tab-email')
+                            @includeIf('backend.settings.partials.tab-seo')
+                            @includeIf('backend.settings.partials.tab-cookie')
                         </div>
                     </div>
                 </div>
@@ -33,7 +37,17 @@
         </div>
     </div>
 @endsection
-{{--@section('scripts')--}}
-{{--    <script src="{{ asset('admin/plugins/js/plugins/forms/selects/select2.min.js') }}"></script>--}}
-{{--    <script src="{{ asset('admin/plugins/js/plugins/notifications/sweet_alert.min.js') }}"></script>--}}
-{{--@endsection--}}
+@push('scripts')
+    <script src="{{ asset('admin/plugins/js/plugins/forms/styling/uniform.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/js/plugins/editors/summernote/summernote.min.js') }}"></script>
+    <script>
+        $(function() {
+            $('.form-control-uniform').uniform();
+            $('.form-check-input-styled').uniform();
+            $('#summernote').summernote({
+                height: 200,
+                tabsize: 2
+            });
+        });
+    </script>
+@endpush

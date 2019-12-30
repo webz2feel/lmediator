@@ -52,11 +52,3 @@
         </div>
     </form>
 </div>
-@section('scripts')
-    <script src="{{ asset('admin/plugins/js/plugins/forms/styling/uniform.min.js') }}"></script>
-    <script>
-        $(function() {
-            $('.form-control-uniform').uniform();
-        })
-    </script>
-@endsection
