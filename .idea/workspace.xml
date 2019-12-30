@@ -2,52 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42262eb1-1aa2-4794-9b33-52baabada3b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Page/PagesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/SettingsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Page/CreatePageRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Page/UpdatePageRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Post/UpdatePostRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Setting/Setting.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Observers/Page/PagesObserver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Providers/EloquentServiceProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/Backend/Page/PagesInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/Backend/Page/PagesRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repository/Backend/Post/PostRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/PageTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_12_29_112302_create_settings_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/SettingTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/partials/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/pages/partials/page-header-buttons.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/settings/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/settings/partials/tab-basic.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/settings/partials/tab-email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/backend/Page.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/backend/Setting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/lmediator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lmediator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/roles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/CategoriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/PostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/PostsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Permission/UpdatePermissionRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Permission/UpdatePermissionRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Role/UpdateRoleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Role/UpdateRoleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Blog/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Blog/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page/Page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Backend/Post/PostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Backend/Post/PostRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/PostTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/PostTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_04_130814_create_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_04_130814_create_pages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/blog/category/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/blog/category/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/blog/post/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/blog/post/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/blog/post/partials/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/blog/post/partials/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/partials/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/partials/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/scripts/datatable-config.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/scripts/datatable-config.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/backend/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/backend/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Permission/Permission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Permission/Permission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/HasRoleAndPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/HasRoleAndPermission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_12_125748_create_roles_permissions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_12_125748_create_permission_role_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,6 +195,7 @@
       <workItem from="1577606298180" duration="953000" />
       <workItem from="1577611726911" duration="72000" />
       <workItem from="1577611858739" duration="9424000" />
+      <workItem from="1577720995044" duration="7094000" />
     </task>
     <servers />
   </component>
@@ -273,13 +234,13 @@
     <state x="520" y="214" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.810@0.23.1600.810" timestamp="1577517503077" />
     <state x="520" y="214" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577540572821" />
     <state x="520" y="215" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.813@0.23.1600.813" timestamp="1577279097344" />
-    <state x="583" y="334" key="NewPhpFileDialog" timestamp="1577549494568">
-      <screen x="0" y="23" width="1600" height="812" />
+    <state x="583" y="335" key="NewPhpFileDialog" timestamp="1577726659511">
+      <screen x="0" y="23" width="1600" height="815" />
     </state>
     <state x="601" y="344" key="NewPhpFileDialog/-1280.22.1280.938/0.22.1600.816@0.22.1600.816" timestamp="1576779469748" />
     <state x="583" y="334" key="NewPhpFileDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577549494568" />
     <state x="583" y="334" key="NewPhpFileDialog/-1280.23.1280.937/0.23.1600.813@0.23.1600.813" timestamp="1577373219538" />
-    <state x="583" y="335" key="NewPhpFileDialog/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1577275621229" />
+    <state x="583" y="335" key="NewPhpFileDialog/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1577726659511" />
     <state x="200" y="23" key="SettingsEditor" timestamp="1577611760938">
       <screen x="0" y="23" width="1600" height="821" />
     </state>

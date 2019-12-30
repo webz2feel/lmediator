@@ -72,4 +72,5 @@ class Permission extends Model implements PermissionHasRelationsContract
      * @var bool
      */
     public $timestamps = true;
+
 }
