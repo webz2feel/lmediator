@@ -13,17 +13,45 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        $dev_permission = Permission::where('slug','create-tasks')->first();
-        $manager_permission = Permission::where('slug', 'edit-users')->first();
-        $dev_role = new Role();
-        $dev_role->slug = 'super';
-        $dev_role->name = 'Super Admin';
-        $dev_role->save();
-        $dev_role->permissions()->attach($dev_permission);
-        $manager_role = new Role();
-        $manager_role->slug = 'manager';
-        $manager_role->name = 'Assistant Manager';
-        $manager_role->save();
-        $manager_role->permissions()->attach($manager_permission);
+        /*
+         * Role Types
+         *
+         */
+        $RoleItems = [
+            [
+                'name'        => 'Admin',
+                'slug'        => 'admin',
+                'description' => 'Admin Role',
+                'level'       => 5,
+            ],
+            [
+                'name'        => 'User',
+                'slug'        => 'user',
+                'description' => 'User Role',
+                'level'       => 1,
+            ],
+            [
+                'name'        => 'Unverified',
+                'slug'        => 'unverified',
+                'description' => 'Unverified Role',
+                'level'       => 0,
+            ],
+        ];
+
+        /*
+         * Add Role Items
+         *
+         */
+        foreach ($RoleItems as $RoleItem) {
+            $newRoleItem = Role::where('slug', '=', $RoleItem['slug'])->first();
+            if ($newRoleItem === null) {
+                Role::create([
+                   'name'          => $RoleItem['name'],
+                   'slug'          => $RoleItem['slug'],
+                   'description'   => $RoleItem['description'],
+                   'level'         => $RoleItem['level'],
+               ]);
+            }
+        }
     }
 }

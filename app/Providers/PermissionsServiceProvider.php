@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Permission\Permission;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class PermissionsServiceProvider extends ServiceProvider
@@ -26,7 +24,8 @@ class PermissionsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        try {
+        $this->registerBladeExtensions();
+        /*try {
             Permission::get()->map(function ($permission) {
                 Gate::define($permission->slug, function ($user) use ($permission) {
                     return $user->hasPermissionTo($permission);
@@ -42,6 +41,50 @@ class PermissionsServiceProvider extends ServiceProvider
         });
         Blade::directive('endrole', function ($role) {
             return "<?php endif; ?>";
+        });*/
+    }
+
+    /**
+     * Register Blade extensions.
+     *
+     * @return void
+     */
+    protected function registerBladeExtensions()
+    {
+//        $blade = $this->app['view']->getEngineResolver()->resolve('blade')->getCompiler(); // this method is used in custom packages
+
+        Blade::directive('role', function ($expression) {
+            return "<?php if (Auth::check() && Auth::user()->hasRole({$expression})): ?>";
+        });
+
+        Blade::directive('endrole', function () {
+            return '<?php endif; ?>';
+        });
+
+        Blade::directive('permission', function ($expression) {
+            return "<?php if (Auth::check() && Auth::user()->hasPermission({$expression})): ?>";
+        });
+
+        Blade::directive('endpermission', function () {
+            return '<?php endif; ?>';
+        });
+
+        Blade::directive('level', function ($expression) {
+            $level = trim($expression, '()');
+
+            return "<?php if (Auth::check() && Auth::user()->level() >= {$level}): ?>";
+        });
+
+        Blade::directive('endlevel', function () {
+            return '<?php endif; ?>';
+        });
+
+        Blade::directive('allowed', function ($expression) {
+            return "<?php if (Auth::check() && Auth::user()->allowed({$expression})): ?>";
+        });
+
+        Blade::directive('endallowed', function () {
+            return '<?php endif; ?>';
         });
     }
 }

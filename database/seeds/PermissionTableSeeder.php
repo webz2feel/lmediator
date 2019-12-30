@@ -13,17 +13,49 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        $dev_role = Role::where('slug','developer')->first();
-        $manager_role = Role::where('slug', 'manager')->first();
-        $createTasks = new Permission();
-        $createTasks->slug = 'create-tasks';
-        $createTasks->name = 'Create Tasks';
-        $createTasks->save();
-        $createTasks->roles()->attach($dev_role);
-        $editUsers = new Permission();
-        $editUsers->slug = 'edit-users';
-        $editUsers->name = 'Edit Users';
-        $editUsers->save();
-        $editUsers->roles()->attach($manager_role);
+        $Permissionitems = [
+            [
+                'name' => 'Can View Users',
+                'slug' => 'view.users',
+                'description' => 'Can view users',
+                'model' => 'Permission',
+            ],
+            [
+                'name' => 'Can Create Users',
+                'slug' => 'create.users',
+                'description' => 'Can create new users',
+                'model' => 'Permission',
+            ],
+            [
+                'name' => 'Can Edit Users',
+                'slug' => 'edit.users',
+                'description' => 'Can edit users',
+                'model' => 'Permission',
+            ],
+            [
+                'name' => 'Can Delete Users',
+                'slug' => 'delete.users',
+                'description' => 'Can delete users',
+                'model' => 'Permission',
+            ],
+        ];
+
+        foreach ($Permissionitems as $Permissionitem) {
+            $newPermissionitem = Permission::where(
+                'slug',
+                '=',
+                $Permissionitem['slug']
+            )->first();
+            if ($newPermissionitem === null) {
+                Permission::create(
+                    [
+                        'name' => $Permissionitem['name'],
+                        'slug' => $Permissionitem['slug'],
+                        'description' => $Permissionitem['description'],
+                        'model' => $Permissionitem['model'],
+                    ]
+                );
+            }
+        }
     }
 }
