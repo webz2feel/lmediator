@@ -6,6 +6,7 @@ namespace App\Traits;
 
 use App\Models\Admin\Admin;
 use App\Models\Role\Role;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 trait PermissionHasRelations
 {

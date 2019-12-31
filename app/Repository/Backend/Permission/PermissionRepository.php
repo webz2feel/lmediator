@@ -11,18 +11,49 @@ use Yajra\DataTables\Facades\DataTables;
 
 class PermissionRepository
 {
-    public function getForDataTable()
+    public function getForDataTable($sortedPermissionsRolesUsers)
     {
-        return Datatables::of(Permission::orderBy('id', 'desc')->get())
-            ->escapeColumns(['name'])
+//        return Datatables::of(Permission::orderBy('id', 'desc')->get())
+        return Datatables::of($sortedPermissionsRolesUsers)
+            ->escapeColumns([])
+            ->addColumn('name', function ($permission) {
+                if ($permission['permission']->name) {
+                    return $permission['permission']->name;
+                }
+            })
+            ->addColumn('slug', function ($permission) {
+                if ($permission['permission']->slug) {
+                    return $permission['permission']->slug;
+                }
+            })
+            ->addColumn('description', function ($permission) {
+                if ($permission['permission']->description) {
+                    return $permission['permission']->description;
+                }
+            })
+            ->addColumn('roles', function ($permission) {
+                $roles = '';
+                if ($permission['roles']->count() > 0) {
+                    foreach($permission['roles'] as $role ){
+                        $roles .= '<span class="badge bg-success">'.$role->name.'</span>';
+                    }
+                }else {
+                    $roles = 'None';
+                }
+                return rtrim($roles, ',');
+            })
             ->addColumn('created_at', function ($permission) {
-                if ($permission->created_at) {
-                    return $permission->created_at->format('j F Y h:i');
-//                    return '<span class="label label-success">'.trans('labels.general.all').'</span>';
+                if ($permission['permission']->created_at) {
+                    return $permission['permission']->created_at->format('j F Y h:i');
+                }
+            })
+            ->addColumn('updated_at', function ($permission) {
+                if ($permission['permission']->updated_at) {
+                    return $permission['permission']->updated_at->format('j F Y h:i');
                 }
             })
             ->addColumn('actions', function ($permission) {
-                return $permission->action_buttons;
+                return $permission['permission']->action_buttons;
             })
             ->make(true);
     }

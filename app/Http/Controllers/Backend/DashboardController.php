@@ -22,7 +22,6 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
-        Auth::user()->hasRole(['admin', 'moderator']);
         return view('backend.dashboard.index');
     }
 }

@@ -7,11 +7,13 @@ use App\Http\Requests\Permission\CreatePermissionRequest;
 use App\Http\Requests\Permission\UpdatePermissionRequest;
 use App\Models\Permission\Permission;
 use App\Repository\Backend\Permission\PermissionRepository;
+use App\Traits\RolesAndPermissionsHelpersTrait;
 use Illuminate\Http\Request;
 
 class PermissionsController extends Controller
 {
 
+    use RolesAndPermissionsHelpersTrait;
     /**
      * @var \App\Repository\Backend\Permission\PermissionRepository
      */
@@ -34,7 +36,9 @@ class PermissionsController extends Controller
 
     public function getDataTable()
     {
-        return $this->permissionRepository->getForDataTable();
+        $data = $this->getDashboardData();
+        $items = $data['data']['sortedPermissionsRolesUsers'];
+        return $this->permissionRepository->getForDataTable($items);
     }
 
     /**
@@ -50,10 +54,9 @@ class PermissionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Permission\CreatePermissionRequest  $request
      *
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \App\Exceptions\GeneralException
      */
     public function store(CreatePermissionRequest $request)
     {

@@ -20,19 +20,34 @@
             <table class="table datatable-responsive" id="data-table">
                 <thead>
                 <tr>
-                    <th>Display Name</th>
-                    <th>Permission</th>
-                    <th>Created AT</th>
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope="col">
+                        Slug
+                    </th>
+                    <th scope="col">
+                        Description
+                    </th>
+                    <th scope="col">
+                        Roles
+                    </th>
+                    <th scope="col">
+                        Created At
+                    </th>
+                    <th scope="col">
+                        Updated At
+                    </th>
                     <th class="text-center">Actions</th>
                 </tr>
                 </thead>
                 <tfoot>
-                <tr>
-                    <td>Display Name</td>
-                    <td>Permission</td>
-                    <td>Created AT</td>
-                    <td></td>
-                </tr>
+{{--                <tr>--}}
+{{--                    <td>Display Name</td>--}}
+{{--                    <td>Permission</td>--}}
+{{--                    <td>Created AT</td>--}}
+{{--                    <td></td>--}}
+{{--                </tr>--}}
                 </tfoot>
             </table>
         </div>
@@ -59,7 +74,10 @@
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'slug', name: 'slug'},
+                    {data: 'description', name: 'description'},
+                    {data: 'roles', name: 'roles'},
                     {data: 'created_at', name: 'created_at'},
+                    {data: 'updated_at', name: 'updated_at'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
             });

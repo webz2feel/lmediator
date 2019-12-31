@@ -36,7 +36,7 @@ class VerifyPermission
      */
     public function handle($request, Closure $next, $permission)
     {
-        if ($this->auth->check() && $this->auth->user()->hasPermission($permission)) {
+        if ($this->auth->check() && in_array('admin', $this->auth->user()->roles->pluck('slug')->toArray()) || $this->auth->user()->hasPermission($permission)) {
             return $next($request);
         }
 

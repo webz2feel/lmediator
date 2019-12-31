@@ -7,10 +7,9 @@ use App\Models\Admin\Attributes\AccessAttribute;
 use App\Models\ModelTrait;
 use App\Traits\HasRoleAndPermission;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Traits\HasPermissionsTrait;
 use Illuminate\Notifications\Notifiable;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements HasRoleAndPermissionContract
 {
 //    use HasPermissionsTrait;
     use Notifiable;
