@@ -8,10 +8,13 @@ use App\Http\Requests\Role\UpdateRoleRequest;
 use App\Models\Permission\Permission;
 use App\Models\Role\Role;
 use App\Repository\Backend\Role\RoleRepository;
+use App\Services\RoleFormFields;
+use App\Traits\RolesAndPermissionsHelpersTrait;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller
 {
+    use RolesAndPermissionsHelpersTrait;
     /**
      * @var \App\Repository\Backend\Role\RoleRepository
      */
@@ -34,7 +37,8 @@ class RolesController extends Controller
 
     public function getDataTable()
     {
-        return $this->repository->getForDataTable();
+        $roles = $this->sortedRolesWithPermissionsAndUsers();
+        return $this->repository->getForDataTable($roles);
     }
 
     /**
@@ -44,9 +48,9 @@ class RolesController extends Controller
      */
     public function create()
     {
-        $role = new Role();
-        $permissions = Permission::all();
-        return view('backend.role.create')->withRole($role)->withPermissions($permissions);
+        $service = new RoleFormFields();
+        $data = $service->handle();
+        return view('backend.role.create', $data);
     }
 
     /**
@@ -58,10 +62,9 @@ class RolesController extends Controller
      */
     public function store(CreateRoleRequest $request)
     {
-//        dd($request->all());
-        if(!$this->repository->storeRole($request->all())){
-            return redirect()->route('admin.role.create')->with('error','Slug has already taken');
-        }
+        $roleData = $request->roleFillData();
+        $rolePermissions = $request->get('permissions');
+        $this->storeRoleWithPermissions($roleData, $rolePermissions);
         return redirect()->route('admin.role.index')->with('success','Role created successfully');
     }
 
@@ -80,16 +83,14 @@ class RolesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $role = Role::findOrFail($id);
-        $permissions = Permission::all();
-        return view('backend.role.edit')
-            ->withRole($role)
-            ->withRolePermissions($role->permissions->pluck('id')->all())
-            ->withPermissions($permissions);
+        $service = new RoleFormFields($id);
+        $data = $service->handle();
+        return view('backend.role.edit', $data);
     }
 
     /**
@@ -102,9 +103,9 @@ class RolesController extends Controller
      */
     public function update(UpdateRoleRequest $request, $id)
     {
-        if(!$this->repository->updateRole($request->all(), $id)){
-            return redirect()->route('admin.role.edit', $id)->with('error','Slug has already taken');
-        }
+        $roleData = $request->roleFillData();
+        $rolePermissions = $request->get('permissions');
+        $this->updateRoleWithPermissions($id, $roleData, $rolePermissions);
         return redirect()->route('admin.role.index')->with('success','Role updated successfully');
     }
 
@@ -117,7 +118,7 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        Role::destroy($id);
+        $this->deleteRole($id);
         return redirect()->back()->with('success', 'Role deleted successfully');
     }
 }

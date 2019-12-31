@@ -7,6 +7,7 @@ use App\Http\Requests\Permission\CreatePermissionRequest;
 use App\Http\Requests\Permission\UpdatePermissionRequest;
 use App\Models\Permission\Permission;
 use App\Repository\Backend\Permission\PermissionRepository;
+use App\Services\PermissionFormFields;
 use App\Traits\RolesAndPermissionsHelpersTrait;
 use Illuminate\Http\Request;
 
@@ -36,8 +37,7 @@ class PermissionsController extends Controller
 
     public function getDataTable()
     {
-        $data = $this->getDashboardData();
-        $items = $data['data']['sortedPermissionsRolesUsers'];
+        $items = $this->getSortedPermissionsRolesUsers();
         return $this->permissionRepository->getForDataTable($items);
     }
 
@@ -48,7 +48,9 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        return view('backend.permission.create');
+        $service = new PermissionFormFields();
+        $data = $service->handle();
+        return view('backend.permission.create', $data);
     }
 
     /**
@@ -60,9 +62,8 @@ class PermissionsController extends Controller
      */
     public function store(CreatePermissionRequest $request)
     {
-        if(!$this->permissionRepository->storePermission($request->all())){
-            return redirect()->route('admin.permission.create')->with('error','Slug has already taken');
-        }
+        $permissionData = $request->permissionFillData();
+        $this->storeNewPermission($permissionData);
         return redirect()->route('admin.permission.index')->with('success','Permission created successfully');
     }
 
@@ -81,12 +82,14 @@ class PermissionsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $permission = Permission::findOrFail($id);
-        return view('backend.permission.edit')->withPermission($permission);
+        $service = new PermissionFormFields($id);
+        $data = $service->handle();
+        return view('backend.permission.edit', $data);
     }
 
     /**
@@ -99,9 +102,8 @@ class PermissionsController extends Controller
      */
     public function update(UpdatePermissionRequest $request, $id)
     {
-        if(!$this->permissionRepository->updatePermission($request->all(), $id)){
-            return redirect()->route('admin.permission.edit', $id)->with('error','Slug has already taken');
-        }
+        $permissionData = $request->permissionFillData($id);
+        $this->updatePermission($id, $permissionData);
         return redirect()->route('admin.permission.index')->with('success','Permission updated successfully');
     }
 
@@ -114,7 +116,7 @@ class PermissionsController extends Controller
      */
     public function destroy($id)
     {
-        Permission::destroy($id);
+        $this->deletePermission($id);
         return redirect()->back()->with('success', 'Permission deleted successfully');
     }
 }

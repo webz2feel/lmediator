@@ -23,9 +23,27 @@ class CreatePermissionRequest extends FormRequest
      */
     public function rules()
     {
+        $permissionId = $this->route()->parameter('permission');
         return [
-            'name' => 'required|max:100',
-            'slug' => 'required|unique:permissions,slug|max:100'
+            'name'          => 'required|max:60|unique:'.config('roles.permissionsTable').',name,'.$permissionId.',id',
+            'slug'          => 'required|max:60|unique:'.config('roles.permissionsTable').',slug,'.$permissionId.',id',
+            'description'   => 'nullable|string|max:255',
+            'model'         => 'required|string|max:60',
+        ];
+    }
+
+    /**
+     * Return the fields and values to create a new role.
+     *
+     * @return array
+     */
+    public function permissionFillData()
+    {
+        return [
+            'name'          => $this->name,
+            'slug'          => $this->slug,
+            'description'   => $this->description,
+            'model'         => $this->model,
         ];
     }
 }

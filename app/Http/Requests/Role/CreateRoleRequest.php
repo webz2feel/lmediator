@@ -23,9 +23,27 @@ class CreateRoleRequest extends FormRequest
      */
     public function rules()
     {
+        $roleId = $this->route()->parameter('role');
         return [
-            'name' => 'required|max:100',
-            'slug' => 'required|unique:roles,slug|max:100'
+            'name'          => 'required|unique:'.config('roles.rolesTable').',name,'.$roleId.',id',
+            'slug'          => 'required|unique:'.config('roles.rolesTable').',slug,'.$roleId.',id',
+            'description'   => 'nullable|string|max:255',
+            'level'         => 'required|integer',
+        ];
+    }
+
+    /**
+     * Return the fields and values to create a new role.
+     *
+     * @return array
+     */
+    public function roleFillData()
+    {
+        return [
+            'name'          => $this->name,
+            'slug'          => $this->slug,
+            'description'   => $this->description,
+            'level'         => $this->level,
         ];
     }
 }

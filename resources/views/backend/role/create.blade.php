@@ -20,11 +20,7 @@
 
                 <div class="card-body">
                     <form action="{{route('admin.role.store')}}" method="POST" class="form-validate-jquery">
-                        @includeIf('backend.role.partials.form', ['role' => $role, 'permissions' => $permissions, 'rolePermissions' => []])
-                        <div class="text-right">
-                            <a href="{{route('admin.role.index')}}" class="btn btn-default">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
-                        </div>
+                        @includeIf('backend.role.partials.form')
                     </form>
                 </div>
             </div>

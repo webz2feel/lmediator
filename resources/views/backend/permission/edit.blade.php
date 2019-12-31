@@ -18,24 +18,10 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{route('admin.permission.update', $permission->id)}}" method="POST" class="form-validate-jquery">
+                    <form action="{{route('admin.permission.update', $id)}}" method="POST" class="form-validate-jquery">
                         @method('PUT')
                         @csrf
-                        <input type="hidden" name="id" value="{{$permission->id}}">
-                        <div class="form-group">
-                            <label>Name:</label>
-                            <input type="text" class="form-control" name="name" value="{{old('name', $permission->name)}}" placeholder="Permission name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Permission Slug:</label>
-                            <input type="text" class="form-control" placeholder="Permission slug here" name="slug" value="{{old('slug', $permission->slug)}}" required>
-                        </div>
-
-                        <div class="text-right">
-                            <a href="{{route('admin.permission.index')}}" class="btn btn-default">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
-                        </div>
+                        @includeIf('backend.permission.partials.permission-form')
                     </form>
                 </div>
             </div>

@@ -9,18 +9,51 @@ use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 class RoleRepository
 {
-    public function getForDataTable()
+    public function getForDataTable($roles)
     {
-        return Datatables::of(Role::orderBy('created_at', 'desc')->get())
-            ->escapeColumns(['name'])
+        return Datatables::of($roles)
+            ->escapeColumns([])
+            ->addColumn('name', function ($role) {
+                if ($role['role']->name) {
+                    return $role['role']->name;
+                }
+            })
+            ->addColumn('slug', function ($role) {
+                if ($role['role']->slug) {
+                    return $role['role']->slug;
+                }
+            })
+            ->addColumn('description', function ($role) {
+                if ($role['role']->description) {
+                    return $role['role']->description;
+                }
+            })
+            ->addColumn('level', function ($role) {
+                    return $role['role']->level;
+            })
+            ->addColumn('permissions', function ($role) {
+                $permissions = '';
+                if ($role['permissions']->count() > 0) {
+                    foreach($role['permissions'] as $permission ){
+                        $permissions .= '<span class="badge bg-success">'.$permission->name.'</span>';
+                    }
+                }else {
+                    $permissions = 'None';
+                }
+                return $permissions;
+            })
             ->addColumn('created_at', function ($role) {
-                if ($role->created_at) {
-                    return $role->created_at->format('j F Y h:i');
-//                    return '<span class="label label-success">'.trans('labels.general.all').'</span>';
+                if ($role['role']->created_at) {
+                    return $role['role']->created_at->format('j F Y h:i');
+                }
+            })
+            ->addColumn('updated_at', function ($role) {
+                if ($role['role']->updated_at) {
+                    return $role['role']->updated_at->format('j F Y h:i');
                 }
             })
             ->addColumn('actions', function ($role) {
-                return $role->action_buttons;
+                return $role['role']->action_buttons;
             })
             ->make(true);
     }

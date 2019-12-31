@@ -19,14 +19,9 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{route('admin.role.update', $role->id)}}" method="POST" class="form-validate-jquery">
-                        <input type="hidden" name="id" value="{{$role->id}}">
+                    <form action="{{route('admin.role.update', $id)}}" method="POST" class="form-validate-jquery">
                         @method('PUT')
-                        @includeIf('backend.role.partials.form',['role' => $role, 'permissions' => $permissions, 'rolePermissions' => $rolePermissions])
-                        <div class="text-right">
-                            <a href="{{route('admin.role.index')}}" class="btn btn-default">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
-                        </div>
+                        @includeIf('backend.role.partials.form')
                     </form>
                 </div>
             </div>

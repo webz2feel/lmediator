@@ -4,6 +4,7 @@
 namespace App\Traits;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 trait RolesAndPermissionsHelpersTrait
@@ -443,6 +444,31 @@ trait RolesAndPermissionsHelpersTrait
         return collect($users)->unique();
     }
 
+    public function getSortedPermissionsRolesUsers()
+    {
+        $roles = $this->getRoles();
+        $permissions = $this->getPermissions();
+        $users = $this->getUsers();
+        $sortedRolesWithUsers = $this->getSortedUsersWithRoles($roles, $users);
+        return $this->getSortedPermissonsWithRolesAndUsers(
+            $sortedRolesWithUsers,
+            $permissions,
+            $users
+        );
+    }
+
+    public function sortedRolesWithPermissionsAndUsers()
+    {
+        $roles = $this->getRoles();
+        $permissions = $this->getPermissions();
+        $users = $this->getUsers();
+        $sortedRolesWithUsers = $this->getSortedUsersWithRoles($roles, $users);
+        return $sortedRolesWithPermissionsAndUsers = $this->getSortedRolesWithPermissionsAndUsers(
+            $sortedRolesWithUsers,
+            $permissions
+        );
+    }
+
     /**
      * Gets the dashboard data.
      *
@@ -455,16 +481,16 @@ trait RolesAndPermissionsHelpersTrait
         $deletedRoleItems = $this->getDeletedRoles();
         $deletedPermissionsItems = $this->getDeletedPermissions();
         $users = $this->getUsers();
-        $sortedRolesWithUsers = $this->getSortedUsersWithRoles($roles, $users);
-        $sortedRolesWithPermissionsAndUsers = $this->getSortedRolesWithPermissionsAndUsers(
-            $sortedRolesWithUsers,
-            $permissions
-        );
-        $sortedPermissionsRolesUsers = $this->getSortedPermissonsWithRolesAndUsers(
-            $sortedRolesWithUsers,
-            $permissions,
-            $users
-        );
+//        $sortedRolesWithUsers = $this->getSortedUsersWithRoles($roles, $users);
+//        $sortedRolesWithPermissionsAndUsers = $this->getSortedRolesWithPermissionsAndUsers(
+//            $sortedRolesWithUsers,
+//            $permissions
+//        );
+//        $sortedPermissionsRolesUsers = $this->getSortedPermissonsWithRolesAndUsers(
+//            $sortedRolesWithUsers,
+//            $permissions,
+//            $users
+//        );
 
         $data = [
             'roles' => $roles,
@@ -472,9 +498,9 @@ trait RolesAndPermissionsHelpersTrait
             'deletedRoleItems' => $deletedRoleItems,
             'deletedPermissionsItems' => $deletedPermissionsItems,
             'users' => $users,
-            'sortedRolesWithUsers' => $sortedRolesWithUsers,
-            'sortedRolesWithPermissionsAndUsers' => $sortedRolesWithPermissionsAndUsers,
-            'sortedPermissionsRolesUsers' => $sortedPermissionsRolesUsers,
+//            'sortedRolesWithUsers' => $sortedRolesWithUsers,
+//            'sortedRolesWithPermissionsAndUsers' => $sortedRolesWithPermissionsAndUsers,
+//            'sortedPermissionsRolesUsers' => $sortedPermissionsRolesUsers,
         ];
 
         $view = 'laravelroles::laravelroles.crud.dashboard';

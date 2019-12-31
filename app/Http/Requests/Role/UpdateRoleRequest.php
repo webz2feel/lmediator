@@ -2,32 +2,30 @@
 
 namespace App\Http\Requests\Role;
 
-use App\Models\Role\Role;
-use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRoleRequest extends FormRequest
+class UpdateRoleRequest extends CreateRoleRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        $roleId = $this->route()->parameter('role');
-        return [
-            'name' => 'required|max:100',
-            'slug' => "required|unique:roles,slug,{$roleId}|max:100",
-        ];
-    }
+//    /**
+//     * Determine if the user is authorized to make this request.
+//     *
+//     * @return bool
+//     */
+//    public function authorize()
+//    {
+//        return true;
+//    }
+//
+//    /**
+//     * Get the validation rules that apply to the request.
+//     *
+//     * @return array
+//     */
+//    public function rules()
+//    {
+//        $roleId = $this->route()->parameter('role');
+//        return [
+//            'name' => 'required|max:100',
+//            'slug' => "required|unique:roles,slug,{$roleId}|max:100",
+//        ];
+//    }
 }
