@@ -28,3 +28,7 @@
     <a href="{{route('admin.permission.index')}}" class="btn btn-default">Back</a>
     <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
 </div>
+@push('scripts')
+    <script src="{{ asset('admin/plugins/js/plugins/forms/validation/validate.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/js/demo_pages/form_validation.js') }}"></script>
+@endpush

@@ -58,6 +58,50 @@ class RoleRepository
             ->make(true);
     }
 
+    public function getDeletedRolesForDataTable($deletedRoles)
+    {
+        return Datatables::of($deletedRoles)
+            ->escapeColumns([])
+            ->addColumn('name', function ($role) {
+                if ($role->name) {
+                    return $role->name;
+                }
+            })
+            ->addColumn('description', function ($role) {
+                if ($role->description) {
+                    return $role->description;
+                }
+            })
+            ->addColumn('level', function ($role) {
+                return $role->level;
+            })
+            ->addColumn('permissions', function ($role) {
+                $permissions = '';
+                if ($role['permissions']->count() > 0) {
+                    foreach($role['permissions'] as $permission ){
+                        $permissions .= '<span class="badge bg-success">'.$permission->name.'</span>';
+                    }
+                }else {
+                    $permissions = 'None';
+                }
+                return $permissions;
+            })
+            ->addColumn('created_at', function ($role) {
+                if ($role->created_at) {
+                    return $role->created_at->format('j F Y h:i');
+                }
+            })
+            ->addColumn('updated_at', function ($role) {
+                if ($role->updated_at) {
+                    return $role->updated_at->format('j F Y h:i');
+                }
+            })
+            ->addColumn('actions', function ($role) {
+                return $role->deleted_buttons;
+            })
+            ->make(true);
+    }
+
     public function storeRole(array $request)
     {
         $slug = Str::slug($request['slug'], '-');

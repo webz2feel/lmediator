@@ -25,6 +25,7 @@
             display: inline;
             width: 90%;
         }
+        .datatable-scroll-wrap{overflow: inherit;}
     </style>
     {{-- Scripts --}}
     <script>

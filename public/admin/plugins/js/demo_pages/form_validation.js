@@ -160,7 +160,7 @@ var FormValidation = function() {
                 },
                 slug: {
                     required: true,
-                    lettersonly: true
+                    // lettersonly: true
                 },
                 password: {
                     minlength: 5

@@ -13,4 +13,11 @@ trait PermissionAttribute
                     '.$this->getDeleteButtonAttribute('delete-permission', 'admin.permission.destroy').'
                 </div>';
     }
+
+    public function getDeletedButtonsAttribute()
+    {
+        return '<div class="list-icons">
+                    '.$this->getDeletedPermissionAttribute('edit-permission', 'admin.permission.edit').'
+                </div>';
+    }
 }

@@ -29,7 +29,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    <script src="{{ asset('admin/plugins/js/plugins/forms/validation/validate.min.js') }}"></script>
-    <script src="{{ asset('admin/plugins/js/demo_pages/form_validation.js') }}"></script>
-@endpush
