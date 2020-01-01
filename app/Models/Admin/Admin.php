@@ -24,8 +24,14 @@ class Admin extends Authenticatable implements HasRoleAndPermissionContract
     protected $fillable = [
         'first_name',
         'last_name',
+        'name',
         'email',
         'password',
+        'is_active',
+        'created_by',
+        'updated_by',
+        'last_login',
+        'login_ip',
     ];
     /**
      * The attributes that should be hidden for arrays.

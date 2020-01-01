@@ -26,7 +26,7 @@ class UserRepository
             })
             ->addColumn('created_at', function ($user) {
                 if ($user->created_at) {
-                    return $user->created_at->format('j F Y h:i');
+                    return $user->created_at->format('j M Y h:i');
 //                    return '<span class="label label-success">'.trans('labels.general.all').'</span>';
                 }
             })
@@ -36,47 +36,34 @@ class UserRepository
             ->make(true);
     }
 
-    public function createUser($request)
+    public function createUser($request, $data)
     {
-        $user = new Admin();
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->is_active = $request->is_active;
-        $user->created_by = Auth::user()->id;
-
-        if($user->save()){
+        if($user = Admin::create($data)){
             if($request->has('roles')){
-                $user->roles()->sync($request->roles);
+                $user->syncRoles($request->roles);
             }
             if($request->has('permissions')){
-                $user->permissions()->sync($request->permissions);
+                $user->syncPermissions($request->permissions);
             }
             return true;
         }
+        return false;
     }
 
-    public function updateUser($request, $id)
+    public function updateUser($request, $id, $data)
     {
 
         $user = Admin::findOrFail($id);
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-//        $user->password = Hash::make($request->password);
-        $user->is_active = $request->is_active;
-        $user->updated_by = Auth::user()->id;
-        if($user->save()){
+        if($user->update($data)){
             if($request->has('roles')){
-                $user->roles()->sync($request->roles);
+                $user->syncRoles($request->roles);
             }else {
-                $user->roles()->sync([]);
+                $user->syncRoles([]);
             }
             if($request->has('permissions')){
-                $user->permissions()->sync($request->permissions);
+                $user->syncPermissions($request->permissions);
             }else {
-                $user->permissions()->sync([]);
+                $user->syncPermissions([]);
             }
             return true;
         }

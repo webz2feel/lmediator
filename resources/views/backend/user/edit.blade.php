@@ -19,15 +19,9 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{route('admin.user.update', $user->id)}}" method="POST" class="form-validate-jquery">
-                        <input type="hidden" name="id" value="{{$user->id}}">
+                    <form action="{{route('admin.user.update', $id)}}" method="POST" class="form-validate-jquery">
                         @method('PUT')
                         @includeIf('backend.user.partials.user-form')
-
-                        <div class="text-right">
-                            <a href="{{route('admin.user.index')}}" class="btn btn-default">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
-                        </div>
                     </form>
                 </div>
             </div>

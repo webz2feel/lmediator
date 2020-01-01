@@ -20,11 +20,6 @@
                 <div class="card-body">
                     <form action="{{route('admin.user.store')}}" method="POST" class="form-validate-jquery">
                         @includeIf('backend.user.partials.user-form')
-
-                        <div class="text-right">
-                            <a href="{{route('admin.user.index')}}" class="btn btn-default">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
-                        </div>
                     </form>
                 </div>
             </div>

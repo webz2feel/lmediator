@@ -9,6 +9,7 @@ use App\Models\Admin\Admin;
 use App\Models\Permission\Permission;
 use App\Models\Role\Role;
 use App\Repository\Backend\User\UserRepository;
+use App\Services\UserFormFields;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -46,15 +47,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $user = new Admin();
-        $roles = Role::all('id','name','slug');
-        $permissions = Permission::all('id','name','slug');
-        return view('backend.user.create')
-            ->withUser($user)
-            ->withRoles($roles)
-            ->withUserRoles([])
-            ->withPermissions($permissions)
-            ->withUserPermissions([]);
+        $service = new UserFormFields();
+        $data = $service->handle();
+        return view('backend.user.create', $data);
     }
 
     /**
@@ -66,7 +61,8 @@ class UsersController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        if(!$this->userRepository->createUser($request)){
+        $data = $request->userFillData();
+        if(!$this->userRepository->createUser($request, $data)){
             return redirect()->route('admin.user.create')->with('error','There is an error creating user');
         }
         return redirect()->route('admin.user.index')->with('success','User created successfully');
@@ -87,19 +83,14 @@ class UsersController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $user = Admin::findOrFail($id);
-        $permissions = Permission::all();
-        $roles = Role::all();
-        return view('backend.user.edit')
-            ->withUser($user)
-            ->withRoles($roles)
-            ->withUserRoles($user->roles->pluck('id')->all())
-            ->withPermissions($permissions)
-            ->withUserPermissions($user->permissions->pluck('id')->all());
+        $service = new UserFormFields($id);
+        $data = $service->handle();
+        return view('backend.user.edit', $data);
     }
 
     /**
@@ -112,7 +103,8 @@ class UsersController extends Controller
      */
     public function update(UpdateUserRequest $request, $id)
     {
-        if(!$this->userRepository->updateUser($request, $id)){
+        $data = $request->userFillData($id);
+        if(!$this->userRepository->updateUser($request, $id, $data)){
             return redirect()->route('admin.user.edit', $id)->with('error','There is an error updating user');
         }
         return redirect()->route('admin.user.index')->with('success','User updated successfully');
