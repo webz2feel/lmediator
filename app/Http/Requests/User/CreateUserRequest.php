@@ -29,7 +29,7 @@ class CreateUserRequest extends FormRequest
         return [
             'first_name' => 'required|min:2|max:50',
             'last_name' => 'required|min:2|max:50',
-            'email' => "required|min:2|max:50|unique:admins,email,{$userId}",
+            'email' => "sometimes|required|min:2|max:50|unique:admins,email,{$userId}",
             'password' => is_null($userId) ? 'required|min:4|max:50' : '',
         ];
     }
@@ -47,8 +47,10 @@ class CreateUserRequest extends FormRequest
             $userData['created_by'] = Auth::user()->id;
         }else {
             $userData['updated_by'] = Auth::user()->id;
+            if($this->filled('password')){
+                $userData['password'] = Hash::make($this->password);
+            }
         }
-//        dd($userData);
         return $userData;
     }
 }

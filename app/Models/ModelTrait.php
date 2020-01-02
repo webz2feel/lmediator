@@ -18,6 +18,15 @@ trait ModelTrait
 //        }
     }
 
+    public function getViewButtonAttribute($permission, $route)
+    {
+//        if (access()->allow($permission)) {
+        return '<a href="'.route($route, $this).'" class="list-icons-item">
+                    <i class="icon-eye"></i>
+                </a>';
+//        }
+    }
+
     /**
      * @return string
      */

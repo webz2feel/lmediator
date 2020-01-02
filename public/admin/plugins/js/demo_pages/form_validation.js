@@ -116,7 +116,7 @@ var FormValidation = function() {
 
         // Initialize
         var validator = $('.form-validate-jquery').validate({
-            ignore: 'input[type=hidden], .select2-search__field', // ignore hidden fields
+            ignore: ':hidden,input[type=hidden], .select2-search__field', // ignore hidden fields
             errorClass: 'validation-invalid-label',
             successClass: 'validation-valid-label',
             validClass: 'validation-valid-label',

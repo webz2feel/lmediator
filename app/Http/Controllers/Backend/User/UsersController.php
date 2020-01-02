@@ -76,7 +76,23 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Admin::where('id', $id)->get();
+        $user = $data->map(function($item) {
+            if($item->updated_by != null) {
+                $updated = Admin::findOrFail($item->updated_by);
+                if ($updated != null) {
+                    $item->updated_by = $updated->full_name;
+                }
+            }
+            if($item->created_by != null) {
+                $created = Admin::findOrFail($item->created_by);
+                if ($created != null) {
+                    $item->created_by = $created->full_name;
+                }
+            }
+            return $item;
+        });
+        return view('backend.user.show')->withUser($user[0]);
     }
 
     /**
