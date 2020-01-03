@@ -62,6 +62,11 @@ class LoginController extends Controller
             $request->only('email', 'password'),
             $request->filled('remember')
         )) {
+            $user = Auth::guard('admin')->user();
+            $user->update([
+                  'last_login' => \Carbon\Carbon::now()->toDateTimeString(),
+                  'login_ip' => $request->getClientIp()
+              ]);
             //Authenticated, redirect to the intended route
             //if available else admin dashboard.
             return redirect()

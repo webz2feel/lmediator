@@ -7,6 +7,7 @@ use App\Http\Requests\Page\CreatePageRequest;
 use App\Http\Requests\Page\UpdatePageRequest;
 use App\Models\Page\Page;
 use App\Repository\Backend\Page\PagesInterface;
+use App\Services\PageFormFields;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -43,13 +44,13 @@ class PagesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        $page = new Page();
-        return view('backend.pages.create')
-            ->withPage($page);
+        $page = new PageFormFields();
+        $data = $page->handle();
+        return view('backend.pages.create', $data);
     }
 
     /**
@@ -61,19 +62,7 @@ class PagesController extends Controller
      */
     public function store(CreatePageRequest $request)
     {
-        $pageData = [
-            'title' => $request->title,
-            'slug' => Str::slug($request->slug),
-            'contents' => $request->body,
-            'status' => $request->status,
-            'meta_title' => $request->meta_title,
-            'meta_keywords' => $request->meta_keywords,
-            'meta_description' => $request->meta_description,
-            'crawlable' => 0,
-        ];
-        if($request->has('crawlable')){
-            $pageData['crawlable'] = 1;
-        }
+        $pageData = $request->pageFillData();
         $this->pageRepository->create($pageData);
 //        event(new NewCustomerHasRegisteredEvent($customer));
         return redirect()->route('admin.page.index')->with('success', 'Page created successfully');
@@ -87,20 +76,22 @@ class PagesController extends Controller
      */
     public function show($id)
     {
-        //
+        $page = Page::findOrFail($id);
+        return view('backend.pages.show')->withPage($page);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $page = $this->pageRepository->getById($id);
-        return view('backend.pages.edit')
-            ->withPage($page);
+        $page = new PageFormFields($id);
+        $data = $page->handle();
+        return view('backend.pages.edit', $data);
     }
 
     /**
@@ -113,19 +104,7 @@ class PagesController extends Controller
      */
     public function update(UpdatePageRequest $request, $id)
     {
-        $pageData = [
-            'title' => $request->title,
-            'slug' => Str::slug($request->slug),
-            'contents' => $request->body,
-            'status' => $request->status,
-            'meta_title' => $request->meta_title,
-            'meta_keywords' => $request->meta_keywords,
-            'meta_description' => $request->meta_description,
-            'crawlable' => 0,
-        ];
-        if($request->has('crawlable')){
-            $pageData['crawlable'] = 1;
-        }
+        $pageData = $request->pageFillData();
         $this->pageRepository->update($id, $pageData);
 //        event(new NewCustomerHasRegisteredEvent($customer));
         return redirect()->route('admin.page.index')->with('success', 'Page updated successfully');

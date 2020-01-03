@@ -15,16 +15,16 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Title:</label>
-                <input type="text" class="form-control" name="title" value="{{old('title', $page->title)}}" placeholder="Page title" required>
+                <input type="text" class="form-control" name="title" value="{{$title}}" placeholder="Page title" required>
             </div>
             <div class="form-group">
                 <label>Slug:</label>
-                <input type="text" class="form-control" name="slug" value="{{old('slug', $page->slug)}}" placeholder="Page slug" required>
+                <input type="text" class="form-control" name="slug" value="{{$slug}}" placeholder="Page slug" required>
             </div>
 
             <div class="form-group">
                 <label>Contents:</label>
-                <textarea id="summernote" name="body" class="form-control">{{old('body', $page->contents)}}</textarea>
+                <textarea id="summernote" name="body" class="form-control">{{$contents}}</textarea>
             </div>
 
             <div class="text-right">
@@ -52,8 +52,8 @@
             <div class="form-group">
                 <label>Status:</label>
                 <select class="form-control select" data-fouc name="status">
-                    <option value="0" {{ !old('status') || !$page->status ? 'selected' : '' }}>Pending</option>
-                    <option value="1" {{ old('status') || $page->status ? 'selected' : '' }}>Published</option>
+                    <option value="1" {{ $status ? 'selected' : '' }}>Published</option>
+                    <option value="0" {{ !$status ? 'selected' : '' }}>Pending</option>
                 </select>
             </div>
         </div>
@@ -73,20 +73,20 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Meta Title:</label>
-                <input type="text" class="form-control" name="meta_title" placeholder="Meta title" value="{{old('meta_title', $page->meta_title)}}">
+                <input type="text" class="form-control" name="meta_title" placeholder="Meta title" value="{{$meta_title}}">
             </div>
             <div class="form-group">
                 <label>Meta Keywords:</label>
-                <input type="text" class="form-control" name="meta_keywords" placeholder="Meta keywords" value="{{old('meta_keywords', $page->meta_keywords)}}">
+                <input type="text" class="form-control" name="meta_keywords" placeholder="Meta keywords" value="{{$meta_keywords}}">
             </div>
             <div class="form-group">
                 <label>Meta Description:</label>
-                <textarea name="meta_description" id="meta_description" cols="30" rows="10" placeholder="Meta description" class="form-control">{{ old('meta_description',$page->meta_description) }}</textarea>
+                <textarea name="meta_description" id="meta_description" cols="30" rows="10" placeholder="Meta description" class="form-control">{{ $meta_description }}</textarea>
             </div>
             <div class="form-group">
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="checkbox" name="crawlable" id="crawlable" class="form-check-input-styled" {{old('crawlable') == 'on' || $page->crawlable ? 'checked' : ''}} data-fouc>
+                        <input type="checkbox" name="crawlable" id="crawlable" class="form-check-input-styled" {{$crawlable ? 'checked' : ''}} data-fouc>
                         Crawlable
                     </label>
                 </div>

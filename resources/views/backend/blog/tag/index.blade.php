@@ -11,14 +11,9 @@
                         <h5 class="card-title">All Tags</h5>
                         <div class="header-elements">
                             <div class="list-icons">
-                                <a class="list-icons-item" data-action="collapse"></a>
-                                <a class="list-icons-item" data-action="reload"></a>
-                                <a class="list-icons-item" data-action="remove"></a>
+                                @include('backend.blog.tag.partials.tag-header-buttons')
                             </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        @include('backend.blog.tag.partials.tag-header-buttons')
                     </div>
                     <table class="table datatable-responsive" id="data-table">
                         <thead>

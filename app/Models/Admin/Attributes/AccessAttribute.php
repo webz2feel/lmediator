@@ -2,6 +2,8 @@
 
 namespace App\Models\Admin\Attributes;
 
+use App\Models\Admin\Admin;
+
 trait AccessAttribute
 {
     public function getFullNameAttribute($value)
@@ -21,5 +23,19 @@ trait AccessAttribute
                     '.$this->getEditButtonAttribute('edit-user', 'admin.user.edit').'
                     '.$this->getDeleteButtonAttribute('delete-user', 'admin.user.destroy').'
                 </div>';
+    }
+
+    public function getCreatedByNameAttribute()
+    {
+        return Admin::where('id', $this->created_by)->get()->pluck('full_name')->first();
+    }
+
+    public function getUpdatedByNameAttribute()
+    {
+        return Admin::where('id', $this->updated_by)->get()->pluck('full_name')->first();
+    }
+    public function getStatusAttribute()
+    {
+        return $this->is_active ? 'Active' : 'In-active';
     }
 }

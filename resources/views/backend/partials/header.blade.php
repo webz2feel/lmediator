@@ -21,88 +21,6 @@
                     <i class="icon-paragraph-justify3"></i>
                 </a>
             </li>
-
-            <li class="nav-item dropdown">
-                <a href="index.html#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
-                    <i class="icon-git-compare"></i>
-                    <span class="d-md-none ml-2">Git updates</span>
-                    <span class="badge badge-pill bg-warning-400 ml-auto ml-md-0">9</span>
-                </a>
-
-                <div class="dropdown-menu dropdown-content wmin-md-350">
-                    <div class="dropdown-content-header">
-                        <span class="font-weight-semibold">Git updates</span>
-                        <a href="index.html#" class="text-default"><i class="icon-sync"></i></a>
-                    </div>
-
-                    <div class="dropdown-content-body dropdown-scrollable">
-                        <ul class="media-list">
-                            <li class="media">
-                                <div class="mr-3">
-                                    <a href="index.html#" class="btn bg-transparent border-blue-300 text-blue-300 rounded-round border-2 btn-icon"><i class="icon-git-pull-request"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    Drop the IE <a href="index.html#">specific hacks</a> for temporal inputs
-                                    <div class="text-muted font-size-sm">4 minutes ago</div>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="mr-3">
-                                    <a href="index.html#" class="btn bg-transparent border-orange-300 text-orange-300 rounded-round border-2 btn-icon"><i class="icon-git-commit"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    Add full font overrides for popovers and tooltips
-                                    <div class="text-muted font-size-sm">36 minutes ago</div>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="mr-3">
-                                    <a href="index.html#" class="btn bg-transparent border-green text-green rounded-round border-2 btn-icon"><i class="icon-git-branch"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    <a href="index.html#">Chris Arney</a> created a new <span class="font-weight-semibold">Design</span> branch
-                                    <div class="text-muted font-size-sm">2 hours ago</div>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="mr-3">
-                                    <a href="index.html#" class="btn bg-transparent border-pink-300 text-pink-300 rounded-round border-2 btn-icon"><i class="icon-git-merge"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    <a href="index.html#">Eugene Kopyov</a> merged <span class="font-weight-semibold">Master</span> and <span class="font-weight-semibold">Dev</span> branches
-                                    <div class="text-muted font-size-sm">Dec 18, 18:36</div>
-                                </div>
-                            </li>
-
-                            <li class="media">
-                                <div class="mr-3">
-                                    <a href="index.html#" class="btn bg-transparent border-blue-300 text-blue-300 rounded-round border-2 btn-icon"><i class="icon-git-pull-request"></i></a>
-                                </div>
-
-                                <div class="media-body">
-                                    Have Carousel ignore keyboard events
-                                    <div class="text-muted font-size-sm">Dec 12, 05:46</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="dropdown-content-footer">
-                        <a href="index.html#" class="text-white mr-auto">All updates</a>
-                        <div>
-                            <a href="index.html#" class="text-white" data-popup="tooltip" title="Mark all as read"><i class="icon-radio-unchecked"></i></a>
-                            <a href="index.html#" class="text-white ml-2" data-popup="tooltip" title="Bug tracker"><i class="icon-bug2"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </li>
         </ul>
 
         <span class="badge bg-success my-3 my-md-0 ml-md-3 mr-md-auto">Online</span>
@@ -298,11 +216,8 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a href="index.html#" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
-                    <a href="index.html#" class="dropdown-item"><i class="icon-coins"></i> My balance</a>
-                    <a href="index.html#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-blue ml-auto">58</span></a>
+                    <a href="{{route('admin.my.profile', auth()->user()->id)}}" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
                     <div class="dropdown-divider"></div>
-                    <a href="index.html#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
                     <a href="#" class="dropdown-item" onclick="event.preventDefault();
                                                 document.querySelector('#admin-logout-form').submit();"><i class="icon-switch2"></i> Logout</a>
                     <form id="admin-logout-form" action="{{ route('admin.logout') }}"

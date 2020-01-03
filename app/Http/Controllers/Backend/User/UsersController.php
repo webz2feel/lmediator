@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Backend\User;
 
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserPasswordRequest;
+use App\Http\Requests\User\UpdateUserProfileRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\Admin\Admin;
 use App\Models\Permission\Permission;
@@ -76,23 +79,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $data = Admin::where('id', $id)->get();
-        $user = $data->map(function($item) {
-            if($item->updated_by != null) {
-                $updated = Admin::findOrFail($item->updated_by);
-                if ($updated != null) {
-                    $item->updated_by = $updated->full_name;
-                }
-            }
-            if($item->created_by != null) {
-                $created = Admin::findOrFail($item->created_by);
-                if ($created != null) {
-                    $item->created_by = $created->full_name;
-                }
-            }
-            return $item;
-        });
-        return view('backend.user.show')->withUser($user[0]);
+        $user = Admin::findOrFail($id);
+        return view('backend.user.show')->withUser($user);
     }
 
     /**
@@ -137,5 +125,30 @@ class UsersController extends Controller
     {
         Admin::destroy($id);
         return redirect()->back()->with('success', 'User deleted successfully');
+    }
+
+    public function myProfile(Admin $admin)
+    {
+        return view('backend.user.profile')->withUser($admin);
+    }
+
+    public function updateProfile(UpdateUserProfileRequest $request, Admin $admin)
+    {
+        try {
+            $this->userRepository->updateProfile($admin, $request->all());
+        } catch (GeneralException $e) {
+            return redirect()->route('admin.my.profile', $admin->id)->with('error', $e->message);
+        }
+        return redirect()->route('admin.my.profile', $admin->id)->with('success', 'Profile updated successfully');
+    }
+
+    public function updatePassword(UpdateUserPasswordRequest $request, Admin $admin)
+    {
+        try {
+            $this->userRepository->updatePassword($admin, $request->all());
+        } catch (GeneralException $e) {
+            return redirect()->route('admin.my.profile', $admin->id)->with('error', $e->message);
+        }
+        return redirect()->route('admin.my.profile', $admin->id)->with('success', 'Password updated successfully');
     }
 }

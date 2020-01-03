@@ -28,4 +28,18 @@ class CreatePageRequest extends FormRequest
             'slug'  => 'required|min:2|max:250|unique:pages,slug',
         ];
     }
+
+    public function pageFillData()
+    {
+        return [
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'contents' => $this->body,
+            'status' => $this->status,
+            'meta_title' => $this->meta_title,
+            'meta_keywords' => $this->meta_keywords,
+            'meta_description' => $this->meta_description,
+            'crawlable' => $this->has('crawlable') ? 1 : 0,
+        ];
+    }
 }

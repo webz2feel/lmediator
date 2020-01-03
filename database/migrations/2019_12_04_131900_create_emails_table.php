@@ -15,7 +15,7 @@ class CreateEmailsTable extends Migration
     {
         Schema::create('emails', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('usage_description');
+            $table->string('purpose');
             $table->string('email_reference');
             $table->string('subject');
             $table->string('from_name')->nullable();
@@ -25,10 +25,10 @@ class CreateEmailsTable extends Migration
             $table->string('bcc_email')->nullable();
             $table->string('reply_to_email')->nullable();
             $table->text('contents');
-            $table->text('variable_used');
-            $table->enum('is_promotional', ['y', 'n'])->default('y');
+            $table->text('variable_used')->nullable();
+            $table->boolean('is_promotional')->default(true)->nullable();
             $table->enum('email_type', ['notification', 'common'])->default('common');
-            $table->enum('is_active', ['y', 'n'])->default('y');
+            $table->boolean('active')->default(true)->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

@@ -4,6 +4,7 @@
 namespace App\Repository\Backend\User;
 
 
+use App\Exceptions\GeneralException;
 use App\Models\Admin\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -67,5 +68,30 @@ class UserRepository
             }
             return true;
         }
+    }
+
+    public function updatePassword(Admin $admin, array $request)
+    {
+        if (Hash::check($request['old_password'], $admin->password)) {
+            $admin->password = Hash::make($request['password']);
+            if ($admin->save()) {
+//                event(new UserPasswordChanged($admin));
+                return true;
+            }
+            throw new GeneralException('There was a problem changing this users password. Please try again.');
+        }
+
+        throw new GeneralException('That is not your old password.');
+    }
+
+    public function updateProfile(Admin $admin, array $request)
+    {
+        $admin->first_name = $request['first_name'];
+        $admin->last_name = $request['last_name'];
+        if ($admin->save()) {
+//                event(new UserProfileChanged($admin));
+            return true;
+        }
+        throw new GeneralException('There was a problem updating the profiles. Please try again.');
     }
 }
