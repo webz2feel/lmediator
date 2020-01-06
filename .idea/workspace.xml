@@ -2,17 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42262eb1-1aa2-4794-9b33-52baabada3b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Services/UserFormFields.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Email/UpdateEmailRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Module/Module.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Module/SubModule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Traits/EmailTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_01_03_174648_create_modules_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_01_03_181054_create_sub_modules_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/email/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/User/CreateUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/User/CreateUserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/User/UpdateUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/User/UpdateUserRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Admin/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Admin/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Backend/User/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Backend/User/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/PermissionFormFields.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PermissionFormFields.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/user/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/user/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/user/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/user/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/user/partials/user-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/user/partials/user-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Email/EmailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Email/EmailsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Email/StoreEmailRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Email/StoreEmailRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Email/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Email/Email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Backend/Email/EmailRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Backend/Email/EmailRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_04_131900_create_emails_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_04_131900_create_emails_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/email/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/email/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/email/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/email/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/email/partials/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/email/partials/form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/email/partials/post-header-buttons.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/email/partials/header-buttons.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/backend/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/backend/Email.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,16 +156,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Services" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/backend/email" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/backend/email" />
       <recent name="$PROJECT_DIR$/app/Services" />
       <recent name="$PROJECT_DIR$/routes/backend" />
       <recent name="$PROJECT_DIR$/app/Traits" />
       <recent name="$PROJECT_DIR$/resources/views/backend" />
-      <recent name="$PROJECT_DIR$/resources/views/backend/blog" />
     </key>
   </component>
   <component name="RunManager">
@@ -204,6 +211,7 @@
       <workItem from="1577720995044" duration="7184000" />
       <workItem from="1577804384249" duration="8276000" />
       <workItem from="1577891254591" duration="9444000" />
+      <workItem from="1578064471737" duration="8937000" />
     </task>
     <servers />
   </component>
@@ -236,17 +244,18 @@
       <screen x="0" y="23" width="1600" height="812" />
     </state>
     <state x="475" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577539882123" />
-    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1577899719881">
+    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578071012423">
       <screen x="0" y="23" width="1600" height="815" />
     </state>
     <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577546175523" />
-    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1577899719881" />
-    <state x="520" y="214" key="NewPhpClassDialog" timestamp="1577811755922">
-      <screen x="0" y="23" width="1600" height="812" />
+    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1578071012423" />
+    <state x="520" y="215" key="NewPhpClassDialog" timestamp="1578066555329">
+      <screen x="0" y="23" width="1600" height="815" />
     </state>
     <state x="520" y="214" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.810@0.23.1600.810" timestamp="1577517503077" />
     <state x="520" y="214" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577811755922" />
     <state x="520" y="215" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.813@0.23.1600.813" timestamp="1577279097344" />
+    <state x="520" y="215" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1578066555329" />
     <state x="583" y="334" key="NewPhpFileDialog" timestamp="1577809054760">
       <screen x="0" y="23" width="1600" height="812" />
     </state>
@@ -268,7 +277,7 @@
       <screen x="0" y="22" width="1600" height="813" />
     </state>
     <state x="404" y="145" width="959" height="644" key="find.popup/-1280.22.1280.938/0.22.1600.813@0.22.1600.813" timestamp="1576866439143" />
-    <state x="381" y="23" width="838" height="815" key="search.everywhere.popup" timestamp="1577895477988">
+    <state x="381" y="23" width="838" height="815" key="search.everywhere.popup" timestamp="1578073652017">
       <screen x="0" y="23" width="1600" height="815" />
     </state>
     <state x="381" y="22" width="838" height="1032" key="search.everywhere.popup/-1280.22.1280.938/0.22.1600.813@0.22.1600.813" timestamp="1576910784113" />
@@ -276,7 +285,8 @@
     <state x="381" y="23" width="838" height="810" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.810@0.23.1600.810" timestamp="1577515298827" />
     <state x="381" y="23" width="838" height="812" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577805097719" />
     <state x="381" y="23" width="838" height="813" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.813@0.23.1600.813" timestamp="1577546332898" />
-    <state x="381" y="23" width="838" height="815" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1577895477988" />
+    <state x="381" y="23" width="838" height="815" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1578073652017" />
+    <state x="381" y="23" width="838" height="816" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.816@0.23.1600.816" timestamp="1578064747055" />
     <state x="381" y="23" width="838" height="821" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.821@0.23.1600.821" timestamp="1577623858649" />
   </component>
 </project>

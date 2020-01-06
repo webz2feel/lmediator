@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend\Email;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Email\StoreEmailRequest;
+use App\Http\Requests\Email\UpdateEmailRequest;
+use App\Models\Email\Email;
 use App\Repository\Backend\Email\EmailRepository;
 use App\Services\EmailFormFields;
 use Illuminate\Http\Request;
@@ -24,11 +26,16 @@ class EmailsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        return view('backend.email.index');
+    }
+
+    public function getDataTable()
+    {
+        return $this->emailRepository->getForDataTable();
     }
 
     /**
@@ -52,8 +59,7 @@ class EmailsController extends Controller
      */
     public function store(StoreEmailRequest $request)
     {
-        $emailData = $request->emailFillData();
-        $this->emailRepository->storeNewEmail($emailData);
+        $this->emailRepository->storeNewEmail();
         return redirect()->route('admin.email.index')->with('success','Email created successfully');
     }
 
@@ -65,40 +71,48 @@ class EmailsController extends Controller
      */
     public function show($id)
     {
-        //
+        $email = Email::findOrFail($id);
+        return view('backend.email.show')->withEmail($email);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $service = new EmailFormFields($id);
+        $data = $service->handle();
+        return view('backend.email.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Email\UpdateEmailRequest  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEmailRequest $request, $id)
     {
-        //
+        $this->emailRepository->updateEmail($id);
+        return redirect()->route('admin.email.index')->with('success','Email updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        Email::destroy($id);
+        return redirect()->route('admin.email.index')->with('success','Email deleted successfully');
     }
 }

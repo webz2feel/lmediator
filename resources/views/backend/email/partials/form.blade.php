@@ -69,17 +69,17 @@
             </div>
             <div class="form-group">
                 <label>To Emails:</label>
-                <textarea name="to_email" rows="4" cols="4" class="form-control elastic" placeholder="To email address"></textarea>
+                <textarea name="to_email" rows="4" cols="4" class="form-control elastic" placeholder="To email address">{{$to_email}}</textarea>
                 <span class="form-text text-muted">Add each email on new line, with pattern e.g John Doe &lt;example@yahoo.com&gt;</span>
             </div>
             <div class="form-group">
                 <label>CC Emails:</label>
-                <textarea name="cc_email" rows="4" cols="4" class="form-control elastic" placeholder="CC email addresses"></textarea>
+                <textarea name="cc_email" rows="4" cols="4" class="form-control elastic" placeholder="CC email addresses">{{$cc_email}}</textarea>
                 <span class="form-text text-muted">Add each email on new line, with pattern e.g John Doe &lt;example@yahoo.com&gt;</span>
             </div>
             <div class="form-group">
                 <label>BCC Emails:</label>
-                <textarea name="bcc_email" rows="4" cols="4" class="form-control elastic" placeholder="BCC email address"></textarea>
+                <textarea name="bcc_email" rows="4" cols="4" class="form-control elastic" placeholder="BCC email address">{{$bcc_email}}</textarea>
                 <span class="form-text text-muted">Add each email on new line, with pattern e.g John Doe &lt;example@yahoo.com&gt;</span>
             </div>
             <div class="form-group">
