@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\PermissionsServiceProvider::class,
         App\Providers\EloquentServiceProvider::class,
+        App\Providers\ViewComposerServiceProvider::class,
     ],
 
     /*

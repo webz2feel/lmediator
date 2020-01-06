@@ -12,27 +12,30 @@
         </a>
     </div>
     <!-- /sidebar mobile toggler -->
-
-
     <!-- Sidebar content -->
     <div class="sidebar-content">
         <!-- Main navigation -->
         <div class="card card-sidebar-mobile">
             <ul class="nav nav-sidebar" data-nav-type="accordion">
-
+{{--                nav-item-open--}}
                 <!-- Main -->
                 <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
-                <li class="nav-item">
-                    <a href="{{route('admin.dashboard')}}" class="nav-link active">
-                        <i class="icon-home4"></i>
-                        <span>
-									Dashboard
-								</span>
-                    </a>
-                </li>
-                <li class="nav-item nav-item-submenu">
+                @if(count($modules))
+                    @foreach($modules as $module)
+                        <li class="nav-item @if($module->sub_modules->count() > 0) nav-item-submenu @endif">
+                            <a href="{{ !empty($module->route_name) ? route($module->route_name) : ''}}" class="nav-link {{Route::getCurrentRoute()->getName() == $module->route_name ? 'active' : ''}}">{!! $module->icon !!} <span>{{$module->name}}</span></a>
+                            @if($module->sub_modules->count() > 0)
+                                <ul class="nav nav-group-sub" data-submenu-title="Posts">
+                                    @foreach($module->sub_modules as $sm)
+                                        <li class="nav-item"><a href="{{ route($sm->route) }}" class="nav-link {{Route::getCurrentRoute()->getName() == $sm->route ? 'active' : ''}}">{{$sm->name}}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                    @endforeach
+                @endif
+                {{--<li class="nav-item nav-item-submenu">
                     <a href="#" class="nav-link"><i class="icon-copy"></i> <span>Posts</span></a>
-
                     <ul class="nav nav-group-sub" data-submenu-title="Posts">
                         <li class="nav-item"><a href="{{ route('admin.post.index') }}" class="nav-link active">All Posts</a></li>
                         <li class="nav-item"><a href="{{ route('admin.post.create') }}" class="nav-link">Add New</a></li>
@@ -80,12 +83,22 @@
                 <li class="nav-item">
                     <a href="{{route('admin.settings')}}" class="nav-link"><i class="icon-cog2"></i> <span>Settings</span></a>
                 </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="index.html#" class="nav-link"><i class="icon-color-sampler"></i> <span>Modules</span></a>
+
+                    <ul class="nav nav-group-sub" data-submenu-title="Module">
+                        <li class="nav-item"><a href="{{route('admin.module.index')}}" class="nav-link">View Modules</a></li>
+                        <li class="nav-item"><a href="{{route('admin.module.create')}}" class="nav-link">Add Module</a></li>
+                        <li class="nav-item"><a href="{{route('admin.sub-module.index')}}" class="nav-link">View Sub Modules</a></li>
+                        <li class="nav-item"><a href="{{route('admin.sub-module.create')}}" class="nav-link">Add Sub Module</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="changelog.html" class="nav-link">
                         <i class="icon-list-unordered"></i>
                         <span>logs</span>
                     </a>
-                </li>
+                </li>--}}
             </ul>
         </div>
         <!-- /main navigation -->

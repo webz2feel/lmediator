@@ -17,8 +17,9 @@ class CreateModulesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('route_name')->nullable();
-            $table->tinyInteger('sort_order')->default(1);
-            $table->boolean('status')->default(1);
+            $table->tinyInteger('position')->default(1);
+            $table->string('icon')->nullable();
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }
