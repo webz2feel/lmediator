@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
 
 if (!function_exists('includeRouteFiles')) {
 
@@ -28,32 +29,5 @@ if (!function_exists('includeRouteFiles')) {
                 require $filename;
             }
         }
-    }
-}
-
-if(!function_exists('set_active')) {
-    function set_active ($uri)
-    {
-        if (is_array($uri))
-        {
-            foreach ($uri as $uri)
-            {
-                if ($uri == 'admin' && ! Request::is($uri))
-                {
-                    return false;
-                }
-
-                if (Request::is($uri) || Request::is($uri . '/*'))
-                {
-                    return true;
-                }
-            }
-        }
-        elseif (Request::is($uri) || Request::is($uri . '/*'))
-        {
-            return true;
-        }
-
-        return false;
     }
 }

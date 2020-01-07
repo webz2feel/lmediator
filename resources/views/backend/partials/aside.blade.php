@@ -12,6 +12,9 @@
         </a>
     </div>
     <!-- /sidebar mobile toggler -->
+{{--    @php--}}
+{{--    dd(request()->segment(2))--}}
+{{--    @endphp--}}
     <!-- Sidebar content -->
     <div class="sidebar-content">
         <!-- Main navigation -->
@@ -22,7 +25,7 @@
                 <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
                 @if(count($modules))
                     @foreach($modules as $module)
-                        <li class="nav-item @if($module->sub_modules->count() > 0) nav-item-submenu @endif">
+                        <li class="nav-item @if($module->sub_modules->count() > 0) nav-item-submenu @endif @if(stristr($module->route_name, request()->segment(2))) nav-item-expanded nav-item-open @endif">
                             <a href="{{ !empty($module->route_name) ? route($module->route_name) : ''}}" class="nav-link {{Route::getCurrentRoute()->getName() == $module->route_name ? 'active' : ''}}">{!! $module->icon !!} <span>{{$module->name}}</span></a>
                             @if($module->sub_modules->count() > 0)
                                 <ul class="nav nav-group-sub" data-submenu-title="Posts">
