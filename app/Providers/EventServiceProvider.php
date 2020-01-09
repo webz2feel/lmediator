@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Listeners\Backend\Pages\PageEventListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -20,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
+    protected $subscribe = [
+        PageEventListener::class,
+    ];
     /**
      * Register any events for your application.
      *

@@ -2,24 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42262eb1-1aa2-4794-9b33-52baabada3b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Email/UpdateEmailRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Module/Module.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Module/SubModule.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Traits/EmailTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_01_03_174648_create_modules_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_01_03_181054_create_sub_modules_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/backend/email/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Events/Backend/Pages/PageCreated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Events/Backend/Pages/PageUpdated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Listeners/Backend/Pages/PageEventListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Pages/SendPageCreatedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/pages/send-page-updated-email.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Email/EmailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Email/EmailsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Email/StoreEmailRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Email/StoreEmailRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Email/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Email/Email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Backend/Email/EmailRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Backend/Email/EmailRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_04_131900_create_emails_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_04_131900_create_emails_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/email/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/email/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/email/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/email/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/email/partials/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/email/partials/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/email/partials/post-header-buttons.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/email/partials/header-buttons.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/backend/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/backend/Email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Backend/Page/PagesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Backend/Page/PagesRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,6 +202,7 @@
       <workItem from="1577804384249" duration="8276000" />
       <workItem from="1577891254591" duration="9444000" />
       <workItem from="1578064471737" duration="8937000" />
+      <workItem from="1578586476071" duration="6096000" />
     </task>
     <servers />
   </component>
@@ -256,10 +247,11 @@
     <state x="520" y="214" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577811755922" />
     <state x="520" y="215" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.813@0.23.1600.813" timestamp="1577279097344" />
     <state x="520" y="215" key="NewPhpClassDialog/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1578066555329" />
-    <state x="583" y="334" key="NewPhpFileDialog" timestamp="1577809054760">
-      <screen x="0" y="23" width="1600" height="812" />
+    <state x="583" y="333" key="NewPhpFileDialog" timestamp="1578595594364">
+      <screen x="0" y="23" width="1600" height="810" />
     </state>
     <state x="601" y="344" key="NewPhpFileDialog/-1280.22.1280.938/0.22.1600.816@0.22.1600.816" timestamp="1576779469748" />
+    <state x="583" y="333" key="NewPhpFileDialog/-1280.23.1280.937/0.23.1600.810@0.23.1600.810" timestamp="1578595594364" />
     <state x="583" y="334" key="NewPhpFileDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577809054760" />
     <state x="583" y="334" key="NewPhpFileDialog/-1280.23.1280.937/0.23.1600.813@0.23.1600.813" timestamp="1577373219538" />
     <state x="583" y="335" key="NewPhpFileDialog/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1577726659511" />
@@ -277,13 +269,17 @@
       <screen x="0" y="22" width="1600" height="813" />
     </state>
     <state x="404" y="145" width="959" height="644" key="find.popup/-1280.22.1280.938/0.22.1600.813@0.22.1600.813" timestamp="1576866439143" />
-    <state x="381" y="23" width="838" height="815" key="search.everywhere.popup" timestamp="1578073652017">
-      <screen x="0" y="23" width="1600" height="815" />
+    <state width="750" height="530" key="javadoc.popup" timestamp="1578590399286">
+      <screen x="0" y="23" width="1600" height="812" />
+    </state>
+    <state width="750" height="530" key="javadoc.popup/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1578590399286" />
+    <state x="381" y="23" width="838" height="812" key="search.everywhere.popup" timestamp="1578591625812">
+      <screen x="0" y="23" width="1600" height="812" />
     </state>
     <state x="381" y="22" width="838" height="1032" key="search.everywhere.popup/-1280.22.1280.938/0.22.1600.813@0.22.1600.813" timestamp="1576910784113" />
     <state x="381" y="22" width="838" height="1034" key="search.everywhere.popup/-1280.22.1280.938/0.22.1600.814@0.22.1600.814" timestamp="1576870392131" />
     <state x="381" y="23" width="838" height="810" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.810@0.23.1600.810" timestamp="1577515298827" />
-    <state x="381" y="23" width="838" height="812" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577805097719" />
+    <state x="381" y="23" width="838" height="812" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1578591625812" />
     <state x="381" y="23" width="838" height="813" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.813@0.23.1600.813" timestamp="1577546332898" />
     <state x="381" y="23" width="838" height="815" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1578073652017" />
     <state x="381" y="23" width="838" height="816" key="search.everywhere.popup/-1280.23.1280.937/0.23.1600.816@0.23.1600.816" timestamp="1578064747055" />
