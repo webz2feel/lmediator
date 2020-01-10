@@ -13,7 +13,9 @@ use Illuminate\Queue\SerializesModels;
 
 class PageUpdated
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
     /**
      * @var string
      */
@@ -22,7 +24,7 @@ class PageUpdated
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param  \App\Models\Page\Page  $page
      */
     public function __construct(Page $page)
     {

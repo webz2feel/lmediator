@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendPageCreatedEmail extends Mailable
+class SendPageUpdatedEmail extends Mailable
 {
     use Queueable, SerializesModels;
     public $page;
@@ -30,6 +30,6 @@ class SendPageCreatedEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.pages.send-page-created-email');
+        return $this->markdown('emails.pages.send-page-updated-email');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Repository\Backend\Page;
 
 
 use App\Events\Backend\Pages\PageCreated;
+use App\Events\Backend\Pages\PageDeleted;
 use App\Events\Backend\Pages\PageUpdated;
 use App\Models\Page\Page;
 use Yajra\DataTables\Facades\DataTables;
@@ -48,8 +49,8 @@ class PagesRepository implements PagesInterface
      */
     public function create(array $attributes)
     {
-        if($this->page->create($attributes)){
-            event(new PageCreated());
+        if($page = $this->page->create($attributes)){
+            event(new PageCreated($page));
             return true;
         }
         return false;
@@ -78,7 +79,9 @@ class PagesRepository implements PagesInterface
      */
     public function delete(int $id)
     {
-        $this->getById($id)->delete();
+        $page = $this->getById($id);
+        $page->delete();
+        event(new PageDeleted($page));
     }
 
     /**

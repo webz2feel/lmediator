@@ -7,14 +7,29 @@ namespace App\Traits;
 use App\Models\Admin\Admin;
 use Illuminate\Support\Str;
 
+/**
+ * Written main functions for email model class
+ * 
+ * @category Email_Model
+ * @author   Imran ali <imran@wtwm.com>
+ */
 trait EmailTrait
 {
+
+
+
+
+    /**
+     * Generate Actions buttons
+     *
+     * @return void
+     */
     public function getActionButtonsAttribute()
     {
         return '<div class="list-icons">
-                    '.$this->getViewButtonAttribute('show-email', 'admin.email.show').'
-                    '.$this->getEditButtonAttribute('edit-email', 'admin.email.edit').'
-                    '.$this->getDeleteButtonAttribute('delete-email', 'admin.email.destroy').'
+                    ' . $this->getViewButtonAttribute('show-email', 'admin.email.show') . '
+                    ' . $this->getEditButtonAttribute('edit-email', 'admin.email.edit') . '
+                    ' . $this->getDeleteButtonAttribute('delete-email', 'admin.email.destroy') . '
                 </div>';
     }
 

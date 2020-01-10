@@ -1,10 +1,10 @@
 @component('mail::message')
 # Introduction
 
-### New page updated with title ({{$page->title}})
+### Page deleted with title ({{$page->title}})
 
 @component('mail::button', ['url' => ''])
-View Page
+Button Text
 @endcomponent
 
 Thanks,<br>

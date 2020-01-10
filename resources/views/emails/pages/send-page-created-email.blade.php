@@ -1,7 +1,6 @@
 @component('mail::message')
 # Introduction
-
-### New page updated with title ({{$page->title}})
+### New page create with title of ({{$page->title}})
 
 @component('mail::button', ['url' => ''])
 View Page

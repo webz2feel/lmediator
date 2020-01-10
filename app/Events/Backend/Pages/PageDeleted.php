@@ -10,32 +10,29 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PageCreated
+class PageDeleted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    /**
-     * @var string
-     */
     public $page;
 
     /**
      * Create a new event instance.
      *
-     * @param  string  $page
+     * @return void
      */
     public function __construct($page)
     {
-
+        //
         $this->page = $page;
     }
 
-//    /**
-//     * Get the channels the event should broadcast on.
-//     *
-//     * @return \Illuminate\Broadcasting\Channel|array
-//     */
-//    public function broadcastOn()
-//    {
-//        return new PrivateChannel('channel-name');
-//    }
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
+    }
 }

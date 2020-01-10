@@ -83,14 +83,14 @@ class PostsController extends Controller
             'excerpt' => $request->excerpt,
             'allow_comments' => 0,
         ];
-        if($request->has('allow_comments')){
+        if ($request->has('allow_comments')) {
             $postData['allow_comments'] = 1;
         }
 
-        if($post = $this->postRepository->create($postData)){
+        if ($post = $this->postRepository->create($postData)) {
             $this->storeImage($post);
         }
-//        event(new NewCustomerHasRegisteredEvent($customer));
+        //        event(new NewCustomerHasRegisteredEvent($customer));
         return redirect()->route('admin.post.index')->with('success', 'Post created successfully');
     }
 
@@ -143,14 +143,14 @@ class PostsController extends Controller
             'excerpt' => $request->excerpt,
             'allow_comments' => 0,
         ];
-        if($request->has('allow_comments')){
+        if ($request->has('allow_comments')) {
             $postData['allow_comments'] = 1;
         }
 
-        if($post = $this->postRepository->update($id, $postData)){
+        if ($post = $this->postRepository->update($id, $postData)) {
             $this->storeImage($post);
         }
-//        event(new NewCustomerHasRegisteredEvent($customer));
+        //        event(new NewCustomerHasRegisteredEvent($customer));
         return redirect()->route('admin.post.index')->with('success', 'Post updated successfully');
     }
 
@@ -180,9 +180,9 @@ class PostsController extends Controller
             //get file extension
             $extension = request()->file('image')->getClientOriginalExtension();
             //filename to store
-            $filenametostore = $filename.'_'.time().'.'.$extension;
+            $filenametostore = $filename . '_' . time() . '.' . $extension;
             //small thumbnail name
-//            $smallthumbnail = $filename.'_small_'.time().'.'.$extension;
+            //            $smallthumbnail = $filename.'_small_'.time().'.'.$extension;
             //medium thumbnail name
             /*$mediumthumbnail = $filename.'_medium_'.time().'.'.$extension;
             //large thumbnail name
@@ -193,8 +193,8 @@ class PostsController extends Controller
             /*request()->file('image')->storeAs('public/images/thumbnail', $mediumthumbnail);
             request()->file('image')->storeAs('public/images/thumbnail', $largethumbnail);*/
             //create small thumbnail
-            $actualImage = public_path('storage/images/'.$filenametostore);
-            $smallthumbnailpath = public_path('storage/images/thumbnail/'.$filenametostore);
+            $actualImage = public_path('storage/images/' . $filenametostore);
+            $smallthumbnailpath = public_path('storage/images/thumbnail/' . $filenametostore);
             $this->createThumbnail($smallthumbnailpath, 150, 93);
             //create medium thumbnail
             /*$mediumthumbnailpath = public_path('storage/images/thumbnail/'.$mediumthumbnail);
@@ -204,8 +204,8 @@ class PostsController extends Controller
             $this->createThumbnail($largethumbnailpath, 550, 340);*/
 
             $post->update([
-                  'image' => $filenametostore,
-              ]);
+                'image' => $filenametostore,
+            ]);
         }
     }
 
