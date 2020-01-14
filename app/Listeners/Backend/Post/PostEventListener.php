@@ -12,7 +12,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
-class PostEventListener
+class PostEventListener implements ShouldQueue
 {
     /**
      * @var \Illuminate\Config\Repository

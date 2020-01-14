@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
-class PageEventListener
+class PageEventListener implements ShouldQueue
 {
     public $notification_recipient;
     /**

@@ -13,12 +13,12 @@ use App\Models\Blog\Tag;
 use App\Repository\Backend\Post\PostRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-
+use UploadImage;
 class PostsController extends Controller
 {
-
     protected $postRepository;
 
     /**
@@ -90,8 +90,14 @@ class PostsController extends Controller
         }
 
         if ($post = $this->postRepository->create($postData)) {
-            $this->storeImage($post);
+            if($request->has('image')){
+                $filenametostore = UploadImage::upload($request->file('image'));
+                $post->update([
+                    'image' => $filenametostore,
+                ]);
+            }
             event(new PostCreatedEvent($post));
+//            $this->storeImage($post);
         }
         //        event(new NewCustomerHasRegisteredEvent($customer));
         return redirect()->route('admin.post.index')->with('success', 'Post created successfully');
@@ -151,7 +157,21 @@ class PostsController extends Controller
         }
 
         if ($post = $this->postRepository->update($id, $postData)) {
-            $this->storeImage($post);
+            if($request->has('image')){
+                if(Storage::disk('public')->exists('images/'. $post->image)){
+                    Storage::delete('public/images/'. $post->image);
+                }
+                if(Storage::disk('public')->exists('images/mid/'. $post->image)){
+                    Storage::delete('public/images/mid/'. $post->image);
+                }
+                if(Storage::disk('public')->exists('images/thumb'. $post->image)){
+                    Storage::delete('public/images/thumb/'. $post->image);
+                }
+                $filenametostore = UploadImage::upload($request->file('image'));
+                $post->update([
+                    'image' => $filenametostore,
+                ]);
+            }
             event(new PostUpdatedEvent($post));
         }
         //        event(new NewCustomerHasRegisteredEvent($customer));
