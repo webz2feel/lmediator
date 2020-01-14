@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Backend\Blog;
 
+use App\Events\Backend\Category\CategoryCreatedEvent;
+use App\Events\Backend\Category\CategoryDeletedEvent;
+use App\Events\Backend\Category\CategoryUpdatedEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Blog\Category;
 use Illuminate\Http\Request;
@@ -87,7 +90,8 @@ class CategoriesController extends Controller
         if($request->has('status')){
             $category->status = true;
         }
-        if($category->save()){
+        if($category = $category->save()){
+            event(new CategoryCreatedEvent($category));
             return response()->json(['success' => 'Category created successfully.']);
         }else {
             return response()->json(['errors' => 'There is an error saving record']);
@@ -152,7 +156,7 @@ class CategoriesController extends Controller
             $form_data['status'] = true;
         }
         Category::whereId($request->hidden_id)->update($form_data);
-
+        event(new CategoryUpdatedEvent($category));
         return response()->json(['success' => 'Category is successfully updated']);
     }
 
@@ -167,5 +171,6 @@ class CategoriesController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
+        event(new CategoryDeletedEvent($category));
     }
 }

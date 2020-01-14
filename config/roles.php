@@ -2,6 +2,7 @@
 
 return [
 
+    'notification_recipient' => env('NOTIFICATION_RECIPIENT', ''),
     /*
     |--------------------------------------------------------------------------
     | Package Connection

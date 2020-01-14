@@ -4,6 +4,7 @@
 namespace App\Repository\Backend\Post;
 
 
+use App\Events\Backend\Post\PostDeletedEvent;
 use App\Models\Blog\Post;
 use Yajra\DataTables\Facades\DataTables;
 class PostRepository implements PostRepositoryInterface
@@ -99,7 +100,9 @@ class PostRepository implements PostRepositoryInterface
 
     public function delete(int $id)
     {
-        $this->getById($id)->delete();
+        $post = $this->getById($id);
+        $post->delete();
+        event(new PostDeletedEvent($post));
         return true;
     }
 }

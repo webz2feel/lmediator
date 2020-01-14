@@ -13,15 +13,17 @@ use Illuminate\Queue\SerializesModels;
 class CategoryUpdatedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+    public $category;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($category)
     {
         //
+        $this->category = $category;
     }
 
     /**

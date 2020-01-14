@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 
 class PageEventListener
 {
+    public $notification_recipient;
     /**
      * Create the event listener.
      *
@@ -18,22 +19,22 @@ class PageEventListener
      */
     public function __construct()
     {
-        //
+        $this->notification_recipient = config('roles.notification_recipient');
     }
 
     public function onCreated($event)
     {
-        Mail::to('imran@wtwm.com')->send(new SendPageCreatedEmail($event->page));
+        Mail::to($this->notification_recipient)->send(new SendPageCreatedEmail($event->page));
     }
 
     public function onUpdated($event)
     {
-        Mail::to('imran@wtwm.com')->send(new SendPageUpdatedEmail($event->page));
+        Mail::to($this->notification_recipient)->send(new SendPageUpdatedEmail($event->page));
     }
 
     public function onDeleted($event)
     {
-        Mail::to('imran@wtwm.com')->send(new SendPageDeletedEmail($event->page));
+        Mail::to($this->notification_recipient)->send(new SendPageDeletedEmail($event->page));
     }
 
     public function subscribe($events)

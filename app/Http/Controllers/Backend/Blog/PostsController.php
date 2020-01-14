@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Blog;
 
+use App\Events\Backend\Post\PostCreatedEvent;
+use App\Events\Backend\Post\PostUpdatedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
@@ -89,6 +91,7 @@ class PostsController extends Controller
 
         if ($post = $this->postRepository->create($postData)) {
             $this->storeImage($post);
+            event(new PostCreatedEvent($post));
         }
         //        event(new NewCustomerHasRegisteredEvent($customer));
         return redirect()->route('admin.post.index')->with('success', 'Post created successfully');
@@ -149,6 +152,7 @@ class PostsController extends Controller
 
         if ($post = $this->postRepository->update($id, $postData)) {
             $this->storeImage($post);
+            event(new PostUpdatedEvent($post));
         }
         //        event(new NewCustomerHasRegisteredEvent($customer));
         return redirect()->route('admin.post.index')->with('success', 'Post updated successfully');

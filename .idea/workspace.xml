@@ -2,14 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42262eb1-1aa2-4794-9b33-52baabada3b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Events/Backend/Pages/PageCreated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Events/Backend/Pages/PageUpdated.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Listeners/Backend/Pages/PageEventListener.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mail/Pages/SendPageCreatedEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/emails/pages/send-page-updated-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Category/SendCategoryCreatedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Category/SendCategoryDeletedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Category/SendCategoryUpdatedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Post/SendPostCreatedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Post/SendPostDeletedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Post/SendPostUpdatedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Tag/SendTagCreatedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Tag/SendTagDeletedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/Tag/SendTagUpdatedEmail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/category/send-category-created-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/category/send-category-deleted-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/category/send-category-updated-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/post/send-post-created-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/post/send-post-deleted-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/post/send-post-updated-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/tag/send-tag-created-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/tag/send-tag-deleted-email.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/tag/send-tag-updated-email.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Backend/Category/CategoryCreatedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Backend/Category/CategoryCreatedEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Backend/Category/CategoryDeletedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Backend/Category/CategoryDeletedEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Backend/Category/CategoryUpdatedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Backend/Category/CategoryUpdatedEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Backend/Post/PostCreatedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Backend/Post/PostCreatedEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Backend/Post/PostDeletedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Backend/Post/PostDeletedEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Backend/Post/PostUpdatedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Backend/Post/PostUpdatedEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Backend/Tag/TagCreatedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Backend/Tag/TagCreatedEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Backend/Tag/TagDeletedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Backend/Tag/TagDeletedEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Backend/Tag/TagUpdatedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Backend/Tag/TagUpdatedEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/CategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/PostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/PostsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/TagsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/Backend/Category/CategoryEventListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Backend/Category/CategoryEventListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/Backend/Pages/PageEventListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Backend/Pages/PageEventListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/Backend/Post/PostEventListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Backend/Post/PostEventListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/Backend/Tag/TagEventListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Backend/Tag/TagEventListener.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/Backend/Page/PagesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Backend/Page/PagesRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Backend/Post/PostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Backend/Post/PostRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/roles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/roles.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +232,9 @@
       <workItem from="1577804384249" duration="8276000" />
       <workItem from="1577891254591" duration="9444000" />
       <workItem from="1578064471737" duration="8937000" />
-      <workItem from="1578586476071" duration="6096000" />
+      <workItem from="1578586476071" duration="6218000" />
+      <workItem from="1578926357166" duration="6767000" />
+      <workItem from="1579010683669" duration="601000" />
     </task>
     <servers />
   </component>

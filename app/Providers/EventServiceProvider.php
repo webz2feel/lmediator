@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Listeners\Backend\Category\CategoryEventListener;
 use App\Listeners\Backend\Pages\PageEventListener;
+use App\Listeners\Backend\Post\PostEventListener;
+use App\Listeners\Backend\Tag\TagEventListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -23,6 +26,9 @@ class EventServiceProvider extends ServiceProvider
 
     protected $subscribe = [
         PageEventListener::class,
+        CategoryEventListener::class,
+        TagEventListener::class,
+        PostEventListener::class,
     ];
     /**
      * Register any events for your application.

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Blog;
 
+use App\Events\Backend\Tag\TagCreatedEvent;
+use App\Events\Backend\Tag\TagDeletedEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Blog\Tag;
 use Illuminate\Http\Request;
@@ -82,7 +84,8 @@ class TagsController extends Controller
         if($request->has('status')){
             $tag->status = true;
         }
-        if($tag->save()){
+        if($tag = $tag->save()){
+            event(new TagCreatedEvent($tag));
             return response()->json(['success' => 'Tag created successfully.']);
         }else {
             return response()->json(['errors' => 'There is an error saving record']);
@@ -161,5 +164,6 @@ class TagsController extends Controller
     {
         $tag = Tag::findOrFail($id);
         $tag->delete();
+        event(new TagDeletedEvent($tag));
     }
 }
