@@ -13,10 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-
+use UploadImage;
 class PostsController extends Controller
 {
-
     protected $postRepository;
 
     /**
@@ -88,7 +87,10 @@ class PostsController extends Controller
         }
 
         if ($post = $this->postRepository->create($postData)) {
-            $this->storeImage($post);
+            if($request->has('image')){
+                UploadImage::upload($request->file('image'));
+            }
+//            $this->storeImage($post);
         }
         //        event(new NewCustomerHasRegisteredEvent($customer));
         return redirect()->route('admin.post.index')->with('success', 'Post created successfully');
