@@ -7,6 +7,7 @@ use App\Events\Backend\Category\CategoryDeletedEvent;
 use App\Events\Backend\Category\CategoryUpdatedEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Blog\Category;
+use App\Services\CategoryFormFields;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -29,7 +30,7 @@ class CategoriesController extends Controller
     {
         if(request()->ajax()) {
             return Datatables::of(Category::countPosts('posts')->latest()->get())
-                ->escapeColumns(['name', 'slug', 'descriptions'])
+                ->escapeColumns(['name', 'slug', 'description'])
                 ->addColumn('status', function ($category) {
                     return $category->status ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-secondary">Inactive</span>';
                 })
@@ -55,11 +56,13 @@ class CategoriesController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        $category = new CategoryFormFields();
+        $data = $category->handle();
+        return view('backend.blog.category.create', $data);
     }
 
     /**
@@ -85,7 +88,7 @@ class CategoriesController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->slug = Str::slug($request->slug);
-        $category->descriptions = $request->description;
+        $category->description = $request->description;
         $category->status = false;
         if($request->has('status')){
             $category->status = true;
@@ -149,7 +152,7 @@ class CategoriesController extends Controller
         $form_data = array(
             'name'          =>  $request->name,
             'slug'          =>  Str::slug($request->slug),
-            'descriptions'  =>  $request->description,
+            'description'  =>  $request->description,
         );
         $form_data['status'] = false;
         if($request->has('status')){

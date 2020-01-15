@@ -12,6 +12,9 @@ trait CategoryTrait
     {
         return $this->belongsToMany(Post::class)->withTimestamps();
     }
+    public function subcategory(){
+        return $this->hasMany('App\Models\Blog\Category', 'parent_id');
+    }
 
     public function scopeActive($query, $arg)
     {

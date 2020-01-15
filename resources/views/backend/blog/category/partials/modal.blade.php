@@ -8,7 +8,6 @@
             <form action="#" method="post" id="crud-form">
             <div class="modal-body">
                 <div id="form_result"></div>
-                    @csrf
                     <div class="form-group">
                         <label>Name:</label>
                         <input type="text" class="form-control" placeholder="Category name" name="name" id="name">
