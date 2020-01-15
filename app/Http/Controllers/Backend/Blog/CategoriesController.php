@@ -6,6 +6,8 @@ use App\Events\Backend\Category\CategoryCreatedEvent;
 use App\Events\Backend\Category\CategoryDeletedEvent;
 use App\Events\Backend\Category\CategoryUpdatedEvent;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\CreateCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Models\Blog\Category;
 use App\Services\CategoryFormFields;
 use Illuminate\Http\Request;
@@ -43,11 +45,7 @@ class CategoriesController extends Controller
                     return $category->posts_count;
                 })
                 ->addColumn('actions', function ($category) {
-                    return '<div class="list-icons">
-                        <a href="#" class="list-icons-item edit" id="'.$category->id.'">
-                        <i class="icon-pencil7"></i></a>
-                        <a href="#" id="'.$category->id.'" class="delete list-icons-item"><i class="icon-trash"></i></a>
-                    </div>';
+                    return $category->action_buttons;
                 })
                 ->make(true);
         }
@@ -70,34 +68,14 @@ class CategoriesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        $rules = array(
-            'name'    =>  'required|min:2|max:100',
-            'slug'    =>  'required|unique:categories,slug',
-        );
-
-        $error = Validator::make($request->all(), $rules);
-
-        if($error->fails())
-        {
-            return response()->json(['errors' => $error->errors()->all()]);
-        }
-        $category = new Category();
-        $category->name = $request->name;
-        $category->slug = Str::slug($request->slug);
-        $category->description = $request->description;
-        $category->status = false;
-        if($request->has('status')){
-            $category->status = true;
-        }
-        if($category = $category->save()){
-            event(new CategoryCreatedEvent($category));
-            return response()->json(['success' => 'Category created successfully.']);
+        if($request->categoryFillData()){
+            return redirect()->route('admin.category.index')->with('success','Category created successfully.');
         }else {
-            return response()->json(['errors' => 'There is an error saving record']);
+            return redirect()->route('admin.category.index')->with('success','There is an error saving record');
         }
     }
 
@@ -117,15 +95,13 @@ class CategoriesController extends Controller
      *
      * @param  int  $id
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        if(request()->ajax())
-        {
-            $data = Category::findOrFail($id);
-            return response()->json(['data' => $data]);
-        }
+        $category = new CategoryFormFields($id);
+        $data = $category->handle();
+        return view('backend.blog.category.edit', $data);
     }
 
     /**
@@ -134,33 +110,14 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request)
+    public function update(UpdateCategoryRequest $request, $id)
     {
-        $category = Category::findOrFail($request->hidden_id);
-        $rules = array(
-            'name'    =>  'required|min:2|max:100',
-            'slug'    =>  $category->slug != $request->slug ? 'required|unique:categories,slug' : 'required',
-        );
-        $error = Validator::make($request->all(), $rules);
-        if($error->fails())
-        {
-            return response()->json(['errors' => $error->errors()->all()]);
+        if($request->categoryFillData($id)){
+            return redirect()->route('admin.category.index')->with('success','Category updated successfully.');
         }
-
-        $form_data = array(
-            'name'          =>  $request->name,
-            'slug'          =>  Str::slug($request->slug),
-            'description'  =>  $request->description,
-        );
-        $form_data['status'] = false;
-        if($request->has('status')){
-            $form_data['status'] = true;
-        }
-        Category::whereId($request->hidden_id)->update($form_data);
-        event(new CategoryUpdatedEvent($category));
-        return response()->json(['success' => 'Category is successfully updated']);
+        return redirect()->route('admin.category.edit', $id)->with('error','There is an error updating category.');
     }
 
     /**
@@ -168,12 +125,13 @@ class CategoriesController extends Controller
      *
      * @param  int  $id
      *
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
         $category->delete();
         event(new CategoryDeletedEvent($category));
+        return redirect()->route('admin.category.index')->with('success','Category deleted successfully.');
     }
 }

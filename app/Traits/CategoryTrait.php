@@ -25,4 +25,13 @@ trait CategoryTrait
     {
         return $query->withCount($arg);
     }
+
+    public function getActionButtonsAttribute()
+    {
+        return '<div class="list-icons">
+                    '.$this->getViewButtonAttribute('show-detail', 'admin.category.show').'
+                    '.$this->getEditButtonAttribute('edit-category', 'admin.category.edit').'
+                    '.$this->getDeleteButtonAttribute('delete-category', 'admin.category.destroy').'
+                </div>';
+    }
 }

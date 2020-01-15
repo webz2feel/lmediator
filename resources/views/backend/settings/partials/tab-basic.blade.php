@@ -47,8 +47,50 @@
                 <input type="text" class="form-control" placeholder="92343242344" name="contact_number" value="{{ $setting->contact_number }}">
             </div>
         </div>
+        <div class="form-group row">
+            <label class="col-lg-3 col-form-label">From Email Name:</label>
+            <div class="col-lg-9">
+                <input type="text" class="form-control" name="from_name" value="{{ $setting->from_name }}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-lg-3 col-form-label">From Email Address:</label>
+            <div class="col-lg-9">
+                <input type="text" class="form-control" name="from_email" value="{{ $setting->from_email }}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-lg-3 col-form-label">Custom css in header:</label>
+            <div class="col-lg-9">
+                <textarea name="custom_css" class="form-control" id="css_editor" cols="30" rows="10">{{ $setting->custom_css }}</textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-lg-3 col-form-label">Custom JS in footer:</label>
+            <div class="col-lg-9">
+                <textarea name="custom_js" class="form-control" id="javascript_editor" cols="30" rows="10">{{ $setting->custom_js }}</textarea>
+            </div>
+        </div>
         <div class="text-right">
             <button type="submit" class="btn btn-primary">Update <i class="icon-paperplane ml-2"></i></button>
         </div>
     </form>
 </div>
+@push('scripts')
+    <script src="{{ asset('admin/plugins/js/plugins/editors/ace/ace.js') }}"></script>
+    <script>
+        $(function () {
+            // Javascript editor
+            var js_editor = ace.edit('javascript_editor');
+            js_editor.setTheme('ace/theme/monokai');
+            js_editor.getSession().setMode('ace/mode/javascript');
+            js_editor.setShowPrintMargin(false);
+
+            // CSS editor
+            var css_editor = ace.edit('css_editor');
+            css_editor.setTheme('ace/theme/monokai');
+            css_editor.getSession().setMode('ace/mode/css');
+            css_editor.setShowPrintMargin(false);
+        });
+    </script>
+@endpush

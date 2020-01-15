@@ -20,6 +20,7 @@
                 <div class="card-body">
                     <form action="{{route('admin.category.update', $id)}}" method="POST" class="form-validate-jquery">
                         @csrf
+                        @method('PUT')
                         @includeIf('backend.blog.category.partials.form')
                     </form>
                 </div>
@@ -33,4 +34,12 @@
     <script src="{{ asset('admin/plugins/js/demo_pages/form_validation.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/plugins/forms/selects/select2.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/plugins/forms/styling/uniform.min.js') }}"></script>
+    <script>
+        $(function () {
+            $('.select').select2({
+                placeholder: 'Select',
+                minimumResultsForSearch: Infinity
+            });
+        });
+    </script>
 @endpush

@@ -35,6 +35,10 @@ class SettingsController extends Controller
         $setting->website_title = $request->website_title;
         $setting->contact_email = $request->contact_email;
         $setting->contact_number = $request->contact_number;
+        $setting->from_name = $request->from_name;
+        $setting->from_email = $request->from_email;
+        $setting->custom_css = $request->custom_css;
+        $setting->custom_js = $request->custom_js;
         $setting->save();
 
         return redirect()->route('admin.settings')->with('success', 'Setting updated successfully');
@@ -47,10 +51,20 @@ class SettingsController extends Controller
         $setting->smtp_password = $request->smtp_password;
         $setting->smtp_port = $request->smtp_port;
         $setting->smtp_security = $request->smtp_security;
+        $setting->mail_driver = $request->mail_driver;
+        $setting->mail_sendmail = $request->mail_sendmail;
+        $setting->mail_pretend = $request->mail_pretend;
+        $setting->mailgun_domain = $request->mailgun_domain;
+        $setting->mailgun_secret = $request->mailgun_secret;
+        $setting->mandrill_secret = $request->mandrill_secret;
+        $setting->sparkpost_secret = $request->sparkpost_secret;
+        $setting->ses_key = $request->ses_key;
+        $setting->ses_secret = $request->ses_secret;
+        $setting->ses_region = $request->ses_region;
 
         $setting->save();
 
-        return redirect()->route('admin.settings')->with('success', 'SMTP setting updated successfully');
+        return redirect()->route('admin.settings')->with('success', 'Email settings updated successfully');
     }
 
     public function updateSEO(Request $request, Setting $setting)

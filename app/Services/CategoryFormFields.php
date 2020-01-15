@@ -15,7 +15,7 @@ class CategoryFormFields
      * @var array
      */
     protected $fieldList = [
-        'title' => '',
+        'name' => '',
         'slug' =>  '',
         'parent_id' =>  [],
         'description'  => '',
@@ -51,7 +51,7 @@ class CategoryFormFields
         foreach ($fields as $fieldName => $fieldValue) {
             $fields[$fieldName] = old($fieldName, $fieldValue);
         }
-        $categoryFormFieldData = $this->categoryFormFieldData();
+        $categoryFormFieldData = $this->categoryFormFieldData($this->id);
         return array_merge(
             $fields,
             $categoryFormFieldData
@@ -79,10 +79,14 @@ class CategoryFormFields
         return $fields;
     }
 
-    protected function categoryFormFieldData()
+    protected function categoryFormFieldData($id = null)
     {
+        $category = Category::active(1);
+        if($id){
+            $category->where('id','!=', $id);
+        }
         return [
-            'categories' => Category::all(),
+            'categories' => $category->get(),
         ];
     }
 }

@@ -58,7 +58,6 @@
     <script src="{{ asset('admin/plugins/js/plugins/notifications/sweet_alert.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/js/plugins/forms/styling/uniform.min.js') }}"></script>
     @includeIf('backend.scripts.datatable-config')
-    @includeIf('backend.blog.category.partials.ajax-request')
     <script>
         $(function() {
             $('.form-input-styled').uniform({
@@ -72,7 +71,7 @@
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'slug', name: 'slug'},
-                    {data: 'descriptions', name: 'descriptions'},
+                    {data: 'description', name: 'description'},
                     {data: 'status', name: 'status'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'posts_count', name: 'posts_count', searchable: false},
