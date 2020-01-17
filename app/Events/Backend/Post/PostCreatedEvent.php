@@ -18,7 +18,7 @@ class PostCreatedEvent
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param $post
      */
     public function __construct($post)
     {

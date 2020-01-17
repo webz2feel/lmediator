@@ -7,6 +7,7 @@ namespace App\Repository\Backend\Post;
 use App\Events\Backend\Post\PostDeletedEvent;
 use App\Models\Blog\Post;
 use Yajra\DataTables\Facades\DataTables;
+
 class PostRepository implements PostRepositoryInterface
 {
 
@@ -24,38 +25,59 @@ class PostRepository implements PostRepositoryInterface
     {
         return Datatables::of($this->getAll())
             ->escapeColumns([])
-            ->addColumn('preview', function($post) {
-                return '<a href="'.asset('storage/images/'.$post->image).'" data-popup="lightbox">
-                    <img src="'.asset('storage/images/'.$post->image).'" alt="" class="img-preview rounded" width="50" height="50">
+            ->addColumn(
+                'preview',
+                function ($post) {
+                    return '<a href="' . asset('storage/images/' . $post->image) . '" data-popup="lightbox">
+                    <img src="' . asset('storage/images/' . $post->image) . '" alt="" class="img-preview rounded" width="50" height="50">
                 </a>';
-            })
-            ->addColumn('title', function($post) {
-                return $post->title;
-            })
-            ->addColumn('author', function($post) {
-                return $post->admin->full_name;
-            })
-            ->addColumn('categories', function($post) {
-                return implode(', ', $this->generateData($post->categories));
-            })
-            ->addColumn('tags', function($post) {
-                return implode(', ', $this->generateData($post->tags));
-            })
-            ->addColumn('created_at', function ($post) {
-                if ($post->created_at) {
-                    return $post->created_at->format('j M Y');
                 }
-            })
-            ->addColumn('actions', function ($user) {
-                return $user->action_buttons;
-            })
+            )
+            ->addColumn(
+                'title',
+                function ($post) {
+                    return $post->title;
+                }
+            )
+            ->addColumn(
+                'author',
+                function ($post) {
+                    return $post->admin->full_name;
+                }
+            )
+            ->addColumn(
+                'categories',
+                function ($post) {
+                    return implode(', ', $this->generateData($post->categories));
+                }
+            )
+            ->addColumn(
+                'tags',
+                function ($post) {
+                    return implode(', ', $this->generateData($post->tags));
+                }
+            )
+            ->addColumn(
+                'created_at',
+                function ($post) {
+                    if ($post->created_at) {
+                        return $post->created_at->format('j M Y');
+                    }
+                }
+            )
+            ->addColumn(
+                'actions',
+                function ($user) {
+                    return $user->action_buttons;
+                }
+            )
             ->make(true);
     }
 
     private function generateData($data)
     {
         $array = [];
-        if(!empty($data)){
+        if (!empty($data)) {
             foreach ($data as $d) {
                 $array[] = $d->name;
             }
@@ -90,10 +112,10 @@ class PostRepository implements PostRepositoryInterface
 
     private function attachPermissionsAndTags(Post $post)
     {
-        if(request()->categories != '') {
-        $post->categories()->sync(request()->categories);
-    }
-        if(request()->tags != '') {
+        if (request()->categories != '') {
+            $post->categories()->sync(request()->categories);
+        }
+        if (request()->tags != '') {
             $post->tags()->sync(request()->tags);
         }
     }

@@ -9,13 +9,14 @@ use Illuminate\Queue\SerializesModels;
 
 class SendPostCreatedEmail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
     public $post;
 
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param $post
      */
     public function __construct($post)
     {

@@ -30,25 +30,35 @@ class CategoriesController extends Controller
 
     public function getDataTable()
     {
-        if(request()->ajax()) {
-            return Datatables::of(Category::countPosts('posts')->latest()->get())
-                ->escapeColumns(['name', 'slug', 'description'])
-                ->addColumn('status', function ($category) {
+        return Datatables::of(Category::countPosts('posts')->latest()->get())
+            ->escapeColumns(['name', 'slug', 'description'])
+            ->addColumn(
+                'status',
+                function ($category) {
                     return $category->status ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-secondary">Inactive</span>';
-                })
-                ->addColumn('created_at', function ($category) {
+                }
+            )
+            ->addColumn(
+                'created_at',
+                function ($category) {
                     if ($category->created_at) {
                         return $category->created_at->format('j F Y h:i');
                     }
-                })
-                ->addColumn('posts_count', function($category){
+                }
+            )
+            ->addColumn(
+                'posts_count',
+                function ($category) {
                     return $category->posts_count;
-                })
-                ->addColumn('actions', function ($category) {
+                }
+            )
+            ->addColumn(
+                'actions',
+                function ($category) {
                     return $category->action_buttons;
-                })
-                ->make(true);
-        }
+                }
+            )
+            ->make(true);
     }
 
     /**
@@ -72,10 +82,16 @@ class CategoriesController extends Controller
      */
     public function store(CreateCategoryRequest $request)
     {
-        if($request->categoryFillData()){
-            return redirect()->route('admin.category.index')->with('success','Category created successfully.');
-        }else {
-            return redirect()->route('admin.category.index')->with('success','There is an error saving record');
+        if ($request->categoryFillData()) {
+            return redirect()->route('admin.category.index')->with(
+                'success',
+                'Category created successfully.'
+            );
+        } else {
+            return redirect()->route('admin.category.index')->with(
+                'error',
+                'There is an error saving record'
+            );
         }
     }
 
@@ -83,6 +99,7 @@ class CategoriesController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -114,10 +131,16 @@ class CategoriesController extends Controller
      */
     public function update(UpdateCategoryRequest $request, $id)
     {
-        if($request->categoryFillData($id)){
-            return redirect()->route('admin.category.index')->with('success','Category updated successfully.');
+        if ($request->categoryFillData($id)) {
+            return redirect()->route('admin.category.index')->with(
+                'success',
+                'Category updated successfully.'
+            );
         }
-        return redirect()->route('admin.category.edit', $id)->with('error','There is an error updating category.');
+        return redirect()->route('admin.category.edit', $id)->with(
+            'error',
+            'There is an error updating category.'
+        );
     }
 
     /**
@@ -132,6 +155,9 @@ class CategoriesController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
         event(new CategoryDeletedEvent($category));
-        return redirect()->route('admin.category.index')->with('success','Category deleted successfully.');
+        return redirect()->route('admin.category.index')->with(
+            'success',
+            'Category deleted successfully.'
+        );
     }
 }

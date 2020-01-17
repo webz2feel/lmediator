@@ -10,7 +10,8 @@ trait CategoryTrait
 {
     public function posts()
     {
-        return $this->belongsToMany(Post::class)->withTimestamps();
+        return $this->morphedByMany(Post::class, 'categoryable')->withTimestamps();
+//        return $this->belongsToMany(Post::class)->withTimestamps();
     }
     public function subcategory(){
         return $this->hasMany('App\Models\Blog\Category', 'parent_id');

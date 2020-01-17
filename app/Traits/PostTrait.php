@@ -17,7 +17,8 @@ trait PostTrait
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class)->withTimestamps();
+        return $this->morphToMany(Category::class, 'categoryable')->withTimestamps();
+//        return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
     public function tags()

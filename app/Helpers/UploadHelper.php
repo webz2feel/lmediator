@@ -28,7 +28,7 @@ class UploadHelper
             self::$mainImgHeight = $height;
         }
         if(!empty($destinationPath)){
-            self::$destinationFolder = $destinationPath;
+            self::$destinationFolder .= $destinationPath;
         }
         $midImagePath = $destinationPath . self::$midFolder;
         $thumbImagePath = $destinationPath . self::$thumbFolder;
@@ -37,7 +37,7 @@ class UploadHelper
         $fileName = time() . '-' . rand(1, 999) . '.' . $extension;
 
         $field->storeAs(self::$destinationFolder, $fileName);
-        $destinationPath = public_path('storage/images/'. $fileName);
+        $destinationPath = public_path('storage/images/'.$destinationPath. $fileName);
         /*         * **** Resizing Images ******** */
         $imageToResize = Image::make($destinationPath);
 
