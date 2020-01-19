@@ -19,25 +19,13 @@
                         <thead>
                         <tr>
                             <th>Preview</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Categories</th>
-                            <th>Tags</th>
-                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Active</th>
+                            <th>Display On Front</th>
+                            <th>Created At</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        <tfoot>
-                        <tr>
-                            <td></td>
-                            <td>Title</td>
-                            <td>Author</td>
-                            <td></td>
-                            <td></td>
-                            <td>Created At</td>
-                            <td></td>
-                        </tr>
-                        </tfoot>
                     </table>
                 </div>
 

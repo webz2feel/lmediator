@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests\Service;
 
+use App\Models\Service\Service;
 use Illuminate\Foundation\Http\FormRequest;
-
+use UploadImage;
 class UpdateServiceRequest extends FormRequest
 {
     /**
@@ -28,5 +29,26 @@ class UpdateServiceRequest extends FormRequest
             'name'        =>  "required|min:2|max:250|unique:services,name,{$serviceId}",
             'contents'    =>  'required',
         ];
+    }
+
+    public function serviceFillData($id)
+    {
+        $service = Service::findOrFail($id);
+        $service->name = $this->name;
+        $service->contents = $this->contents;
+        $service->excerpt = $this->excerpt;
+        $service->active = $this->has('active') ? true : false;
+        $service->display_on_home = $this->has('display_on_home') ? true : false;
+
+        if($service->save()){
+            if($this->has('image')){
+                $imageName = UploadImage::upload($this->file('image'), 'services/', '', 0, 0, false);
+                $service->update([
+                    'image' => $imageName,
+                ]);
+            }
+            return $service;
+        }
+        return false;
     }
 }

@@ -8,7 +8,8 @@ use App\Http\Requests\Service\UpdateServiceRequest;
 use App\Models\Service\Service;
 use App\Services\ServiceFormFields;
 use Illuminate\Http\Request;
-use UploadImage;
+use Yajra\DataTables\Facades\DataTables;
+
 class ServicesController extends Controller
 {
     /**
@@ -44,9 +45,6 @@ class ServicesController extends Controller
                     return $service->created_at->format('j F Y h:i');
                 }
             })
-            ->addColumn('posts_count', function($service){
-                return $service->posts_count;
-            })
             ->addColumn('actions', function ($service) {
                 return $service->action_buttons;
             })
@@ -74,13 +72,7 @@ class ServicesController extends Controller
      */
     public function store(CreateServiceRequest $request)
     {
-        if($service = $request->serviceFillData()){
-            if($request->has('image')){
-                $imageName = UploadImage::upload($request->file('image'), 'services/', '', 0, 0, false);
-                $service->update([
-                  'image' => $imageName,
-              ]);
-            }
+        if($request->serviceFillData()){
 //            event(new ServiceCreatedEvent($service));
             return redirect()->route('admin.service.index')->with('success','Service created successfully.');
         }else {
@@ -103,11 +95,14 @@ class ServicesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $service = new ServiceFormFields($id);
+        $data = $service->handle();
+        return view('backend.service.edit', $data);
     }
 
     /**
@@ -116,21 +111,31 @@ class ServicesController extends Controller
      * @param  \App\Http\Requests\Service\UpdateServiceRequest  $request
      * @param  int  $id
      *
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateServiceRequest $request, $id)
     {
-        //
+        if($request->serviceFillData($id)){
+//            event(new ServiceUpdatedEvent($service));
+            return redirect()->route('admin.service.index')->with('success','Service created successfully.');
+        }else {
+            return redirect()->route('admin.service.index')->with('error','There is an error saving record');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $service = Service::findOrFail($id);
+        $service->delete();
+//            event(new ServiceDeletedEvent($service));
+        return redirect()->route('admin.service.index')->with('success','Service deleted successfully.');
+
     }
 }

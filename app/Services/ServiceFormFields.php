@@ -73,7 +73,7 @@ class ServiceFormFields
     protected function fieldsFromModel($id, array $fields)
     {
         $service = Service::findOrFail($id);
-        $serviceCategories = Service::where('status', 1)->pluck('id');
+        $serviceCategories = Service::where('active', 1)->pluck('id')->toArray();
         $fieldNames = array_keys(Arr::except($fields, ['categories','serviceCategories']));
         $fields = [
             'id' => $id,
@@ -88,9 +88,9 @@ class ServiceFormFields
     protected function categoryFormFieldData($id = null)
     {
         $category = Category::active(1);
-        if($id){
-            $category->where('id','!=', $id);
-        }
+//        if($id){
+//            $category->where('id','!=', $id);
+//        }
         return [
             'categories' => $category->get(),
         ];

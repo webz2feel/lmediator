@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42262eb1-1aa2-4794-9b33-52baabada3b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Category/CreateCategoryRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Category/UpdateCategoryRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/admin/plugins/js/plugins/editors/ace/mode-css.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/admin/plugins/js/plugins/editors/ace/mode-javascript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/admin/plugins/js/plugins/editors/ace/theme-monokai.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/CategoriesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/SettingsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/SettingsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Blog/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Blog/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/CategoryFormFields.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/CategoryFormFields.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/CategoryTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/CategoryTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_29_112302_create_settings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_29_112302_create_settings_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/blog/category/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/blog/category/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/blog/category/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/blog/category/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/blog/category/partials/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/blog/category/partials/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/settings/partials/tab-basic.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/settings/partials/tab-basic.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/settings/partials/tab-email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/settings/partials/tab-email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/backend/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/backend/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Service/ServicesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Service/ServicesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Service/CreateServiceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Service/CreateServiceRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Service/UpdateServiceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Service/UpdateServiceRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/ServiceFormFields.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ServiceFormFields.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/service/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/service/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +203,8 @@
       <workItem from="1578586476071" duration="6218000" />
       <workItem from="1578926357166" duration="6767000" />
       <workItem from="1579010683669" duration="8572000" />
-      <workItem from="1579104247909" duration="9496000" />
+      <workItem from="1579104247909" duration="9589000" />
+      <workItem from="1579450461892" duration="3809000" />
     </task>
     <servers />
   </component>
@@ -248,10 +237,10 @@
       <screen x="0" y="23" width="1600" height="812" />
     </state>
     <state x="475" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577539882123" />
-    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579108604124">
+    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579453673887">
       <screen x="0" y="23" width="1600" height="812" />
     </state>
-    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1579108604124" />
+    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1579453673887" />
     <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1578071012423" />
     <state x="520" y="215" key="NewPhpClassDialog" timestamp="1578066555329">
       <screen x="0" y="23" width="1600" height="815" />

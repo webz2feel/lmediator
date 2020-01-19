@@ -4,7 +4,7 @@ namespace App\Http\Requests\Service;
 
 use App\Models\Service\Service;
 use Illuminate\Foundation\Http\FormRequest;
-
+use UploadImage;
 class CreateServiceRequest extends FormRequest
 {
     /**
@@ -39,7 +39,13 @@ class CreateServiceRequest extends FormRequest
         $service->active = $this->has('active') ? true : false;
         $service->display_on_home = $this->has('display_on_home') ? true : false;
 
-        if($service = $service->save()){
+        if($service->save()){
+            if($this->has('image')){
+                $imageName = UploadImage::upload($this->file('image'), 'services/', '', 0, 0, false);
+                $service->update([
+                    'image' => $imageName,
+                ]);
+            }
             return $service;
         }
         return false;
