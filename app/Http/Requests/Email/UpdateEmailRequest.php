@@ -13,7 +13,7 @@ class UpdateEmailRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return hasPermissions('admin.email.edit');
     }
 
     /**

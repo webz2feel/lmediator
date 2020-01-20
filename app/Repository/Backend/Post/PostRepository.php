@@ -87,7 +87,10 @@ class PostRepository implements PostRepositoryInterface
 
     public function getAll()
     {
-        return $this->post->latest()->get();
+        if(auth()->user()->hasRole('admin')){
+            return $this->post->latest()->get();
+        }
+        return $this->post->where('admin_id', auth()->id())->get();
     }
 
     public function getById(int $id)

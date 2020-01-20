@@ -30,9 +30,9 @@ trait CategoryTrait
     public function getActionButtonsAttribute()
     {
         return '<div class="list-icons">
-                    '.$this->getViewButtonAttribute('show-detail', 'admin.category.show').'
-                    '.$this->getEditButtonAttribute('edit-category', 'admin.category.edit').'
-                    '.$this->getDeleteButtonAttribute('delete-category', 'admin.category.destroy').'
+                    '.$this->getViewButtonAttribute('admin.category.show', 'admin.category.show').'
+                    '.$this->getEditButtonAttribute('admin.category.edit', 'admin.category.edit').'
+                    '.$this->getDeleteButtonAttribute('admin.category.destroy', 'admin.category.destroy').'
                 </div>';
     }
 }

@@ -11,9 +11,9 @@ trait SubModuleTrait
     public function getActionButtonsAttribute()
     {
         return '<div class="list-icons">
-                    '.$this->getViewButtonAttribute('show-sub-module', 'admin.sub-module.show').'
-                    '.$this->getEditButtonAttribute('edit-sub-module', 'admin.sub-module.edit').'
-                    '.$this->getDeleteButtonAttribute('delete-sub-module', 'admin.sub-module.destroy').'
+                    '.$this->getViewButtonAttribute('admin.sub-module.show', 'admin.sub-module.show').'
+                    '.$this->getEditButtonAttribute('admin.sub-module.edit', 'admin.sub-module.edit').'
+                    '.$this->getDeleteButtonAttribute('admin.sub-module.destroy', 'admin.sub-module.destroy').'
                 </div>';
     }
 

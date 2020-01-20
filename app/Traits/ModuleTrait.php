@@ -11,9 +11,9 @@ trait ModuleTrait
     public function getActionButtonsAttribute()
     {
         return '<div class="list-icons">
-                    '.$this->getViewButtonAttribute('show-module', 'admin.module.show').'
-                    '.$this->getEditButtonAttribute('edit-module', 'admin.module.edit').'
-                    '.$this->getDeleteButtonAttribute('delete-module', 'admin.module.destroy').'
+                    '.$this->getViewButtonAttribute('admin.module.show', 'admin.module.show').'
+                    '.$this->getEditButtonAttribute('admin.module.edit', 'admin.module.edit').'
+                    '.$this->getDeleteButtonAttribute('admin.module.destroy', 'admin.module.destroy').'
                 </div>';
     }
 

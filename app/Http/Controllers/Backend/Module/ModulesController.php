@@ -40,6 +40,9 @@ class ModulesController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.module.create')){
+            abort(403);
+        }
         $module = new ModuleFormFields();
         $data = $module->handle();
         return view('backend.module.create', $data);
@@ -78,6 +81,9 @@ class ModulesController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.module.edit')){
+            abort(403);
+        }
         $module = new ModuleFormFields($id);
         $data = $module->handle();
         return view('backend.module.edit', $data);
@@ -106,6 +112,9 @@ class ModulesController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.module.destroy')){
+            abort(403);
+        }
         Module::destroy($id);
         return redirect()->route('admin.module.index')->with('success','Module deleted successfully');
     }

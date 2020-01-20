@@ -13,7 +13,7 @@ class UpdatePageRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return hasPermissions('admin.page.edit');
     }
 
     /**

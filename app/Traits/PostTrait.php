@@ -29,8 +29,8 @@ trait PostTrait
     public function getActionButtonsAttribute()
     {
         return '<div class="list-icons">
-            '.$this->getEditButtonAttribute('edit-post', 'admin.post.edit').'
-            '.$this->getDeleteButtonAttribute('delete-post', 'admin.post.destroy').'
+            '.$this->getEditButtonAttribute('admin.post.edit', 'admin.post.edit').'
+            '.$this->getDeleteButtonAttribute('admin.post.destroy', 'admin.post.destroy').'
         </div>';
     }
 }

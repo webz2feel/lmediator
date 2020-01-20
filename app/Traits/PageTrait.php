@@ -13,9 +13,9 @@ trait PageTrait
     public function getActionButtonsAttribute()
     {
         return '<div class="list-icons">
-            '.$this->getViewButtonAttribute('show-page', 'admin.page.show').'
-            '.$this->getEditButtonAttribute('edit-page', 'admin.page.edit').'
-            '.$this->getDeleteButtonAttribute('delete-page', 'admin.page.destroy').'
+            '.$this->getViewButtonAttribute('admin.page.show', 'admin.page.show').'
+            '.$this->getEditButtonAttribute('admin.page.edit', 'admin.page.edit').'
+            '.$this->getDeleteButtonAttribute('admin.page.destroy', 'admin.page.destroy').'
         </div>';
     }
 

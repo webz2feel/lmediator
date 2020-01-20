@@ -16,7 +16,7 @@ class CreateCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return hasPermissions('admin.category.create');
     }
 
     /**

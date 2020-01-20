@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
@@ -50,5 +51,14 @@ if (!function_exists('generateReference')) {
             $textstr .= $chars[rand(0, count($chars) - 1)];
         }
         return $textstr;
+    }
+}
+
+if(!function_exists('hasPermissions')) {
+    function hasPermissions($permission){
+        $allPermissions = Auth::user()->getPermissions()->pluck('slug')->toArray();
+        $roles = Auth::user()->roles->pluck('slug')->toArray();
+
+        return in_array($permission, $allPermissions) || in_array('admin', $roles);
     }
 }

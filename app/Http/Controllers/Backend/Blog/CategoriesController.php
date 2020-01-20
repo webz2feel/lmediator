@@ -68,6 +68,9 @@ class CategoriesController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.category.create')){
+            abort(403);
+        }
         $category = new CategoryFormFields();
         $data = $category->handle();
         return view('backend.blog.category.create', $data);
@@ -116,6 +119,9 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.category.edit')){
+            abort(403);
+        }
         $category = new CategoryFormFields($id);
         $data = $category->handle();
         return view('backend.blog.category.edit', $data);
@@ -152,6 +158,9 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.category.destroy')){
+            abort(403);
+        }
         $category = Category::findOrFail($id);
         $category->delete();
         event(new CategoryDeletedEvent($category));

@@ -13,7 +13,7 @@ class StoreEmailRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return hasPermissions('admin.email.create');
     }
 
     /**

@@ -65,6 +65,9 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
+        if(!hasPermissions('admin.tag.create')){
+            abort(403);
+        }
         $rules = array(
             'name'    =>  'required|min:2|max:100',
             'slug'    =>  'required|unique:tags,slug',
@@ -112,6 +115,9 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.tag.edit')){
+            abort(403);
+        }
         if(request()->ajax())
         {
             $data = Tag::findOrFail($id);
@@ -128,6 +134,9 @@ class TagsController extends Controller
      */
     public function update(Request $request)
     {
+        if(!hasPermissions('admin.tag.edit')){
+            abort(403);
+        }
         $tag = Tag::findOrFail($request->hidden_id);
         $rules = array(
             'name'    =>  'required|min:2|max:100',
@@ -162,6 +171,9 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.tag.destroy')){
+            abort(403);
+        }
         $tag = Tag::findOrFail($id);
         $tag->delete();
         event(new TagDeletedEvent($tag));

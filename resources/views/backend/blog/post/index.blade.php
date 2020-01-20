@@ -9,11 +9,13 @@
                 <div class="card">
                     <div class="card-header header-elements-inline">
                         <h5 class="card-title">All Posts</h5>
-                        <div class="header-elements">
-                            <div class="list-icons">
-                                @include('backend.blog.post.partials.post-header-buttons')
+                        @if(hasPermissions('admin.post.create'))
+                            <div class="header-elements">
+                                <div class="list-icons">
+                                    @include('backend.blog.post.partials.post-header-buttons')
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                     <table class="table datatable-responsive" id="data-table">
                         <thead>

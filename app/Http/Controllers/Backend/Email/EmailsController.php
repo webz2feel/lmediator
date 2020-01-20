@@ -45,6 +45,9 @@ class EmailsController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.emai.create')){
+            abort(403);
+        }
         $email = new EmailFormFields();
         $data = $email->handle();
         return view('backend.email.create', $data);
@@ -84,6 +87,9 @@ class EmailsController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.email.edit')){
+            abort(403);
+        }
         $service = new EmailFormFields($id);
         $data = $service->handle();
         return view('backend.email.edit', $data);
@@ -112,6 +118,9 @@ class EmailsController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.email.destroy')){
+            abort(403);
+        }
         Email::destroy($id);
         return redirect()->route('admin.email.index')->with('success','Email deleted successfully');
     }

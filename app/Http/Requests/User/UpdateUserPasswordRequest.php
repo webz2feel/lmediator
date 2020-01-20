@@ -13,7 +13,7 @@ class UpdateUserPasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return hasPermissions('admin.user.edit');
     }
 
     /**

@@ -48,6 +48,9 @@ class PermissionsController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.permission.create')){
+            abort(403);
+        }
         $service = new PermissionFormFields();
         $data = $service->handle();
         return view('backend.permission.create', $data);
@@ -87,6 +90,9 @@ class PermissionsController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.permission.edit')){
+            abort(403);
+        }
         $service = new PermissionFormFields($id);
         $data = $service->handle();
         return view('backend.permission.edit', $data);
@@ -116,6 +122,9 @@ class PermissionsController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.permission.destroy')){
+            abort(403);
+        }
         $this->deletePermission($id);
         return redirect()->back()->with('success', 'Permission deleted successfully');
     }

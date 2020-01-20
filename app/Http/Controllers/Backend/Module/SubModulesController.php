@@ -41,6 +41,9 @@ class SubModulesController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.submodule.create')){
+            abort(403);
+        }
         $module = new SubModuleFormFields();
         $data = $module->handle();
         return view('backend.submodule.create', $data);
@@ -79,6 +82,9 @@ class SubModulesController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.submodule.edit')){
+            abort(403);
+        }
         $module = new SubModuleFormFields($id);
         $data = $module->handle();
         return view('backend.submodule.edit', $data);
@@ -107,6 +113,9 @@ class SubModulesController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.submodule.destroy')){
+            abort(403);
+        }
         SubModule::destroy($id);
         return redirect()->route('admin.sub-module.index')->with('success','Sub Module deleted successfully');
     }

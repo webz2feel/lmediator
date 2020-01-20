@@ -48,6 +48,9 @@ class RolesController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.role.created')){
+            abort(403);
+        }
         $service = new RoleFormFields();
         $data = $service->handle();
         return view('backend.role.create', $data);
@@ -88,6 +91,9 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.role.edit')){
+            abort(403);
+        }
         $service = new RoleFormFields($id);
         $data = $service->handle();
         return view('backend.role.edit', $data);
@@ -118,6 +124,9 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.role.destroy')){
+            abort(403);
+        }
         $this->deleteRole($id);
         return redirect()->back()->with('success', 'Role deleted successfully');
     }

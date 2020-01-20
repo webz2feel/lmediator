@@ -48,6 +48,9 @@ class PagesController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.page.create')){
+            abort(403);
+        }
         $page = new PageFormFields();
         $data = $page->handle();
         return view('backend.pages.create', $data);
@@ -89,6 +92,9 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.page.edit')){
+            abort(403);
+        }
         $page = new PageFormFields($id);
         $data = $page->handle();
         return view('backend.pages.edit', $data);
@@ -119,6 +125,9 @@ class PagesController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.page.destroy')){
+            abort(403);
+        }
         $this->pageRepository->delete($id);
         return redirect()->route('admin.page.index')->with('success', 'Page deleted successfully');
     }

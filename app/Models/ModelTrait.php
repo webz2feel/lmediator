@@ -11,11 +11,11 @@ trait ModelTrait
      */
     public function getEditButtonAttribute($permission, $route)
     {
-//        if (access()->allow($permission)) {
+        if (hasPermissions($permission)) {
             return '<a href="'.route($route, $this).'" class="list-icons-item">
                     <i class="icon-pencil7"></i>
                 </a>';
-//        }
+        }
     }
 
     public function getViewButtonAttribute($permission, $route)
@@ -32,7 +32,7 @@ trait ModelTrait
      */
     public function getDeleteButtonAttribute($permission, $route)
     {
-//        if (access()->allow($permission)) {
+        if (hasPermissions($permission)) {
             return '<a href="'.route($route, $this).'"
                     class="list-icons-item" data-method="delete"
                     data-trans-button-cancel="'.trans('buttons.general.cancel').'"
@@ -40,7 +40,7 @@ trait ModelTrait
                     data-trans-title="'.trans('strings.backend.general.are_you_sure').'">
                        <i class="icon-trash"></i>
                 </a>';
-//        }
+        }
     }
 
     public function getSettingsButtonAttribute($permission, $route)

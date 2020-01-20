@@ -3,11 +3,43 @@
   <component name="ChangeListManager">
     <list default="true" id="42262eb1-1aa2-4794-9b33-52baabada3b5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/Helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Helpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/CategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/PostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/PostsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Blog/TagsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Email/EmailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Email/EmailsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Module/ModulesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Module/ModulesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Module/SubModulesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Module/SubModulesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Page/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Page/PagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Permission/PermissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Permission/PermissionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Role/RolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Role/RolesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Service/ServicesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Service/ServicesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Category/CreateCategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Category/CreateCategoryRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Category/UpdateCategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Category/UpdateCategoryRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Email/StoreEmailRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Email/StoreEmailRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Email/UpdateEmailRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Email/UpdateEmailRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Page/CreatePageRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Page/CreatePageRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Page/UpdatePageRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Page/UpdatePageRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Permission/CreatePermissionRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Permission/CreatePermissionRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Post/CreatePostRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Post/CreatePostRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Post/UpdatePostRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Post/UpdatePostRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Role/CreateRoleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Role/CreateRoleRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/Service/CreateServiceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Service/CreateServiceRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/Service/UpdateServiceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Service/UpdateServiceRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/ServiceFormFields.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ServiceFormFields.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/backend/service/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/service/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/User/CreateUserRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/User/CreateUserRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/User/UpdateUserPasswordRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/User/UpdateUserPasswordRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ModelTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ModelTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repository/Backend/Post/PostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/Backend/Post/PostRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/CategoryTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/CategoryTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/EmailTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/EmailTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/ModuleTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/ModuleTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/PageTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/PageTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/PostTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/PostTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/ServiceTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/ServiceTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/SubModuleTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/SubModuleTrait.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/blog/post/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/blog/post/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/partials/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/partials/aside.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,6 +237,7 @@
       <workItem from="1579010683669" duration="8572000" />
       <workItem from="1579104247909" duration="9589000" />
       <workItem from="1579450461892" duration="3809000" />
+      <workItem from="1579528556896" duration="8513000" />
     </task>
     <servers />
   </component>
@@ -237,9 +270,10 @@
       <screen x="0" y="23" width="1600" height="812" />
     </state>
     <state x="475" y="126" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1577539882123" />
-    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579453673887">
-      <screen x="0" y="23" width="1600" height="812" />
+    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1579531402252">
+      <screen x="0" y="23" width="1600" height="810" />
     </state>
+    <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1280.23.1280.937/0.23.1600.810@0.23.1600.810" timestamp="1579531402252" />
     <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1280.23.1280.937/0.23.1600.812@0.23.1600.812" timestamp="1579453673887" />
     <state x="475" y="136" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1280.23.1280.937/0.23.1600.815@0.23.1600.815" timestamp="1578071012423" />
     <state x="520" y="215" key="NewPhpClassDialog" timestamp="1578066555329">

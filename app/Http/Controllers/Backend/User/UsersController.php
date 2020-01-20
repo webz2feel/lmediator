@@ -50,6 +50,9 @@ class UsersController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.user.create')){
+            abort(403);
+        }
         $service = new UserFormFields();
         $data = $service->handle();
         return view('backend.user.create', $data);
@@ -92,6 +95,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.user.edit')){
+            abort(403);
+        }
         $service = new UserFormFields($id);
         $data = $service->handle();
         return view('backend.user.edit', $data);
@@ -123,6 +129,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.user.destroy')){
+            abort(403);
+        }
         Admin::destroy($id);
         return redirect()->back()->with('success', 'User deleted successfully');
     }

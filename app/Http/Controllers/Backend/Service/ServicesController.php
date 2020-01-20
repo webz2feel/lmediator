@@ -58,6 +58,9 @@ class ServicesController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.service.create')){
+            abort(403);
+        }
         $service = new ServiceFormFields();
         $data = $service->handle();
         return view('backend.service.create', $data);
@@ -100,6 +103,9 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.service.edit')){
+            abort(403);
+        }
         $service = new ServiceFormFields($id);
         $data = $service->handle();
         return view('backend.service.edit', $data);
@@ -132,6 +138,9 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.service.destroy')){
+            abort(403);
+        }
         $service = Service::findOrFail($id);
         $service->delete();
 //            event(new ServiceDeletedEvent($service));

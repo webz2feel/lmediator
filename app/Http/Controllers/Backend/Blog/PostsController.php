@@ -7,6 +7,7 @@ use App\Events\Backend\Post\PostUpdatedEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
+use App\Models\Admin\Admin;
 use App\Models\Blog\Category;
 use App\Models\Blog\Post;
 use App\Models\Blog\Tag;
@@ -56,6 +57,9 @@ class PostsController extends Controller
      */
     public function create()
     {
+        if(!hasPermissions('admin.post.create')){
+            abort(403);
+        }
         $post = new Post();
         $categories = Category::latest()->active(1)->get();
         $tags = Tag::latest()->active(1)->get();
@@ -122,6 +126,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+        if(!hasPermissions('admin.post.edit')){
+            abort(403);
+        }
         $post = $this->postRepository->getById($id);
         $categories = Category::latest()->active(1)->get();
         $tags = Tag::latest()->active(1)->get();
@@ -187,6 +194,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        if(!hasPermissions('admin.post.destroy')){
+            abort(403);
+        }
         $this->postRepository->delete($id);
         return redirect()->route('admin.post.index')->with('success', 'Post deleted successfully');
     }

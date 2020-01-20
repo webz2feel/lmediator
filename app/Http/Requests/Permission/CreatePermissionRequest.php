@@ -13,7 +13,7 @@ class CreatePermissionRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return hasPermissions('admin.permission.create');
     }
 
     /**

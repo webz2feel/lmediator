@@ -14,7 +14,7 @@ class UpdateServiceRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return hasPermissions('admin.service.edit');
     }
 
     /**

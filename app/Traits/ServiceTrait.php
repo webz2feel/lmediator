@@ -16,8 +16,8 @@ trait ServiceTrait
     public function getActionButtonsAttribute()
     {
         return '<div class="list-icons">
-            ' . $this->getEditButtonAttribute('edit-service', 'admin.service.edit') . '
-            ' . $this->getDeleteButtonAttribute('delete-service', 'admin.service.destroy') . '
+            ' . $this->getEditButtonAttribute('admin.service.edit', 'admin.service.edit') . '
+            ' . $this->getDeleteButtonAttribute('admin.service.destroy', 'admin.service.destroy') . '
         </div>';
     }
 }
