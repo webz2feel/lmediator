@@ -33,4 +33,9 @@ trait PostTrait
             '.$this->getDeleteButtonAttribute('admin.post.destroy', 'admin.post.destroy').'
         </div>';
     }
+
+    public function scopeActive($query, $arg)
+    {
+        return $query->where('status', $arg);
+    }
 }

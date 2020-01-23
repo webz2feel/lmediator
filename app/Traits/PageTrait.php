@@ -33,4 +33,9 @@ trait PageTrait
     {
         return Admin::where('id', $this->updated_by)->get()->pluck('full_name')->first();
     }
+
+    public function scopeActive($query, $arg)
+    {
+        return $query->where('status', $arg);
+    }
 }
